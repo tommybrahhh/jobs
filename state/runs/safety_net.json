@@ -2,11 +2,11 @@
   "schema_version": 3,
   "task": "Madrid Jobs Safety Net",
   "expected_employers": 198,
-  "run_status": "RUNNING",
+  "run_status": "INCOMPLETE",
   "history_status": "WARMING_UP",
   "last_run_started_at": "2026-09-07T01:48:58+02:00",
-  "last_run_completed_at": null,
-  "config_status": "VALIDATED_PENDING_RUNTIME_RECHECK",
+  "last_run_completed_at": "2026-09-07T01:56:00+02:00",
+  "config_status": "VALIDATED",
   "config_validation": {
     "unique_employers": 198,
     "radar_a": 66,
@@ -27,23 +27,69 @@
     "config/inventory_visibility_policy.json": "63c385a03564024ef6f4860564f5594d23a6ee0f"
   },
   "route_patches_sha": "6bf63871255a1e77d245f344c4ba638e4f20a049",
-  "radar_statuses": {},
-  "missing_or_incomplete_radar_runs": [],
-  "degraded_complete_radar_runs": [],
-  "recovery_coverage_by_employer": {},
-  "inventory_visibility_recovery_counts": {"CHECKED_ZERO":0,"CHECKED_WITH_INVENTORY":0,"PARTIAL_COVERAGE":0,"UNAVAILABLE":0},
-  "ledger_repair_by_delta": [],
-  "unresolved_ledger_deltas": [],
-  "employers_recovered": 0,
-  "unresolved_coverage": [],
-  "ledger_read": {"status":"PENDING"},
-  "ledger_write": {"status":"PENDING"},
+  "radar_statuses": {
+    "A": {
+      "execution_status": "INCOMPLETE",
+      "source_coverage_status": "DEGRADED",
+      "state_persistence_status": "OK",
+      "history_status": "WARMING_UP",
+      "note": "Automation executed around 00:06 Europe/Madrid, but state/runs/radar_a.json still ends at the 21:06 run. The required end heartbeat for the 00:05 slot is missing, so execution cannot be reconstructed as COMPLETE. The older 21:06 six-source HEALTHY outage classification was re-evaluated under current patches and all six are now effective PARTIAL, not HEALTHY outages."
+    },
+    "B": {
+      "execution_status": "INCOMPLETE",
+      "source_coverage_status": "DEGRADED",
+      "state_persistence_status": "DEGRADED",
+      "history_status": "WARMING_UP",
+      "note": "00:25 slot scanned/accounted 66 IDs and ledger read succeeded, but mandatory full employer_coverage was persisted as an empty object. The compact 66-ID visibility map is insufficient under the current lossless schema. One noncritical Imperial Brands ledger delta remains pending."
+    },
+    "C": {
+      "execution_status": "COMPLETE",
+      "source_coverage_status": "DEGRADED",
+      "state_persistence_status": "OK",
+      "history_status": "WARMING_UP",
+      "note": "00:45 slot has a valid 66-ID employer_coverage map, current config SHAs, reliable ledger read/classification and end heartbeat."
+    }
+  },
+  "missing_or_incomplete_radar_runs": [
+    {"radar":"A","slot":"2026-09-07T00:05:00+02:00","reason":"automation run occurred but required end heartbeat was not persisted; latest radar_a heartbeat remains 21:06"},
+    {"radar":"B","slot":"2026-09-07T00:25:00+02:00","reason":"invalid/lossy coverage state: employer_coverage object empty despite 66-ID compact map"}
+  ],
+  "degraded_complete_radar_runs": ["C"],
+  "recovery_coverage_by_employer": {
+    "MAD-A-009": {"employer":"Mondelēz International, especially Travel Retail","source_radar":"A","source_slot":"2026-09-06T21:06:56+02:00","prior_visibility":"UNAVAILABLE","recovery_result":"EFFECTIVE_PARTIAL_ROLE_PAGE_RECOVERY","recovered_visibility":"PARTIAL_COVERAGE","effective_route":"current patched Workday + corporate careers + exact-site official role pages","checked_at":"2026-09-07T01:53:00+02:00","note":"Live official Madrid role evidence exists, including R-168469 posted 14 days ago and R-173305 posted 30+ days ago; no qualifying <=48h target role found"},
+    "MAD-A-016": {"employer":"Almirall","source_radar":"A","source_slot":"2026-09-06T21:06:56+02:00","prior_visibility":"UNAVAILABLE","recovery_result":"EFFECTIVE_PARTIAL_ROLE_PAGE_RECOVERY","recovered_visibility":"PARTIAL_COVERAGE","effective_route":"patched Almirall Workday + corporate careers + exact-site role pages","checked_at":"2026-09-07T01:53:00+02:00","note":"Official role pages recoverable; sampled current results were outside Madrid/target or 30+ days old"},
+    "MAD-A-020": {"employer":"Laboratorios ROVI","source_radar":"A","source_slot":"2026-09-06T21:06:56+02:00","prior_visibility":"UNAVAILABLE","recovery_result":"EFFECTIVE_PARTIAL_ROLE_PAGE_RECOVERY","recovered_visibility":"PARTIAL_COVERAGE","effective_route":"patched ROVI Workday exact-site Madrid role pages","checked_at":"2026-09-07T01:53:00+02:00","note":"Live Madrid role pages recovered; observed roles were technical/junior or older than 48h"},
+    "MAD-A-022": {"employer":"Opella","source_radar":"A","source_slot":"2026-09-06T21:06:56+02:00","prior_visibility":"UNAVAILABLE","recovery_result":"EFFECTIVE_PARTIAL_ROLE_PAGE_RECOVERY","recovered_visibility":"PARTIAL_COVERAGE","effective_route":"Opella corporate careers + dynamic Workday role pages","checked_at":"2026-09-07T01:53:00+02:00","note":"Official role pages recoverable, but sampled recent roles were Barcelona/non-Madrid; no qualifying Madrid catch-up found"},
+    "MAD-A-036": {"employer":"Mahou San Miguel","source_radar":"A","source_slot":"2026-09-06T21:06:56+02:00","prior_visibility":"UNAVAILABLE","recovery_result":"EFFECTIVE_PARTIAL_BASELINE","recovered_visibility":"PARTIAL_COVERAGE","effective_route":"patched Oracle CX_1001 + corporate route + exact-site official vacancy discovery","checked_at":"2026-09-07T01:53:00+02:00","note":"Current patch makes Oracle shell/render fragility a PARTIAL baseline; no current evidence of a distinct HEALTHY outage or qualifying missed role"},
+    "MAD-A-054": {"employer":"Gilead Sciences","source_radar":"A","source_slot":"2026-09-06T21:06:56+02:00","prior_visibility":"UNAVAILABLE","recovery_result":"EFFECTIVE_PARTIAL_ROLE_PAGE_RECOVERY","recovered_visibility":"PARTIAL_COVERAGE","effective_route":"patched Gilead Workday exact-site Madrid role pages","checked_at":"2026-09-07T01:53:00+02:00","note":"Live Spain-Madrid role pages recoverable; sampled current role R0054004 is 30+ days old and medical, not target"},
+    "MAD-B-016": {"employer":"Calidad Pascual","source_radar":"B","source_slot":"2026-09-07T00:25:00+02:00","prior_visibility":"UNAVAILABLE","recovery_result":"STILL_UNAVAILABLE","recovered_visibility":"UNAVAILABLE","effective_route":"VeloraHR listing + exact-site official vacancy recovery","checked_at":"2026-09-07T01:53:00+02:00","note":"No reliable current official inventory could be established. Prior snapshot preserved"},
+    "MAD-B-025": {"employer":"Haier Europe","source_radar":"B","source_slot":"2026-09-07T00:25:00+02:00","prior_visibility":"UNAVAILABLE","recovery_result":"RECOVERED_CURRENT_PRIMARY","recovered_visibility":"CHECKED_WITH_INVENTORY","effective_route":"Haier Europe Search Jobs + official Workday role links","checked_at":"2026-09-07T01:53:00+02:00","note":"Current official careers page exposed 27 live jobs, including one Madrid Service Area Manager role posted 30+ days ago; no <=48h qualifying catch-up"},
+    "MAD-B-005": {"employer":"L’Oréal España","source_radar":"B","source_slot":"2026-09-07T00:25:00+02:00","prior_visibility":"UNAVAILABLE","recovery_result":"EFFECTIVE_PARTIAL_BASELINE","recovered_visibility":"PARTIAL_COVERAGE","effective_route":"SearchJobs + exact-site JobDetail recovery","checked_at":"2026-09-07T01:53:00+02:00","note":"Direct SearchJobs still returns 406 in this runtime. This is documented PARTIAL behavior and not a HEALTHY outage"},
+    "MAD-B-041": {"employer":"CHANEL","source_radar":"B","source_slot":"2026-09-07T00:25:00+02:00","prior_visibility":"UNAVAILABLE","recovery_result":"EFFECTIVE_PARTIAL_BASELINE","recovered_visibility":"PARTIAL_COVERAGE","effective_route":"CHANEL Workday root + exact-site official role-page recovery","checked_at":"2026-09-07T01:53:00+02:00","note":"Known PARTIAL Workday-root fragility; no distinct new deterioration proven"},
+    "MAD-B-058": {"employer":"Lenovo","source_radar":"B","source_slot":"2026-09-07T00:25:00+02:00","prior_visibility":"UNAVAILABLE","recovery_result":"PARTIAL_UNAVAILABLE_RUNTIME","recovered_visibility":"PARTIAL_COVERAGE","effective_route":"Lenovo official dynamic search + exact-site official role discovery","checked_at":"2026-09-07T01:53:00+02:00","note":"Direct careers endpoint returned 406 and no fresh official Madrid role was recovered. Treated as documented partial/uncertain dynamic behavior rather than a HEALTHY outage"},
+    "MAD-B-065": {"employer":"Warner Bros. Discovery / HBO Max","source_radar":"B","source_slot":"2026-09-07T00:25:00+02:00","prior_visibility":"UNAVAILABLE","recovery_result":"EFFECTIVE_PARTIAL_BASELINE","recovered_visibility":"PARTIAL_COVERAGE","effective_route":"WBD dynamic search + exact-site careers role discovery","checked_at":"2026-09-07T01:53:00+02:00","note":"Current official careers pages are reachable, but no complete Madrid inventory was reconstructed. Dynamic-root limitation remains partial baseline"}
+  },
+  "inventory_visibility_recovery_counts": {"CHECKED_ZERO":0,"CHECKED_WITH_INVENTORY":1,"PARTIAL_COVERAGE":10,"UNAVAILABLE":1},
+  "ledger_repair_by_delta": [
+    {"source":"Radar B","employer_id":"MAD-B-037","employer":"Imperial Brands / Altadis","requisition_id":"SE00683","status":"VERIFIED_PENDING_WRITE","note":"Live official Imperial Brands role page verified in Madrid. Role is Sales Representative Southern Europe, old/non-alert-critical. Delta remains pending because the authoritative ledger was not rewritten in this recovery pass."}
+  ],
+  "unresolved_ledger_deltas": [
+    {"employer_id":"MAD-B-037","employer":"Imperial Brands / Altadis","requisition_id":"SE00683","state_persistence_status":"DEGRADED","alert_relevance":"NON_ALERT_CRITICAL_OLD_ROLE","note":"Official role is live; safe ledger insertion remains pending. This is not a coverage failure and not CRITICAL."}
+  ],
+  "employers_recovered": 11,
+  "unresolved_coverage": [
+    {"id":"MAD-A-RUN-2026-09-07T00:05","employer":"Radar A slot","effective_health":"N/A","status":"EXECUTION_GAP","note":"Automation run occurred but required end heartbeat/66-ID map is missing, so the slot cannot be certified COMPLETE"},
+    {"id":"MAD-B-RUN-2026-09-07T00:25","employer":"Radar B slot","effective_health":"N/A","status":"EXECUTION_GAP","note":"66 IDs were scanned but mandatory detailed employer_coverage was lost; compact map does not satisfy current schema"},
+    {"id":"MAD-B-016","employer":"Calidad Pascual","effective_health":"HEALTHY","status":"UNAVAILABLE","note":"Current VeloraHR route and recovery did not establish reliable official inventory. This is one effective HEALTHY unresolved source, below the 4-source health threshold"}
+  ],
+  "ledger_read": {"status":"OK","sha_at_start":"ab4a069198dde2971dbeb28394e725e9697978d0"},
+  "ledger_write": {"status":"DEGRADED","note":"No alert-critical delta. Imperial Brands SE00683 remains pending and verified live; state persistence is DEGRADED, not CRITICAL"},
   "qualifying_catchup_roles": 0,
-  "alerts_sent": 0,
+  "alerts_sent": 1,
   "health_incident": false,
   "recent_runs": [
     {"started_at":"2026-09-06T19:50:25+02:00","completed_at":"2026-09-06T20:01:00+02:00","run_status":"COMPLETE","history_status":"WARMING_UP","effective_healthy_unavailable":1,"qualifying_catchup_roles":0,"alerts_sent":0},
-    {"started_at":"2026-09-07T01:48:58+02:00","completed_at":null,"run_status":"RUNNING","history_status":"WARMING_UP","effective_healthy_unavailable":null,"qualifying_catchup_roles":null,"alerts_sent":null}
+    {"started_at":"2026-09-07T01:48:58+02:00","completed_at":"2026-09-07T01:56:00+02:00","run_status":"INCOMPLETE","history_status":"WARMING_UP","effective_healthy_unavailable":1,"qualifying_catchup_roles":0,"alerts_sent":1}
   ],
-  "notes": "Run started with current effective route patch SHA. Historical failures will be reclassified against current effective routes before health thresholds are evaluated."
+  "notes": "Watchdog warning is driven by two execution-state defects, not by source-health threshold. Current route patches downgrade the older A six-source outage block to PARTIAL baselines. Haier recovered. Calidad Pascual remains the only effective HEALTHY source unresolved. No qualifying <=48h catch-up role was found."
 }
