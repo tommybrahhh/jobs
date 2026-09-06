@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "purpose": "Authoritative employer universe, ownership and official-source routing for Madrid Job Radar A/B/C, Safety Net and Daily Audit",
+  "source_file": "Madrid_Job_Radar_Source_Map_2026-09-06_v11.csv",
+  "source_file_sha256": "87d9232c4376329d035c00e90b9d2362d9ab1bb742ea74253833fcc180b1e06b",
+  "generated_at": "2026-09-06T17:40:37+02:00",
+  "validation": {
+    "expected_employers": 198,
+    "actual_employers": 198,
+    "unique_employer_ids": 198,
+    "unique_employer_names": 198,
+    "radar_counts": {
+      "A": 66,
+      "B": 66,
+      "C": 66
+    },
+    "all_primary_monitor_urls_present": true,
+    "valid": true
+  },
+  "local_overrides_applied_2026_09_06": [
+    "Deoleo direct /jobs Teamtailor route",
+    "Calidad Pascual VeloraHR healthy/recovery handling",
+    "Campofrio/Sigma Europe PARTIAL JS/Nexo-shell handling",
+    "Kraft Heinz current jobs.kraftheinz.com/careers route",
+    "CHANEL Workday root-fragile/role-page recovery handling",
+    "Lenovo PARTIAL dynamic local coverage",
+    "L'Oreal known 406 PARTIAL handling",
+    "PepsiCo request-failure vs source-failure recovery",
+    "Sandoz Workday role-page fallback",
+    "Biogen PARTIAL dynamic Workday handling",
+    "Grunenthal Spain-filtered official inventory"
+  ],
+  "employers": []
+}
