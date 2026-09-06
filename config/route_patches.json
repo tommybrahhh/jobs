@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "purpose": "Verified route corrections that override config/routes_<radar>.json without rewriting the base source map",
+  "verified_at": "2026-09-06",
+  "precedence": "These fields override the same fields in the base route entry for the matching employer ID.",
+  "patches": {
+    "MAD-A-026": {
+      "employer": "PepsiCo, especially PepsiCo Bebidas",
+      "primary": "https://www.pepsicojobs.com/europe/jobs/locations?lang=es-ES",
+      "secondary": [
+        "https://www.pepsicojobs.com/europe/",
+        "Exact-site live official pepsicojobs.com role pages for Madrid/Spain"
+      ],
+      "health": "PARTIAL",
+      "route_class": "OFFICIAL_INVENTORY_FETCH_FRAGILE",
+      "check_mode": "EUROPE_LOCATION_INVENTORY_ONCE + EXACT_SITE_OFFICIAL_ROLE_DISCOVERY + LIVE_ROLE_VERIFY",
+      "reason": "The official Europe/location inventory is current and exposes Madrid/Spain, but direct runtime requests can fail while indexed official inventory and live role pages remain discoverable. A direct request error is therefore baseline fetch fragility, not proof the PepsiCo source is down."
+    },
+    "MAD-A-037": {
+      "employer": "Heineken España",
+      "primary": "https://careers.theheinekencompany.com/Job-Listing",
+      "secondary": [
+        "https://careers.theheinekencompany.com/Spain/?locale=es_ES",
+        "Exact-site indexed official HEINEKEN role discovery"
+      ],
+      "health": "PARTIAL",
+      "route_class": "OFFICIAL_CAREERS_FETCH_PROTECTED",
+      "check_mode": "JOB_LISTING_ONCE + SPAIN_ROUTE_ONCE_IF_NEEDED + EXACT_SITE_OFFICIAL_ROLE_DISCOVERY",
+      "reason": "Both the global Job Listing and Spain careers routes can return 403 to direct runtime fetches even though they are official careers destinations. Treat this as known fetch protection; preserve prior snapshot and use exact-site official discovery rather than counting a single 403 as a HEALTHY-source outage."
+    },
+    "MAD-A-061": {
+      "employer": "Boston Scientific",
+      "primary": "https://bostonscientific.eightfold.ai/careers",
+      "secondary": [
+        "Exact-site live official https://bostonscientific.eightfold.ai/careers/job/... pages"
+      ],
+      "health": "HEALTHY",
+      "route_class": "DIRECT_EIGHTFOLD_PUBLIC_CAREERS",
+      "check_mode": "CAREERS_INVENTORY_FIRST + SPAIN_MADRID_FILTER + OFFICIAL_ROLE_PAGE_VERIFY",
+      "reason": "The bare Eightfold root redirects to Microsoft authentication and is not the public vacancy inventory. /careers is the current public Boston Scientific careers site and live official role pages expose Madrid and requisition IDs."
+    },
+    "MAD-A-062": {
+      "employer": "Becton Dickinson (BD)",
+      "primary": "https://bdx.wd1.myworkdayjobs.com/es/EXTERNAL_CAREER_SITE_SPAIN",
+      "secondary": [
+        "Exact-site live official https://bdx.wd1.myworkdayjobs.com/*/EXTERNAL_CAREER_SITE_SPAIN/job/... pages"
+      ],
+      "health": "HEALTHY",
+      "route_class": "SPAIN_SPECIFIC_WORKDAY",
+      "check_mode": "SPAIN_WORKDAY_FIRST + MADRID_SAN_AGUSTIN_FILTER + OFFICIAL_ROLE_PAGE_VERIFY",
+      "reason": "The generic bdx.wd1.myworkdayjobs.com root is too broad/fragile. The Spain-specific Workday site is the correct public scope and live role pages expose location, posted age and R-* requisition IDs."
+    }
+  }
+}
