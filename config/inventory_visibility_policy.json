@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "purpose": "Authoritative semantics for what inventory visibility was actually obtained for each employer check",
+  "cutover_at": "2026-09-06T18:15:00+02:00",
+  "states": {
+    "CHECKED_ZERO": {
+      "meaning": "Current official inventory was successfully verified and contained zero relevant/live jobs for the monitored Madrid inventory scope.",
+      "requires": [
+        "coverage_status is HEALTHY_CHECKED or RECOVERED_VIA_OFFICIAL_FALLBACK",
+        "official inventory scope was readable enough to establish a real zero",
+        "no unresolved subsystem or configured partial-source gap remains"
+      ],
+      "forbidden_when": [
+        "source/configured health is PARTIAL/WEAK/BLOCKED and the limitation prevents complete inventory verification",
+        "primary and fallback both failed",
+        "only search-engine/LinkedIn discovery was available",
+        "JS shell, placeholder, 404/406, stale index or dynamic empty state prevents proving zero"
+      ]
+    },
+    "CHECKED_WITH_INVENTORY": {
+      "meaning": "Current official inventory was successfully verified and one or more live jobs were visible in the monitored Madrid inventory scope, regardless of whether any qualify for alerting.",
+      "requires": [
+        "coverage_status is HEALTHY_CHECKED or RECOVERED_VIA_OFFICIAL_FALLBACK",
+        "at least one live official inventory item or live official role was verified"
+      ]
+    },
+    "PARTIAL_COVERAGE": {
+      "meaning": "Some current official coverage was obtained but completeness could not be established for the full configured employer scope.",
+      "typical_cases": [
+        "configured PARTIAL/WEAK/BLOCKED source behaved within its documented limitation",
+        "one subsystem succeeded while another official subsystem remained unavailable",
+        "root/search failed but some official role pages were recoverable without proving full inventory",
+        "official dynamic or local-vs-global coverage remains structurally incomplete"
+      ],
+      "requires": [
+        "coverage_status is PARTIAL_OR_WEAK_CHECKED or FAILED_RECORDED with some verified official visibility",
+        "note identifies the unresolved completeness limitation"
+      ]
+    },
+    "UNAVAILABLE": {
+      "meaning": "No reliable current official inventory visibility could be established after the configured primary and recovery path for this run.",
+      "requires": [
+        "coverage_status is FAILED_RECORDED",
+        "primary_result is FAILED or NOT_APPLICABLE where policy permits",
+        "fallback_result is FAILED or NOT_AVAILABLE",
+        "prior snapshot is preserved and must not be overwritten with zero"
+      ]
+    }
+  },
+  "required_employer_fields": [
+    "inventory_visibility",
+    "inventory_item_count_observed",
+    "inventory_scope_note"
+  ],
+  "field_rules": {
+    "inventory_visibility": "Must be exactly one of CHECKED_ZERO, CHECKED_WITH_INVENTORY, PARTIAL_COVERAGE, UNAVAILABLE.",
+    "inventory_item_count_observed": "Integer >=0 only when a reliable official count/set was directly observed. Use null when count cannot be established. CHECKED_ZERO requires 0. CHECKED_WITH_INVENTORY requires >=1. PARTIAL_COVERAGE may be null or a lower-bound observed count. UNAVAILABLE must be null.",
+    "inventory_scope_note": "Short statement of what inventory scope was actually visible, especially for PARTIAL_COVERAGE/UNAVAILABLE. It is diagnostic metadata, not routing authority."
+  },
+  "consistency_rules": [
+    "CHECKED_ZERO may never be inferred from request failure, source failure, empty JS shell, placeholder, stale index, 404, 406, LinkedIn-only discovery or missing crawlable inventory.",
+    "CHECKED_WITH_INVENTORY says inventory existed, not that any role qualified for the user's target filter.",
+    "PARTIAL_COVERAGE must not be converted to CHECKED_ZERO just because zero qualifying target roles were found among the visible subset.",
+    "UNAVAILABLE must preserve the previous inventory snapshot and never close/disappear requisitions solely because this run could not see them.",
+    "If an employer has multiple official subsystems, CHECKED_ZERO is allowed only when all configured inventory-bearing subsystems needed for completeness were successfully checked or the routing policy explicitly defines the checked subset as authoritative.",
+    "A HEALTHY source whose primary fails but official fallback fully verifies inventory may be CHECKED_ZERO or CHECKED_WITH_INVENTORY with coverage_status RECOVERED_VIA_OFFICIAL_FALLBACK.",
+    "A successful official role-page recovery that proves only individual roles but not the full inventory is PARTIAL_COVERAGE, not CHECKED_WITH_INVENTORY for the whole employer unless routing policy says role-page discovery is inventory-complete."
+  ],
+  "safety_net_priority": [
+    "UNAVAILABLE",
+    "PARTIAL_COVERAGE with new deterioration or missing configured subsystem",
+    "invalid/missing visibility state",
+    "CHECKED_ZERO/CHECKED_WITH_INVENTORY require no coverage retry unless other heartbeat validation fails"
+  ]
+}
