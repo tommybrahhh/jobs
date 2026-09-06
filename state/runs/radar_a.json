@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "task": "Madrid Fresh Radar A",
+  "expected_employers": 66,
+  "status": "NOT_YET_RUN_NEW_ARCHITECTURE",
+  "last_run_started_at": null,
+  "last_run_completed_at": null,
+  "employers_checked": 0,
+  "employers_accounted_for": 0,
+  "healthy_success": 0,
+  "partial_or_weak_checked": 0,
+  "unexpected_failures": [],
+  "recovered_via_fallback": [],
+  "ledger_read": null,
+  "ledger_write": null,
+  "candidate_roles": 0,
+  "qualifying_fresh_roles": 0,
+  "alerts_sent": 0,
+  "notes": "Initialized before first run under heartbeat/watchdog architecture"
+}
