@@ -1,12 +1,12 @@
 {
-  "schema_version": 2,
+  "schema_version": 3,
   "task": "Madrid Jobs Safety Net",
   "expected_employers": 198,
-  "run_status": "COMPLETE",
+  "run_status": "RUNNING",
   "history_status": "WARMING_UP",
-  "last_run_started_at": "2026-09-06T19:50:25+02:00",
-  "last_run_completed_at": "2026-09-06T20:01:00+02:00",
-  "config_status": "VALIDATED",
+  "last_run_started_at": "2026-09-07T01:48:58+02:00",
+  "last_run_completed_at": null,
+  "config_status": "VALIDATED_PENDING_RUNTIME_RECHECK",
   "config_validation": {
     "unique_employers": 198,
     "radar_a": 66,
@@ -22,55 +22,28 @@
     "config/routes_a.json": "d2134622a530c82019a2fe29e160500e0bdbb770",
     "config/routes_b.json": "1123965935c0991a4ce0d5f5f37ee343af4260f9",
     "config/routes_c.json": "298772c9528375a586b5ed04a067620bc3debd80",
-    "config/route_patches.json": "3b4c62337aa698d009da797bdc2d1025ad4ce10d",
+    "config/route_patches.json": "6bf63871255a1e77d245f344c4ba638e4f20a049",
     "config/routing_policy.json": "ffb3b1e8a8755a7a1f8d3b6d8f440c86628f996b",
     "config/inventory_visibility_policy.json": "63c385a03564024ef6f4860564f5594d23a6ee0f"
   },
-  "route_patches_sha": "3b4c62337aa698d009da797bdc2d1025ad4ce10d",
-  "radar_statuses": {
-    "A": {"execution_status":"COMPLETE","source_coverage_status":"DEGRADED","state_persistence_status":"DEGRADED","history_status":"WARMING_UP","reconstruction":"66/66 accounted, config validated, ledger read reliable and end heartbeat present. Stored INCOMPLETE label was based on obsolete source-failure/history semantics."},
-    "B": {"execution_status":"COMPLETE","source_coverage_status":"DEGRADED","state_persistence_status":"OK","history_status":"WARMING_UP","reconstruction":"66-ID post-cutover coverage map validated; ledger read and end heartbeat succeeded. Lactalis persistence delta repaired by Safety Net."},
-    "C": {"execution_status":"COMPLETE","source_coverage_status":"DEGRADED","state_persistence_status":"OK","history_status":"WARMING_UP","reconstruction":"Latest recorded 66/66 heartbeat plus the 18:45 transition evidence were reinterpreted with current route patches. The reported 10 HEALTHY outages are not 10 effective HEALTHY outages after patch cutover."}
-  },
+  "route_patches_sha": "6bf63871255a1e77d245f344c4ba638e4f20a049",
+  "radar_statuses": {},
   "missing_or_incomplete_radar_runs": [],
-  "degraded_complete_radar_runs": ["A","B","C"],
-  "recovery_coverage_by_employer": {
-    "MAD-A-026": {"employer":"PepsiCo","source_radar":"A","prior_visibility":"UNAVAILABLE/FAILED_RECORDED","recovery_result":"RECLASSIFIED_EFFECTIVE_PARTIAL","recovered_visibility":"PARTIAL_COVERAGE","effective_route":"PepsiCo Europe location inventory + official role-page recovery","checked_at":"2026-09-06T19:50:25+02:00"},
-    "MAD-A-037": {"employer":"Heineken España","source_radar":"A","prior_visibility":"UNAVAILABLE/FAILED_RECORDED","recovery_result":"RECLASSIFIED_EFFECTIVE_PARTIAL","recovered_visibility":"PARTIAL_COVERAGE","effective_route":"HEINEKEN Job Listing + Spain route + official role discovery","checked_at":"2026-09-06T19:50:25+02:00"},
-    "MAD-A-061": {"employer":"Boston Scientific","source_radar":"A","prior_visibility":"UNAVAILABLE/FAILED_RECORDED","recovery_result":"RECOVERED_CURRENT_PRIMARY","recovered_visibility":"PARTIAL_COVERAGE","effective_route":"https://bostonscientific.eightfold.ai/careers","checked_at":"2026-09-06T19:50:25+02:00"},
-    "MAD-A-062": {"employer":"Becton Dickinson (BD)","source_radar":"A","prior_visibility":"UNAVAILABLE/FAILED_RECORDED","recovery_result":"RECOVERED_OFFICIAL_ROLE_PAGES","recovered_visibility":"PARTIAL_COVERAGE","effective_route":"Spain-specific BD Workday","checked_at":"2026-09-06T19:50:25+02:00"},
-    "MAD-B-013": {"employer":"Pernod Ricard España","source_radar":"B","prior_visibility":"UNAVAILABLE","recovery_result":"RECLASSIFIED_EFFECTIVE_PARTIAL","recovered_visibility":"PARTIAL_COVERAGE","effective_route":"Workday root + exact-site Madrid role recovery","checked_at":"2026-09-06T19:50:25+02:00"},
-    "MAD-B-016": {"employer":"Calidad Pascual","source_radar":"B","prior_visibility":"UNAVAILABLE","recovery_result":"STILL_UNAVAILABLE","recovered_visibility":"UNAVAILABLE","effective_route":"VeloraHR + exact-site official vacancy recovery","checked_at":"2026-09-06T19:50:25+02:00"},
-    "MAD-B-019": {"employer":"Diageo","source_radar":"B","prior_visibility":"UNAVAILABLE","recovery_result":"RECLASSIFIED_EFFECTIVE_PARTIAL","recovered_visibility":"PARTIAL_COVERAGE","effective_route":"Workday + exact-site Madrid role recovery","checked_at":"2026-09-06T19:50:25+02:00"},
-    "MAD-B-023": {"employer":"LEGO Group","source_radar":"B","prior_visibility":"UNAVAILABLE","recovery_result":"RECLASSIFIED_EFFECTIVE_PARTIAL","recovered_visibility":"PARTIAL_COVERAGE","effective_route":"LEGO Workday + exact-site Madrid role recovery","checked_at":"2026-09-06T19:50:25+02:00"},
-    "MAD-B-026": {"employer":"Samsung Electronics Iberia","source_radar":"B","prior_visibility":"UNAVAILABLE","recovery_result":"RECLASSIFIED_EFFECTIVE_PARTIAL","recovered_visibility":"PARTIAL_COVERAGE","effective_route":"Samsung Workday + Samsung Spain careers + exact-site role recovery","checked_at":"2026-09-06T19:50:25+02:00"},
-    "MAD-C-026": {"employer":"Zoetis","source_radar":"C","prior_visibility":"UNAVAILABLE","recovery_result":"RECOVERED_EFFECTIVE_PARTIAL","recovered_visibility":"PARTIAL_COVERAGE","effective_route":"Zoetis International Careers + exact-site official role discovery","checked_at":"2026-09-06T19:50:25+02:00"},
-    "MAD-C-037": {"employer":"Galderma","source_radar":"C","prior_visibility":"UNAVAILABLE","recovery_result":"RECLASSIFIED_EFFECTIVE_PARTIAL","recovered_visibility":"PARTIAL_COVERAGE","effective_route":"Galderma Workday + corporate careers confirmation + role discovery","checked_at":"2026-09-06T19:50:25+02:00"},
-    "MAD-C-039": {"employer":"Viatris","source_radar":"C","prior_visibility":"UNAVAILABLE","recovery_result":"RECLASSIFIED_EFFECTIVE_PARTIAL","recovered_visibility":"PARTIAL_COVERAGE","effective_route":"Viatris Workday /External + corporate careers + role discovery","checked_at":"2026-09-06T19:50:25+02:00"},
-    "MAD-C-040": {"employer":"CooperVision","source_radar":"C","prior_visibility":"UNAVAILABLE","recovery_result":"RECLASSIFIED_EFFECTIVE_PARTIAL","recovered_visibility":"PARTIAL_COVERAGE","effective_route":"Oracle CandidateExperience CX_1 + corporate route confirmation","checked_at":"2026-09-06T19:50:25+02:00"},
-    "MAD-C-045": {"employer":"Visa","source_radar":"C","prior_visibility":"UNAVAILABLE","recovery_result":"RECLASSIFIED_EFFECTIVE_PARTIAL","recovered_visibility":"PARTIAL_COVERAGE","effective_route":"Visa Workday + corporate careers + Madrid role discovery","checked_at":"2026-09-06T19:50:25+02:00"},
-    "MAD-C-047": {"employer":"AXA Spain","source_radar":"C","prior_visibility":"UNAVAILABLE","recovery_result":"RECOVERED_CURRENT_PRIMARY","recovered_visibility":"CHECKED_WITH_INVENTORY","effective_route":"current careers.axa.com search + Madrid role pages","checked_at":"2026-09-06T19:50:25+02:00"},
-    "MAD-C-050": {"employer":"Amadeus","source_radar":"C","prior_visibility":"UNAVAILABLE","recovery_result":"RECOVERED_EFFECTIVE_PARTIAL","recovered_visibility":"PARTIAL_COVERAGE","effective_route":"Amadeus /jobs Workday + exact-site Madrid R-ID role recovery","checked_at":"2026-09-06T19:50:25+02:00"},
-    "MAD-C-056": {"employer":"Mercedes-Benz España","source_radar":"C","prior_visibility":"UNAVAILABLE","recovery_result":"RECOVERED_CURRENT_PRIMARY","recovered_visibility":"CHECKED_WITH_INVENTORY","effective_route":"current Mercedes-Benz global job search + Spain filter","checked_at":"2026-09-06T19:50:25+02:00"},
-    "MAD-C-063": {"employer":"Repsol","source_radar":"C","prior_visibility":"UNAVAILABLE","recovery_result":"RECOVERED_EFFECTIVE_PARTIAL","recovered_visibility":"PARTIAL_COVERAGE","effective_route":"Repsol Workday + corporate vacancies + exact-site role recovery","checked_at":"2026-09-06T19:50:25+02:00"},
-    "MAD-C-066": {"employer":"Renault Group España","source_radar":"C","prior_visibility":"UNAVAILABLE","recovery_result":"RECOVERED_EFFECTIVE_PARTIAL","recovered_visibility":"PARTIAL_COVERAGE","effective_route":"Renault Workday + Renault España local careers cross-check","checked_at":"2026-09-06T19:50:25+02:00"}
-  },
-  "inventory_visibility_recovery_counts": {"CHECKED_WITH_INVENTORY":2,"PARTIAL_COVERAGE":16,"UNAVAILABLE":1},
-  "ledger_repair_by_delta": [
-    {"source":"Radar B","employer":"Grupo Lactalis Iberia","delta":"stable canonical URL for BRAND MANAGER QUESOS Temporal","status":"REPAIRED","ledger_key":"Grupo Lactalis Iberia|https://empleo.lactalis.es/jobs/brand-manager-quesos-temporal","official_date":"2026-07-09","alerted":false}
-  ],
+  "degraded_complete_radar_runs": [],
+  "recovery_coverage_by_employer": {},
+  "inventory_visibility_recovery_counts": {"CHECKED_ZERO":0,"CHECKED_WITH_INVENTORY":0,"PARTIAL_COVERAGE":0,"UNAVAILABLE":0},
+  "ledger_repair_by_delta": [],
   "unresolved_ledger_deltas": [],
-  "employers_recovered": 18,
-  "unresolved_coverage": [
-    {"id":"MAD-B-016","employer":"Calidad Pascual","effective_health":"HEALTHY","status":"UNAVAILABLE","note":"Current VeloraHR direct request still failed and exact-site recovery did not establish reliable current official inventory. Prior snapshot preserved. This is one effective HEALTHY unresolved source, below the 4-source health-incident threshold."}
-  ],
-  "ledger_read": {"status":"OK","sha_at_start":"819f159df2e612b8a31feaedaccefd59232d4d74"},
-  "ledger_write": {"status":"OK","sha_after_repair":"d122d3e7487a2837d2fcb924cae665cb018ee851"},
+  "employers_recovered": 0,
+  "unresolved_coverage": [],
+  "ledger_read": {"status":"PENDING"},
+  "ledger_write": {"status":"PENDING"},
   "qualifying_catchup_roles": 0,
   "alerts_sent": 0,
   "health_incident": false,
   "recent_runs": [
-    {"started_at":"2026-09-06T19:50:25+02:00","completed_at":"2026-09-06T20:01:00+02:00","run_status":"COMPLETE","history_status":"WARMING_UP","effective_healthy_unavailable":1,"qualifying_catchup_roles":0,"alerts_sent":0}
+    {"started_at":"2026-09-06T19:50:25+02:00","completed_at":"2026-09-06T20:01:00+02:00","run_status":"COMPLETE","history_status":"WARMING_UP","effective_healthy_unavailable":1,"qualifying_catchup_roles":0,"alerts_sent":0},
+    {"started_at":"2026-09-07T01:48:58+02:00","completed_at":null,"run_status":"RUNNING","history_status":"WARMING_UP","effective_healthy_unavailable":null,"qualifying_catchup_roles":null,"alerts_sent":null}
   ],
-  "notes": "Transition reconstruction applied current route_patches before health classification. Short heartbeat history remains WARMING_UP and is not a completeness defect. No 4+ effective HEALTHY source incident. One unresolved HEALTHY source remains: Calidad Pascual."
+  "notes": "Run started with current effective route patch SHA. Historical failures will be reclassified against current effective routes before health thresholds are evaluated."
 }
