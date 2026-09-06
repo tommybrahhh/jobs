@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "purpose": "Manifest for the authoritative Madrid Job Radar source-routing configuration",
+  "employer_master": "config/employers.json",
+  "routes": {
+    "A": "config/routes_a.json",
+    "B": "config/routes_b.json",
+    "C": "config/routes_c.json"
+  },
+  "routing_policy": "config/routing_policy.json",
+  "source_file": "Madrid_Job_Radar_Source_Map_2026-09-06_v11.csv",
+  "source_file_sha256": "87d9232c4376329d035c00e90b9d2362d9ab1bb742ea74253833fcc180b1e06b",
+  "validation": {
+    "expected_employers": 198,
+    "expected_per_radar": 66,
+    "routes_a": 66,
+    "routes_b": 66,
+    "routes_c": 66,
+    "valid": true
+  },
+  "precedence": [
+    "config/routing_policy.json employer override",
+    "config/routes_<radar>.json employer route",
+    "config/routing_policy.json global/default policy"
+  ]
+}
