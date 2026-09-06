@@ -2,11 +2,20 @@
   "schema_version": 2,
   "task": "Madrid Jobs Safety Net",
   "expected_employers": 198,
-  "run_status": "RUNNING",
+  "run_status": "COMPLETE",
   "history_status": "WARMING_UP",
   "last_run_started_at": "2026-09-06T19:50:25+02:00",
-  "last_run_completed_at": null,
+  "last_run_completed_at": "2026-09-06T20:01:00+02:00",
   "config_status": "VALIDATED",
+  "config_validation": {
+    "unique_employers": 198,
+    "radar_a": 66,
+    "radar_b": 66,
+    "radar_c": 66,
+    "exact_route_ownership": true,
+    "required_policy_references_present": true,
+    "all_patch_ids_exist_in_base_config": true
+  },
   "config_shas": {
     "config/employers.json": "540e9be6619ebd3fcb85cb95dbfc416f42fe5943",
     "config/sources.json": "73f018e6eb30e615cbe6de206f7e3c20a54775b7",
@@ -18,18 +27,50 @@
     "config/inventory_visibility_policy.json": "63c385a03564024ef6f4860564f5594d23a6ee0f"
   },
   "route_patches_sha": "3b4c62337aa698d009da797bdc2d1025ad4ce10d",
-  "radar_statuses": {},
+  "radar_statuses": {
+    "A": {"execution_status":"COMPLETE","source_coverage_status":"DEGRADED","state_persistence_status":"DEGRADED","history_status":"WARMING_UP","reconstruction":"66/66 accounted, config validated, ledger read reliable and end heartbeat present. Stored INCOMPLETE label was based on obsolete source-failure/history semantics."},
+    "B": {"execution_status":"COMPLETE","source_coverage_status":"DEGRADED","state_persistence_status":"OK","history_status":"WARMING_UP","reconstruction":"66-ID post-cutover coverage map validated; ledger read and end heartbeat succeeded. Lactalis persistence delta repaired by Safety Net."},
+    "C": {"execution_status":"COMPLETE","source_coverage_status":"DEGRADED","state_persistence_status":"OK","history_status":"WARMING_UP","reconstruction":"Latest recorded 66/66 heartbeat plus the 18:45 transition evidence were reinterpreted with current route patches. The reported 10 HEALTHY outages are not 10 effective HEALTHY outages after patch cutover."}
+  },
   "missing_or_incomplete_radar_runs": [],
-  "degraded_complete_radar_runs": [],
-  "recovery_coverage_by_employer": {},
-  "inventory_visibility_recovery_counts": {},
-  "ledger_repair_by_delta": [],
+  "degraded_complete_radar_runs": ["A","B","C"],
+  "recovery_coverage_by_employer": {
+    "MAD-A-026": {"employer":"PepsiCo","source_radar":"A","prior_visibility":"UNAVAILABLE/FAILED_RECORDED","recovery_result":"RECLASSIFIED_EFFECTIVE_PARTIAL","recovered_visibility":"PARTIAL_COVERAGE","effective_route":"PepsiCo Europe location inventory + official role-page recovery","checked_at":"2026-09-06T19:50:25+02:00"},
+    "MAD-A-037": {"employer":"Heineken España","source_radar":"A","prior_visibility":"UNAVAILABLE/FAILED_RECORDED","recovery_result":"RECLASSIFIED_EFFECTIVE_PARTIAL","recovered_visibility":"PARTIAL_COVERAGE","effective_route":"HEINEKEN Job Listing + Spain route + official role discovery","checked_at":"2026-09-06T19:50:25+02:00"},
+    "MAD-A-061": {"employer":"Boston Scientific","source_radar":"A","prior_visibility":"UNAVAILABLE/FAILED_RECORDED","recovery_result":"RECOVERED_CURRENT_PRIMARY","recovered_visibility":"PARTIAL_COVERAGE","effective_route":"https://bostonscientific.eightfold.ai/careers","checked_at":"2026-09-06T19:50:25+02:00"},
+    "MAD-A-062": {"employer":"Becton Dickinson (BD)","source_radar":"A","prior_visibility":"UNAVAILABLE/FAILED_RECORDED","recovery_result":"RECOVERED_OFFICIAL_ROLE_PAGES","recovered_visibility":"PARTIAL_COVERAGE","effective_route":"Spain-specific BD Workday","checked_at":"2026-09-06T19:50:25+02:00"},
+    "MAD-B-013": {"employer":"Pernod Ricard España","source_radar":"B","prior_visibility":"UNAVAILABLE","recovery_result":"RECLASSIFIED_EFFECTIVE_PARTIAL","recovered_visibility":"PARTIAL_COVERAGE","effective_route":"Workday root + exact-site Madrid role recovery","checked_at":"2026-09-06T19:50:25+02:00"},
+    "MAD-B-016": {"employer":"Calidad Pascual","source_radar":"B","prior_visibility":"UNAVAILABLE","recovery_result":"STILL_UNAVAILABLE","recovered_visibility":"UNAVAILABLE","effective_route":"VeloraHR + exact-site official vacancy recovery","checked_at":"2026-09-06T19:50:25+02:00"},
+    "MAD-B-019": {"employer":"Diageo","source_radar":"B","prior_visibility":"UNAVAILABLE","recovery_result":"RECLASSIFIED_EFFECTIVE_PARTIAL","recovered_visibility":"PARTIAL_COVERAGE","effective_route":"Workday + exact-site Madrid role recovery","checked_at":"2026-09-06T19:50:25+02:00"},
+    "MAD-B-023": {"employer":"LEGO Group","source_radar":"B","prior_visibility":"UNAVAILABLE","recovery_result":"RECLASSIFIED_EFFECTIVE_PARTIAL","recovered_visibility":"PARTIAL_COVERAGE","effective_route":"LEGO Workday + exact-site Madrid role recovery","checked_at":"2026-09-06T19:50:25+02:00"},
+    "MAD-B-026": {"employer":"Samsung Electronics Iberia","source_radar":"B","prior_visibility":"UNAVAILABLE","recovery_result":"RECLASSIFIED_EFFECTIVE_PARTIAL","recovered_visibility":"PARTIAL_COVERAGE","effective_route":"Samsung Workday + Samsung Spain careers + exact-site role recovery","checked_at":"2026-09-06T19:50:25+02:00"},
+    "MAD-C-026": {"employer":"Zoetis","source_radar":"C","prior_visibility":"UNAVAILABLE","recovery_result":"RECOVERED_EFFECTIVE_PARTIAL","recovered_visibility":"PARTIAL_COVERAGE","effective_route":"Zoetis International Careers + exact-site official role discovery","checked_at":"2026-09-06T19:50:25+02:00"},
+    "MAD-C-037": {"employer":"Galderma","source_radar":"C","prior_visibility":"UNAVAILABLE","recovery_result":"RECLASSIFIED_EFFECTIVE_PARTIAL","recovered_visibility":"PARTIAL_COVERAGE","effective_route":"Galderma Workday + corporate careers confirmation + role discovery","checked_at":"2026-09-06T19:50:25+02:00"},
+    "MAD-C-039": {"employer":"Viatris","source_radar":"C","prior_visibility":"UNAVAILABLE","recovery_result":"RECLASSIFIED_EFFECTIVE_PARTIAL","recovered_visibility":"PARTIAL_COVERAGE","effective_route":"Viatris Workday /External + corporate careers + role discovery","checked_at":"2026-09-06T19:50:25+02:00"},
+    "MAD-C-040": {"employer":"CooperVision","source_radar":"C","prior_visibility":"UNAVAILABLE","recovery_result":"RECLASSIFIED_EFFECTIVE_PARTIAL","recovered_visibility":"PARTIAL_COVERAGE","effective_route":"Oracle CandidateExperience CX_1 + corporate route confirmation","checked_at":"2026-09-06T19:50:25+02:00"},
+    "MAD-C-045": {"employer":"Visa","source_radar":"C","prior_visibility":"UNAVAILABLE","recovery_result":"RECLASSIFIED_EFFECTIVE_PARTIAL","recovered_visibility":"PARTIAL_COVERAGE","effective_route":"Visa Workday + corporate careers + Madrid role discovery","checked_at":"2026-09-06T19:50:25+02:00"},
+    "MAD-C-047": {"employer":"AXA Spain","source_radar":"C","prior_visibility":"UNAVAILABLE","recovery_result":"RECOVERED_CURRENT_PRIMARY","recovered_visibility":"CHECKED_WITH_INVENTORY","effective_route":"current careers.axa.com search + Madrid role pages","checked_at":"2026-09-06T19:50:25+02:00"},
+    "MAD-C-050": {"employer":"Amadeus","source_radar":"C","prior_visibility":"UNAVAILABLE","recovery_result":"RECOVERED_EFFECTIVE_PARTIAL","recovered_visibility":"PARTIAL_COVERAGE","effective_route":"Amadeus /jobs Workday + exact-site Madrid R-ID role recovery","checked_at":"2026-09-06T19:50:25+02:00"},
+    "MAD-C-056": {"employer":"Mercedes-Benz España","source_radar":"C","prior_visibility":"UNAVAILABLE","recovery_result":"RECOVERED_CURRENT_PRIMARY","recovered_visibility":"CHECKED_WITH_INVENTORY","effective_route":"current Mercedes-Benz global job search + Spain filter","checked_at":"2026-09-06T19:50:25+02:00"},
+    "MAD-C-063": {"employer":"Repsol","source_radar":"C","prior_visibility":"UNAVAILABLE","recovery_result":"RECOVERED_EFFECTIVE_PARTIAL","recovered_visibility":"PARTIAL_COVERAGE","effective_route":"Repsol Workday + corporate vacancies + exact-site role recovery","checked_at":"2026-09-06T19:50:25+02:00"},
+    "MAD-C-066": {"employer":"Renault Group España","source_radar":"C","prior_visibility":"UNAVAILABLE","recovery_result":"RECOVERED_EFFECTIVE_PARTIAL","recovered_visibility":"PARTIAL_COVERAGE","effective_route":"Renault Workday + Renault España local careers cross-check","checked_at":"2026-09-06T19:50:25+02:00"}
+  },
+  "inventory_visibility_recovery_counts": {"CHECKED_WITH_INVENTORY":2,"PARTIAL_COVERAGE":16,"UNAVAILABLE":1},
+  "ledger_repair_by_delta": [
+    {"source":"Radar B","employer":"Grupo Lactalis Iberia","delta":"stable canonical URL for BRAND MANAGER QUESOS Temporal","status":"REPAIRED","ledger_key":"Grupo Lactalis Iberia|https://empleo.lactalis.es/jobs/brand-manager-quesos-temporal","official_date":"2026-07-09","alerted":false}
+  ],
   "unresolved_ledger_deltas": [],
-  "employers_recovered": 0,
-  "unresolved_coverage": [],
-  "ledger_read": {"status":"OK","sha":"819f159df2e612b8a31feaedaccefd59232d4d74"},
-  "ledger_write": {"status":"PENDING"},
+  "employers_recovered": 18,
+  "unresolved_coverage": [
+    {"id":"MAD-B-016","employer":"Calidad Pascual","effective_health":"HEALTHY","status":"UNAVAILABLE","note":"Current VeloraHR direct request still failed and exact-site recovery did not establish reliable current official inventory. Prior snapshot preserved. This is one effective HEALTHY unresolved source, below the 4-source health-incident threshold."}
+  ],
+  "ledger_read": {"status":"OK","sha_at_start":"819f159df2e612b8a31feaedaccefd59232d4d74"},
+  "ledger_write": {"status":"OK","sha_after_repair":"d122d3e7487a2837d2fcb924cae665cb018ee851"},
   "qualifying_catchup_roles": 0,
   "alerts_sent": 0,
-  "recent_runs": []
+  "health_incident": false,
+  "recent_runs": [
+    {"started_at":"2026-09-06T19:50:25+02:00","completed_at":"2026-09-06T20:01:00+02:00","run_status":"COMPLETE","history_status":"WARMING_UP","effective_healthy_unavailable":1,"qualifying_catchup_roles":0,"alerts_sent":0}
+  ],
+  "notes": "Transition reconstruction applied current route_patches before health classification. Short heartbeat history remains WARMING_UP and is not a completeness defect. No 4+ effective HEALTHY source incident. One unresolved HEALTHY source remains: Calidad Pascual."
 }
