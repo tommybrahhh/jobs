@@ -2,19 +2,39 @@
   "schema_version": 1,
   "task": "Madrid Fresh Radar A",
   "expected_employers": 66,
-  "status": "NOT_YET_RUN_NEW_ARCHITECTURE",
-  "last_run_started_at": null,
+  "status": "RUNNING",
+  "config_status": "VALIDATED",
+  "employers_config_sha": "540e9be6619ebd3fcb85cb95dbfc416f42fe5943",
+  "source_manifest_sha": "cfff7b3312428fe8d98c6d36fc100482b4a009c3",
+  "routes_sha": "d2134622a530c82019a2fe29e160500e0bdbb770",
+  "routing_policy_sha": "ffb3b1e8a8755a7a1f8d3b6d8f440c86628f996b",
+  "last_run_started_at": "2026-09-06T18:06:52+02:00",
   "last_run_completed_at": null,
   "employers_checked": 0,
   "employers_accounted_for": 0,
   "healthy_success": 0,
   "partial_or_weak_checked": 0,
+  "failed_recorded": 0,
   "unexpected_failures": [],
   "recovered_via_fallback": [],
-  "ledger_read": null,
+  "ledger_read": {"status":"OK","sha":"819f159df2e612b8a31feaedaccefd59232d4d74"},
   "ledger_write": null,
   "candidate_roles": 0,
   "qualifying_fresh_roles": 0,
   "alerts_sent": 0,
-  "notes": "Initialized before first run under heartbeat/watchdog architecture"
+  "recent_runs": [
+    {
+      "started_at": "2026-09-06T18:06:52+02:00",
+      "completed_at": null,
+      "status": "RUNNING",
+      "employers_config_sha": "540e9be6619ebd3fcb85cb95dbfc416f42fe5943",
+      "source_manifest_sha": "cfff7b3312428fe8d98c6d36fc100482b4a009c3",
+      "routes_sha": "d2134622a530c82019a2fe29e160500e0bdbb770",
+      "routing_policy_sha": "ffb3b1e8a8755a7a1f8d3b6d8f440c86628f996b",
+      "expected_employers": 66,
+      "employers_accounted_for": 0,
+      "status_note": "Start heartbeat"
+    }
+  ],
+  "notes": "Configuration validated against authoritative GitHub files before scan"
 }
