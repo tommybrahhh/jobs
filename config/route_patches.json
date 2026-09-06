@@ -1,89 +1,27 @@
 {
-  "schema_version": 2,
+  "schema_version": 3,
   "purpose": "Verified route corrections that override config/routes_<radar>.json without rewriting the base source map",
   "verified_at": "2026-09-06",
   "precedence": "These fields override the same fields in the base route entry for the matching employer ID.",
   "patches": {
-    "MAD-A-026": {
-      "employer": "PepsiCo, especially PepsiCo Bebidas",
-      "primary": "https://www.pepsicojobs.com/europe/jobs/locations?lang=es-ES",
-      "secondary": ["https://www.pepsicojobs.com/europe/", "Exact-site live official pepsicojobs.com role pages for Madrid/Spain"],
-      "health": "PARTIAL",
-      "route_class": "OFFICIAL_INVENTORY_FETCH_FRAGILE",
-      "check_mode": "EUROPE_LOCATION_INVENTORY_ONCE + EXACT_SITE_OFFICIAL_ROLE_DISCOVERY + LIVE_ROLE_VERIFY",
-      "reason": "Official inventory remains discoverable while direct runtime requests can fail. A request error is baseline fetch fragility, not proof the source is down."
-    },
-    "MAD-A-037": {
-      "employer": "Heineken España",
-      "primary": "https://careers.theheinekencompany.com/Job-Listing",
-      "secondary": ["https://careers.theheinekencompany.com/Spain/?locale=es_ES", "Exact-site indexed official HEINEKEN role discovery"],
-      "health": "PARTIAL",
-      "route_class": "OFFICIAL_CAREERS_FETCH_PROTECTED",
-      "check_mode": "JOB_LISTING_ONCE + SPAIN_ROUTE_ONCE_IF_NEEDED + EXACT_SITE_OFFICIAL_ROLE_DISCOVERY",
-      "reason": "Official careers routes can return 403 to direct runtime fetches. Treat this as known fetch protection and preserve prior snapshot."
-    },
-    "MAD-A-061": {
-      "employer": "Boston Scientific",
-      "primary": "https://bostonscientific.eightfold.ai/careers",
-      "secondary": ["Exact-site live official https://bostonscientific.eightfold.ai/careers/job/... pages"],
-      "health": "HEALTHY",
-      "route_class": "DIRECT_EIGHTFOLD_PUBLIC_CAREERS",
-      "check_mode": "CAREERS_INVENTORY_FIRST + SPAIN_MADRID_FILTER + OFFICIAL_ROLE_PAGE_VERIFY",
-      "reason": "The bare Eightfold root redirects to Microsoft authentication; /careers is the public vacancy inventory."
-    },
-    "MAD-A-062": {
-      "employer": "Becton Dickinson (BD)",
-      "primary": "https://bdx.wd1.myworkdayjobs.com/es/EXTERNAL_CAREER_SITE_SPAIN",
-      "secondary": ["Exact-site live official https://bdx.wd1.myworkdayjobs.com/*/EXTERNAL_CAREER_SITE_SPAIN/job/... pages"],
-      "health": "HEALTHY",
-      "route_class": "SPAIN_SPECIFIC_WORKDAY",
-      "check_mode": "SPAIN_WORKDAY_FIRST + MADRID_SAN_AGUSTIN_FILTER + OFFICIAL_ROLE_PAGE_VERIFY",
-      "reason": "The generic Workday root is too broad/fragile; the Spain-specific site is the correct public scope."
-    },
-    "MAD-B-013": {
-      "employer": "Pernod Ricard España",
-      "primary": "https://pernodricard.wd3.myworkdayjobs.com/en-US/pernod-ricard",
-      "secondary": ["Exact-site live official https://pernodricard.wd3.myworkdayjobs.com/*/pernod-ricard/job/... pages for Madrid/Spain"],
-      "health": "PARTIAL",
-      "route_class": "WORKDAY_ROOT_DYNAMIC_ROLE_PAGE_RECOVERABLE",
-      "check_mode": "WORKDAY_ROOT_ONE_PASS + EXACT_SITE_MADRID_ROLE_DISCOVERY + OFFICIAL_ROLE_PAGE_VERIFY",
-      "reason": "The Workday root can render without readable inventory while live official Madrid role pages remain discoverable with location, posted age and JR requisition IDs. Root unreadability alone is a known baseline limitation."
-    },
-    "MAD-B-016": {
-      "employer": "Calidad Pascual",
-      "primary": "https://pascual.career.velorahr.com/calidad-pascual-248",
-      "secondary": ["Exact-site live official pascual.career.velorahr.com vacancy discovery", "https://www.calidadpascual.com/en/privacy-policy/"],
-      "health": "HEALTHY",
-      "route_class": "DIRECT_VELORAHR_OFFICIAL_WITH_ROUTE_OWNERSHIP_FALLBACK",
-      "check_mode": "VELORAHR_LISTING_FIRST + EXACT_SITE_OFFICIAL_VACANCY_RECOVERY + CORPORATE_ROUTE_OWNERSHIP_VERIFY",
-      "reason": "Pascual corporate documentation still identifies this VeloraHR URL as its official recruiting site. If both current inventory and exact-site vacancy recovery fail, retain HEALTHY-source unavailable status for that run; the corporate page confirms ownership but does not prove zero inventory."
-    },
-    "MAD-B-019": {
-      "employer": "Diageo",
-      "primary": "https://diageo.wd3.myworkdayjobs.com/en-US/Diageo_Careers",
-      "secondary": ["Exact-site live official https://diageo.wd3.myworkdayjobs.com/*/Diageo_Careers/job/... Madrid role pages"],
-      "health": "PARTIAL",
-      "route_class": "WORKDAY_ROOT_DYNAMIC_ROLE_PAGE_RECOVERABLE",
-      "check_mode": "WORKDAY_ROOT_ONE_PASS + EXACT_SITE_MADRID_ROLE_DISCOVERY + OFFICIAL_ROLE_PAGE_VERIFY",
-      "reason": "The Workday root can return an empty dynamic render while official role pages remain readable, including Madrid roles with JR requisition IDs. Root unreadability is not a full source outage."
-    },
-    "MAD-B-023": {
-      "employer": "LEGO Group",
-      "primary": "https://lego.wd103.myworkdayjobs.com/LEGO_External",
-      "secondary": ["Exact-site live official https://lego.wd103.myworkdayjobs.com/LEGO_External/job/Madrid/... pages"],
-      "health": "PARTIAL",
-      "route_class": "WORKDAY_ROOT_DYNAMIC_ROLE_PAGE_RECOVERABLE",
-      "check_mode": "WORKDAY_ROOT_ONE_PASS + EXACT_SITE_MADRID_ROLE_DISCOVERY + OFFICIAL_ROLE_PAGE_VERIFY",
-      "reason": "The Workday root may expose no crawlable inventory while live official Madrid role pages remain available with posted age and stable requisition IDs."
-    },
-    "MAD-B-026": {
-      "employer": "Samsung Electronics Iberia",
-      "primary": "https://sec.wd3.myworkdayjobs.com/Samsung_Careers",
-      "secondary": ["https://www.samsung.com/es/about-us/careers/", "Exact-site live official https://sec.wd3.myworkdayjobs.com/*/Samsung_Careers/job/... pages for Madrid/Spain"],
-      "health": "PARTIAL",
-      "route_class": "WORKDAY_ROOT_DYNAMIC_ROLE_PAGE_RECOVERABLE",
-      "check_mode": "WORKDAY_ROOT_ONE_PASS + SAMSUNG_ES_CAREERS_ROUTE + EXACT_SITE_MADRID_ROLE_DISCOVERY + OFFICIAL_ROLE_PAGE_VERIFY",
-      "reason": "Samsung Spain routes candidates to official opportunities, and Workday role pages remain readable even when the root inventory does not materialize. Root unreadability alone is baseline dynamic-source fragility."
-    }
+    "MAD-A-026": {"employer":"PepsiCo, especially PepsiCo Bebidas","primary":"https://www.pepsicojobs.com/europe/jobs/locations?lang=es-ES","secondary":["https://www.pepsicojobs.com/europe/","Exact-site live official pepsicojobs.com role pages for Madrid/Spain"],"health":"PARTIAL","route_class":"OFFICIAL_INVENTORY_FETCH_FRAGILE","check_mode":"EUROPE_LOCATION_INVENTORY_ONCE + EXACT_SITE_OFFICIAL_ROLE_DISCOVERY + LIVE_ROLE_VERIFY","reason":"Official inventory remains discoverable while direct runtime requests can fail. A request error is baseline fetch fragility, not proof the source is down."},
+    "MAD-A-037": {"employer":"Heineken España","primary":"https://careers.theheinekencompany.com/Job-Listing","secondary":["https://careers.theheinekencompany.com/Spain/?locale=es_ES","Exact-site indexed official HEINEKEN role discovery"],"health":"PARTIAL","route_class":"OFFICIAL_CAREERS_FETCH_PROTECTED","check_mode":"JOB_LISTING_ONCE + SPAIN_ROUTE_ONCE_IF_NEEDED + EXACT_SITE_OFFICIAL_ROLE_DISCOVERY","reason":"Official careers routes can return 403 to direct runtime fetches. Treat this as known fetch protection and preserve prior snapshot."},
+    "MAD-A-061": {"employer":"Boston Scientific","primary":"https://bostonscientific.eightfold.ai/careers","secondary":["Exact-site live official https://bostonscientific.eightfold.ai/careers/job/... pages"],"health":"HEALTHY","route_class":"DIRECT_EIGHTFOLD_PUBLIC_CAREERS","check_mode":"CAREERS_INVENTORY_FIRST + SPAIN_MADRID_FILTER + OFFICIAL_ROLE_PAGE_VERIFY","reason":"The bare Eightfold root redirects to Microsoft authentication; /careers is the public vacancy inventory."},
+    "MAD-A-062": {"employer":"Becton Dickinson (BD)","primary":"https://bdx.wd1.myworkdayjobs.com/es/EXTERNAL_CAREER_SITE_SPAIN","secondary":["Exact-site live official https://bdx.wd1.myworkdayjobs.com/*/EXTERNAL_CAREER_SITE_SPAIN/job/... pages"],"health":"HEALTHY","route_class":"SPAIN_SPECIFIC_WORKDAY","check_mode":"SPAIN_WORKDAY_FIRST + MADRID_SAN_AGUSTIN_FILTER + OFFICIAL_ROLE_PAGE_VERIFY","reason":"The generic Workday root is too broad/fragile; the Spain-specific site is the correct public scope."},
+    "MAD-B-013": {"employer":"Pernod Ricard España","primary":"https://pernodricard.wd3.myworkdayjobs.com/en-US/pernod-ricard","secondary":["Exact-site live official https://pernodricard.wd3.myworkdayjobs.com/*/pernod-ricard/job/... pages for Madrid/Spain"],"health":"PARTIAL","route_class":"WORKDAY_ROOT_DYNAMIC_ROLE_PAGE_RECOVERABLE","check_mode":"WORKDAY_ROOT_ONE_PASS + EXACT_SITE_MADRID_ROLE_DISCOVERY + OFFICIAL_ROLE_PAGE_VERIFY","reason":"The Workday root can render without readable inventory while live official Madrid role pages remain discoverable."},
+    "MAD-B-016": {"employer":"Calidad Pascual","primary":"https://pascual.career.velorahr.com/calidad-pascual-248","secondary":["Exact-site live official pascual.career.velorahr.com vacancy discovery","https://www.calidadpascual.com/en/privacy-policy/"],"health":"HEALTHY","route_class":"DIRECT_VELORAHR_OFFICIAL_WITH_ROUTE_OWNERSHIP_FALLBACK","check_mode":"VELORAHR_LISTING_FIRST + EXACT_SITE_OFFICIAL_VACANCY_RECOVERY + CORPORATE_ROUTE_OWNERSHIP_VERIFY","reason":"Pascual corporate documentation identifies VeloraHR as its official recruiting site."},
+    "MAD-B-019": {"employer":"Diageo","primary":"https://diageo.wd3.myworkdayjobs.com/en-US/Diageo_Careers","secondary":["Exact-site live official https://diageo.wd3.myworkdayjobs.com/*/Diageo_Careers/job/... Madrid role pages"],"health":"PARTIAL","route_class":"WORKDAY_ROOT_DYNAMIC_ROLE_PAGE_RECOVERABLE","check_mode":"WORKDAY_ROOT_ONE_PASS + EXACT_SITE_MADRID_ROLE_DISCOVERY + OFFICIAL_ROLE_PAGE_VERIFY","reason":"The Workday root can return an empty dynamic render while official role pages remain readable."},
+    "MAD-B-023": {"employer":"LEGO Group","primary":"https://lego.wd103.myworkdayjobs.com/LEGO_External","secondary":["Exact-site live official https://lego.wd103.myworkdayjobs.com/LEGO_External/job/Madrid/... pages"],"health":"PARTIAL","route_class":"WORKDAY_ROOT_DYNAMIC_ROLE_PAGE_RECOVERABLE","check_mode":"WORKDAY_ROOT_ONE_PASS + EXACT_SITE_MADRID_ROLE_DISCOVERY + OFFICIAL_ROLE_PAGE_VERIFY","reason":"The Workday root may expose no crawlable inventory while live official Madrid role pages remain available."},
+    "MAD-B-026": {"employer":"Samsung Electronics Iberia","primary":"https://sec.wd3.myworkdayjobs.com/Samsung_Careers","secondary":["https://www.samsung.com/es/about-us/careers/","Exact-site live official https://sec.wd3.myworkdayjobs.com/*/Samsung_Careers/job/... pages for Madrid/Spain"],"health":"PARTIAL","route_class":"WORKDAY_ROOT_DYNAMIC_ROLE_PAGE_RECOVERABLE","check_mode":"WORKDAY_ROOT_ONE_PASS + SAMSUNG_ES_CAREERS_ROUTE + EXACT_SITE_MADRID_ROLE_DISCOVERY + OFFICIAL_ROLE_PAGE_VERIFY","reason":"Samsung Spain routes candidates to official opportunities; root unreadability alone is dynamic-source fragility."},
+    "MAD-C-026": {"employer":"Zoetis","primary":"https://www.zoetis.com/join-us/international-careers","secondary":["https://www.zoetis.com/join-us","Exact-site live official zoetis.wd5.myworkdayjobs.com role pages for Spain/Madrid when discoverable"],"health":"PARTIAL","route_class":"OFFICIAL_INTERNATIONAL_CAREERS_DYNAMIC_TABLE","check_mode":"INTERNATIONAL_CAREERS_SPAIN_FILTER + EXACT_SITE_OFFICIAL_ROLE_DISCOVERY + LIVE_ROLE_VERIFY","reason":"Zoetis currently exposes an official International Careers table with country/city fields. The old Workday-root-only route was unnecessarily fragile; a table render failure is partial coverage, not proof the employer source is down."},
+    "MAD-C-037": {"employer":"Galderma","primary":"https://galderma.wd3.myworkdayjobs.com/External","secondary":["https://www.galderma.com/careers","https://www.galderma.com/es-es/espana","Exact-site live official galderma.wd3.myworkdayjobs.com/External/job/... pages for Madrid/Spain"],"health":"PARTIAL","route_class":"OFFICIAL_WORKDAY_WITH_CORPORATE_ROUTE_CONFIRMATION","check_mode":"WORKDAY_ONE_PASS + GALDERMA_CAREERS_ROUTE + EXACT_SITE_MADRID_ROLE_DISCOVERY","reason":"Galderma's current global and Spain careers pages explicitly route candidates to the official /External Workday site. Dynamic root unreadability should be recovered through corporate routing and role pages."},
+    "MAD-C-039": {"employer":"Viatris","primary":"https://viatris.wd5.myworkdayjobs.com/External","secondary":["https://www.viatris.com/en/Careers","Exact-site live official viatris.wd5.myworkdayjobs.com/External/job/... pages for Spain/Madrid"],"health":"PARTIAL","route_class":"OFFICIAL_WORKDAY_WITH_CORPORATE_ROUTE_CONFIRMATION","check_mode":"WORKDAY_ONE_PASS + VIATRIS_SEARCH_CAREERS_ROUTE + EXACT_SITE_ROLE_DISCOVERY","reason":"Viatris corporate Careers currently links directly to /External. If the Workday list does not render, preserve snapshot and recover via official role pages rather than marking a HEALTHY outage."},
+    "MAD-C-040": {"employer":"CooperVision","primary":"https://hcjy.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1","secondary":["https://coopervision.com/about-us/careers","Exact-site live official hcjy.fa.us2.oraclecloud.com CandidateExperience role pages for Spain/Madrid"],"health":"PARTIAL","route_class":"OFFICIAL_ORACLE_CANDIDATE_EXPERIENCE_DYNAMIC","check_mode":"ORACLE_CX1_ONE_PASS + COOPERVISION_CORPORATE_ROUTE_CONFIRMATION + EXACT_SITE_ROLE_DISCOVERY","reason":"CooperVision corporate Careers currently links to Oracle CandidateExperience CX_1. The previous bare Oracle host was too generic and dynamic; shell/render failure is partial coverage, not a full source outage."},
+    "MAD-C-045": {"employer":"Visa","primary":"https://visa.wd5.myworkdayjobs.com/Visa","secondary":["https://corporate.visa.com/en/careers.html","Exact-site live official visa.wd5.myworkdayjobs.com/Visa/job/... pages for Madrid/Spain"],"health":"PARTIAL","route_class":"WORKDAY_ROOT_DYNAMIC_CORPORATE_CONFIRMED","check_mode":"WORKDAY_ONE_PASS + VISA_CORPORATE_CAREERS_ROUTE + EXACT_SITE_MADRID_ROLE_DISCOVERY","reason":"Visa corporate Careers currently routes Find open job roles to the official Visa Workday site. Root render failure alone is not evidence that Visa hiring inventory is unavailable."},
+    "MAD-C-047": {"employer":"AXA Spain","primary":"https://careers.axa.com/careers-home?lang=es-ES","secondary":["https://careers.axa.com/axa-entities/axa-spain-en/axa-spain-es","Exact-site live official careers.axa.com/careers-home/jobs/... Madrid role pages"],"health":"HEALTHY","route_class":"CURRENT_AXA_CAREERS_SEARCH_WITH_ROLE_PAGES","check_mode":"CAREERS_SEARCH_MADRID_FIRST + AXA_SPAIN_ENTITY + OFFICIAL_ROLE_PAGE_VERIFY","reason":"AXA's current careers portal is careers.axa.com and exposes live Madrid role pages. The older entity URL alone is not a sufficient inventory route."},
+    "MAD-C-050": {"employer":"Amadeus","primary":"https://amadeus.wd502.myworkdayjobs.com/jobs","secondary":["Exact-site live official https://amadeus.wd502.myworkdayjobs.com/jobs/job/madrid/... pages"],"health":"PARTIAL","route_class":"WORKDAY_JOBS_ROOT_DYNAMIC_ROLE_PAGE_RECOVERABLE","check_mode":"JOBS_ROOT_ONE_PASS + EXACT_SITE_MADRID_ROLE_DISCOVERY + R_ID_ROLE_VERIFY","reason":"The generic Workday host was incomplete. Current live Amadeus roles use /jobs and /jobs/job/madrid/... with stable R requisition IDs; root rendering can remain dynamic."},
+    "MAD-C-056": {"employer":"Mercedes-Benz España","primary":"https://jobs.mercedes-benz.com/enUS","secondary":["https://jobs.mercedes-benz.com/","Exact-site official Mercedes-Benz job pages with country Spain and Madrid when present"],"health":"HEALTHY","route_class":"CURRENT_GLOBAL_JOB_SEARCH_WITH_COUNTRY_FILTER","check_mode":"GLOBAL_SEARCH + COUNTRY_SPAIN + CITY_MADRID + PROFESSIONALS + TARGET_FUNCTION","reason":"The current official Mercedes-Benz job search is readable and exposes a Spain country facet. The prior encoded filtered URL was unnecessarily brittle."},
+    "MAD-C-063": {"employer":"Repsol","primary":"https://repsol.wd3.myworkdayjobs.com/es/Repsol","secondary":["https://www.repsol.com/es/empleo/index.cshtml","Exact-site live official repsol.wd3.myworkdayjobs.com/es/Repsol/job/... pages for Campus Repsol-Madrid"],"health":"PARTIAL","route_class":"WORKDAY_DYNAMIC_WITH_CORPORATE_ROUTE_CONFIRMATION","check_mode":"WORKDAY_ONE_PASS + REPSOL_CORPORATE_VACANCIES_ROUTE + EXACT_SITE_MADRID_ROLE_DISCOVERY","reason":"Repsol corporate Empleo currently links directly to the official Workday and live Madrid role pages remain readable. Root render failure is a known dynamic limitation, not a complete outage."},
+    "MAD-C-066": {"employer":"Renault Group España / Renault / Dacia / Alpine","primary":"https://alliancewd.wd3.myworkdayjobs.com/renault-group-careers","secondary":["https://www.renault.es/empleo/ofertas.html","https://www.renaultgroup.com/en/careers/","Exact-site official alliancewd.wd3.myworkdayjobs.com/renault-group-careers/job/... pages; Spain local corporate routes from Renault España as contextual coverage"],"health":"PARTIAL","route_class":"MULTI_SOURCE_RENAULT_GROUP_ROLE_PAGE_RECOVERABLE","check_mode":"WORKDAY_ONE_PASS + EXACT_SITE_ROLE_DISCOVERY + RENAULT_ES_LOCAL_CAREERS_CROSSCHECK","reason":"Renault Workday role pages are live while Spain careers also routes some local hiring through dedicated partners. A failed Workday root alone cannot prove zero or full source unavailability."}
   }
 }
