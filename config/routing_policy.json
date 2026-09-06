@@ -1,0 +1,126 @@
+{
+  "schema_version": 1,
+  "purpose": "Shared routing semantics and employer-specific failure/recovery rules for all Madrid Job Radar tasks",
+  "global": {
+    "request_failure_is_source_failure": false,
+    "source_failure_requires_primary_and_defined_official_recovery_to_fail": true,
+    "source_failure_never_means_zero_inventory": true,
+    "preserve_prior_snapshot_on_unverified_source": true,
+    "known_partial_weak_blocked_behavior_is_baseline_not_unexpected_failure": true,
+    "one_normal_direct_attempt_before_defined_recovery": true,
+    "search_engine_is_discovery_or_troubleshooting_only": true,
+    "linkedin_is_secondary_only": true,
+    "live_role_specific_official_page_required_for_alert": true,
+    "linkedin_never_resets_older_official_requisition": true
+  },
+  "default": {
+    "failure": "One normal direct official attempt. If a defined secondary official route exists, use it once before declaring coverage unavailable. Preserve prior snapshot on failure and never convert source failure to zero inventory.",
+    "linkedin_role": "Secondary discovery/freshness support only. Never substitutes for a live role-specific official posting."
+  },
+  "overrides": {
+    "MAD-A-015": {
+      "employer": "Laboratorios Cinfa",
+      "failure": "One ePreSelec attempt only. If fetch rejects, preserve prior snapshot and use exact-site indexed live official role discovery. Fetch rejection is not zero vacancies."
+    },
+    "MAD-A-017": {
+      "employer": "Faes Farma",
+      "failure": "One ePreSelec attempt only. If fetch rejects, preserve prior snapshot and use exact-site indexed live official role discovery. Fetch rejection is not zero vacancies."
+    },
+    "MAD-A-023": {
+      "employer": "Cooper Consumer Health",
+      "failure": "Official careers page routes hiring through LinkedIn. Treat as WEAK. LinkedIn is discovery only under the strict live-official-role rule. Preserve prior snapshot."
+    },
+    "MAD-A-026": {
+      "employer": "PepsiCo",
+      "failure": "A single internal/transient request error is not a source failure. Recover through the official PepsiCo Europe/location inventory, secondary official jobs route and live official role pages before counting an unexpected failure."
+    },
+    "MAD-A-029": {
+      "employer": "Chocolates Valor",
+      "failure": "Official source is BLOCKED. Do not retry aggressively. Preserve prior snapshot and use indexed discovery only. A role still requires live official evidence to alert."
+    },
+    "MAD-A-030": {
+      "employer": "Grupo Bimbo",
+      "failure": "Official Grupo Bimbo careers routing sends Spain to LinkedIn and no clean public Spain ATS is exposed. Treat as structural WEAK. Do not substitute another-country Bimbo ATS. LinkedIn is discovery only and cannot qualify a role without live role-specific official Bimbo evidence."
+    },
+    "MAD-A-033": {
+      "employer": "Vichy Catalan Corporación",
+      "failure": "Official source is form-only/WEAK. Preserve prior snapshot. Search or LinkedIn may discover leads but are not freshness authority and cannot replace live official role evidence."
+    },
+    "MAD-A-049": {
+      "employer": "Sandoz",
+      "failure": "If Workday root/search fails, recover through exact-site live official Sandoz Workday role pages. Do not classify the whole source failed while role pages remain readable."
+    },
+    "MAD-A-055": {
+      "employer": "Biogen",
+      "failure": "Treat Workday as PARTIAL/dynamic. One official Workday attempt, then exact-site live official Workday role discovery. If still unreadable, preserve prior snapshot and record coverage unavailable. Never infer zero inventory."
+    },
+    "MAD-A-057": {
+      "employer": "Grünenthal Pharma",
+      "failure": "Use the Spain-filtered official inventory first. A transient internal error is not source failure if the Spain inventory or live official role pages remain readable."
+    },
+    "MAD-B-005": {
+      "employer": "L’Oréal España",
+      "failure": "Known SearchJobs 406/JS rejection is PARTIAL baseline, not an unexpected HEALTHY failure. One attempt, preserve snapshot, then exact-site live careers.loreal.com JobDetail discovery."
+    },
+    "MAD-B-015": {
+      "employer": "Deoleo",
+      "failure": "Use careers.deoleo.com/jobs as primary. Failure of an obsolete/generic route is routing error, not source failure. If /jobs fails, preserve snapshot and use exact-site official Teamtailor role discovery once."
+    },
+    "MAD-B-016": {
+      "employer": "Calidad Pascual",
+      "failure": "Official VeloraHR is HEALTHY unless live failure is verified. On transient failure preserve snapshot and use exact-site live official VeloraHR role discovery before classifying unavailable."
+    },
+    "MAD-B-017": {
+      "employer": "Campofrío / Sigma Europe",
+      "failure": "Nexo is known PARTIAL/JS-heavy. An empty application shell or JS-only container is not zero vacancies and not an unexpected healthy-source failure. Preserve snapshot and use exact-site live official Sigma/Nexo role discovery."
+    },
+    "MAD-B-018": {
+      "employer": "Kraft Heinz",
+      "failure": "Use jobs.kraftheinz.com/careers as current official inventory. Legacy careers.kraftheinzcompany.com failures are routing errors. If current inventory fails, preserve snapshot and use exact-site live official jobs.kraftheinz.com role discovery."
+    },
+    "MAD-B-029": {
+      "employer": "El Corte Inglés",
+      "failure": "Portal is JS-fragile. One portal attempt only. Empty/JS render is not zero. Preserve snapshot and use official corporate context plus exact-site live official role discovery."
+    },
+    "MAD-B-041": {
+      "employer": "CHANEL",
+      "failure": "Workday entry/root is PARTIAL. If root fails, recover through exact-site live official CHANEL Workday role pages. Madrid + Posted on + JOBREQ on a live role page is valid official coverage."
+    },
+    "MAD-B-057": {
+      "employer": "Sony / PlayStation / Sony Pictures Entertainment",
+      "failure": "Treat Sony Jobs, PlayStation and Sony Pictures as separate official subsystems. Failure of one subsystem is partial coverage, not total Sony source failure. Continue the others and record the failed subsystem."
+    },
+    "MAD-B-058": {
+      "employer": "Lenovo",
+      "failure": "Treat local official inventory as PARTIAL/UNCERTAIN when dynamic search is unreadable. Preserve snapshot and use exact-site live official Lenovo role discovery. Stale or non-official indexed results are discovery only and never freshness authority."
+    },
+    "MAD-B-065": {
+      "employer": "Warner Bros. Discovery / HBO Max",
+      "failure": "Known dynamic placeholder/empty-render behavior is PARTIAL baseline. One search attempt, preserve snapshot, then exact-site live careers.wbd.com role discovery. Empty render is not zero."
+    },
+    "MAD-C-009": {
+      "employer": "KFC Iberia corporate",
+      "failure": "Structural WEAK. Official KFC Spain confirms Madrid support-center/corporate opportunities but exposes no structured corporate feed. Do not substitute US KFC, restaurant feeds, AmRest or agencies. Social discovery does not qualify without live KFC role-specific official evidence."
+    },
+    "MAD-C-020": {
+      "employer": "Toyota España / Lexus",
+      "failure": "Toyota Europe ATS is healthy for Europe but does not establish complete local Spain coverage. Treat Spain-local coverage as WEAK. Absence of Spain/Madrid in Europe facets is never proof of zero Toyota España/Lexus hiring."
+    },
+    "MAD-C-032": {
+      "employer": "Kia Iberia",
+      "failure": "Local careers microsite is PARTIAL and authoritative for Kia Iberia. Global Talent Lounge is context only. A global zero is never proof of zero local Kia Iberia jobs. Preserve snapshot and use exact-site local role discovery."
+    },
+    "MAD-C-035": {
+      "employer": "Uber",
+      "failure": "Verify every candidate on its live role-specific official page. Never add or retain a role whose official page says Job removed. Search noise/staleness is not source truth."
+    },
+    "MAD-C-049": {
+      "employer": "Spotify",
+      "failure": "Dynamic zero or Hang on placeholder is PARTIAL baseline, not zero inventory. Preserve snapshot and use exact-site live official Spotify role pages."
+    },
+    "MAD-C-051": {
+      "employer": "Nintendo Ibérica / Nintendo of Europe Spain branch",
+      "failure": "Official CSOD 404 is known structural WEAK/BROKEN baseline, not zero and not a new incident. One CSOD check only, preserve snapshot, then exact-site Nintendo/CSOD discovery. LinkedIn-only roles do not qualify."
+    }
+  }
+}
