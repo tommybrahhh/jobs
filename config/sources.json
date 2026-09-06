@@ -1,6 +1,6 @@
 {
-  "schema_version": 1,
-  "purpose": "Manifest for the authoritative Madrid Job Radar source-routing configuration",
+  "schema_version": 2,
+  "purpose": "Manifest for the authoritative Madrid Job Radar source-routing and inventory-visibility configuration",
   "employer_master": "config/employers.json",
   "routes": {
     "A": "config/routes_a.json",
@@ -8,6 +8,7 @@
     "C": "config/routes_c.json"
   },
   "routing_policy": "config/routing_policy.json",
+  "inventory_visibility_policy": "config/inventory_visibility_policy.json",
   "source_file": "Madrid_Job_Radar_Source_Map_2026-09-06_v11.csv",
   "source_file_sha256": "87d9232c4376329d035c00e90b9d2362d9ab1bb742ea74253833fcc180b1e06b",
   "validation": {
@@ -21,6 +22,7 @@
   "precedence": [
     "config/routing_policy.json employer override",
     "config/routes_<radar>.json employer route",
-    "config/routing_policy.json global/default policy"
+    "config/routing_policy.json global/default policy",
+    "config/inventory_visibility_policy.json observation-state semantics"
   ]
 }
