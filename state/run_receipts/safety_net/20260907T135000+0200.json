@@ -1,0 +1,104 @@
+{
+  "schema_version": 1,
+  "slot": "2026-09-07T13:50:00+02:00",
+  "completed_at": "2026-09-07T13:47:22+02:00",
+  "scan_status": "INCOMPLETE",
+  "receipt_persistence_status": "OK",
+  "source_coverage_status": "DEGRADED",
+  "state_persistence_status": "OK",
+  "backfill_status": "PENDING_NONCRITICAL",
+  "history_status": "WARMING_UP",
+  "config_status": "VALID",
+  "config_shas": {
+    "employers_sha": "540e9be6619ebd3fcb85cb95dbfc416f42fe5943",
+    "sources_sha": "517d2154c28f9478f86df42beab0dc53dad18962",
+    "routes_a_sha": "d2134622a530c82019a2fe29e160500e0bdbb770",
+    "routes_b_sha": "1123965935c0991a4ce0d5f5f37ee343af4260f9",
+    "routes_c_sha": "298772c9528375a586b5ed04a067620bc3debd80",
+    "route_patches_sha": "9bac7b0255ba279362548a044faced0da70cffe3",
+    "route_hotfixes_ac_sha": "b78fdea22cbb85e3c6024e3caefe25ad4d535658",
+    "route_hotfixes_b_sha": "b24e0b28ce3f396f4013ba4cfa7d137bf8a23b22",
+    "routing_policy_sha": "ffb3b1e8a8755a7a1f8d3b6d8f440c86628f996b",
+    "inventory_visibility_policy_sha": "63c385a03564024ef6f4860564f5594d23a6ee0f",
+    "run_receipt_policy_sha": "dc2f2c1d100e9486a68848106a566eaae31b9b5a",
+    "watchdog_transition_policy_sha": "ef936b167539a18c28f411f7863d5b70bc4661b1",
+    "legacy_evidence_gaps_sha": "1124935513e05efc97037a737597011619b73558",
+    "ledger_sha_at_start": "ab4a069198dde2971dbeb28394e725e9697978d0"
+  },
+  "config_validation": {
+    "unique_employers": 198,
+    "radar_a": 66,
+    "radar_b": 66,
+    "radar_c": 66,
+    "route_ownership": "VALID",
+    "patch_ids": "VALID"
+  },
+  "expected_slot_findings": {
+    "radar_a_2026-09-07T12:05:00+02:00": {
+      "scan_execution_observed": true,
+      "final_receipt": "MISSING_AFTER_GRACE",
+      "classification": "RECEIPT_PERSISTENCE_GAP",
+      "recovery_status": "UNRESOLVED_FULL_66_RECONSTRUCTION_NOT_COMPLETED",
+      "current_gap": true
+    },
+    "radar_b_2026-09-07T12:25:00+02:00": {
+      "scan_status": "COMPLETE",
+      "receipt_persistence_status": "OK",
+      "source_coverage_status": "DEGRADED",
+      "state_persistence_status": "OK",
+      "employers_accounted_for": 66,
+      "ledger_read_status": "OK"
+    },
+    "radar_c_2026-09-07T12:45:00+02:00": {
+      "scan_execution_observed": true,
+      "final_receipt": "MISSING_AFTER_GRACE",
+      "classification": "RECEIPT_PERSISTENCE_GAP",
+      "recovery_status": "UNRESOLVED_FULL_66_RECONSTRUCTION_NOT_COMPLETED",
+      "current_gap": true
+    }
+  },
+  "current_execution_gaps": [
+    "Radar A 12:05 final receipt missing after grace and full 66 recovery not completed",
+    "Radar C 12:45 final receipt missing after grace and full 66 recovery not completed"
+  ],
+  "recovered_receipt_persistence_gaps": [],
+  "historical_uncertainty": [
+    "A 00:05 pre-cutover historical architecture gap",
+    "B 00:25 pre-cutover historical architecture gap",
+    "A 06:05 pre-cutover historical architecture gap",
+    "C 06:45 pre-cutover historical architecture gap"
+  ],
+  "source_recovery": {
+    "MAD-B-049": {
+      "employer": "Groupe SEB",
+      "prior_visibility": "UNAVAILABLE",
+      "recovery_result": "OFFICIAL_CAREERS_SITE_REACHABLE",
+      "recovered_visibility": "PARTIAL_COVERAGE",
+      "effective_health": "HEALTHY",
+      "qualifying_48h_role_found": false,
+      "checked_at": "2026-09-07T13:47:22+02:00"
+    }
+  },
+  "unresolved_coverage": [
+    "MAD-A-001..MAD-A-066 for 12:05 receipt gap require lossless current-slot reconstruction",
+    "MAD-C-001..MAD-C-066 for 12:45 receipt gap require lossless current-slot reconstruction"
+  ],
+  "ledger_read_status": "OK",
+  "ledger_write_status": "NOT_REQUIRED_FOR_ALERT_CONSISTENCY",
+  "ledger_repair_by_delta": [
+    {
+      "source_radar": "B",
+      "slot": "2026-09-07T12:25:00+02:00",
+      "employer_id": "MAD-B-025",
+      "requisition_key": "Haier Europe|REQ-24959",
+      "result": "STILL_DEGRADED",
+      "critical": false,
+      "reason": "Noncritical old/undated backfill remains absent; no alert consistency risk"
+    }
+  ],
+  "unresolved_ledger_deltas": ["Haier Europe|REQ-24959"],
+  "qualifying_catchup_roles": [],
+  "source_health_incident": false,
+  "critical_ledger_state": false,
+  "alerts_sent": ["WATCHDOG/COVERAGE WARNING"]
+}
