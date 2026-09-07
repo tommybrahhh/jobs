@@ -1,6 +1,6 @@
 {
-  "schema_version": 4,
-  "purpose": "Manifest for the authoritative Madrid Job Radar source-routing, inventory-visibility and run-receipt configuration",
+  "schema_version": 5,
+  "purpose": "Manifest for the authoritative Madrid Job Radar source-routing, inventory-visibility, run-receipt and watchdog-transition configuration",
   "employer_master": "config/employers.json",
   "routes": {
     "A": "config/routes_a.json",
@@ -14,6 +14,8 @@
   "routing_policy": "config/routing_policy.json",
   "inventory_visibility_policy": "config/inventory_visibility_policy.json",
   "run_receipt_policy": "config/run_receipt_policy.json",
+  "watchdog_transition_policy": "config/watchdog_transition_policy.json",
+  "legacy_gap_registry": "state/transitions/legacy_evidence_gaps.json",
   "source_file": "Madrid_Job_Radar_Source_Map_2026-09-06_v11.csv",
   "source_file_sha256": "87d9232c4376329d035c00e90b9d2362d9ab1bb742ea74253833fcc180b1e06b",
   "validation": {
@@ -31,6 +33,7 @@
     "config/routes_<radar>.json employer route",
     "config/routing_policy.json global/default policy",
     "config/inventory_visibility_policy.json observation-state semantics",
-    "config/run_receipt_policy.json run evidence and state-persistence semantics"
+    "config/run_receipt_policy.json run evidence and state-persistence semantics",
+    "config/watchdog_transition_policy.json legacy-gap warning semantics"
   ]
 }
