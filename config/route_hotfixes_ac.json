@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "purpose": "Verified route hotfixes for Radar A/C applied after config/route_patches.json.",
+  "verified_at": "2026-09-07",
+  "precedence": "For matching A/C employer IDs, these fields override config/route_patches.json and base route files.",
+  "hotfixes": {
+    "MAD-A-029": {
+      "employer": "Chocolates Valor",
+      "primary": "https://www.valor.es/personas",
+      "secondary": [
+        "https://www.valor.es/personas/",
+        "Exact official valor.es vacancy/application pages when exposed from the Personas route"
+      ],
+      "health": "PARTIAL",
+      "route_class": "OFFICIAL_CORPORATE_PEOPLE_ROUTE_FETCH_FRAGILE",
+      "check_mode": "VALOR_PERSONAS_ONE_PASS + EXACT_OFFICIAL_ROLE_DISCOVERY + PRESERVE_PRIOR_SNAPSHOT_IF_ROUTE_UNREADABLE",
+      "reason": "Chocolates Valor publicly directs candidates to valor.es/personas, but that route can be fetch-fragile. Route unreadability is therefore partial official visibility rather than proof of a HEALTHY-source outage."
+    },
+    "MAD-C-036": {
+      "employer": "American Express",
+      "primary": "https://www.americanexpress.com/es-es/carreras/ubicaciones/madrid/index.html/",
+      "secondary": [
+        "https://careers.americanexpress.com/es/sites/CX_1/jobs",
+        "Exact official careers.americanexpress.com/es/sites/CX_1/job/... Madrid role pages"
+      ],
+      "health": "HEALTHY",
+      "route_class": "DIRECT_MADRID_CORPORATE_CAREERS_WITH_ORACLE_JOB_SEARCH",
+      "check_mode": "MADRID_OFFICE_OPENINGS_FIRST + OFFICIAL_CX1_MADRID_SEARCH + EXACT_ROLE_PAGE_POSTING_DATE_VERIFY",
+      "reason": "American Express has a current official Madrid careers page with job openings and current official CX_1 role pages exposing Madrid, requisition IDs and posting dates. The old route should not be treated as unavailable when these current official routes are readable."
+    }
+  }
+}
