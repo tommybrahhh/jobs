@@ -1,5 +1,5 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "purpose": "Manifest for the authoritative Madrid Job Radar source-routing, inventory-visibility and run-receipt configuration",
   "employer_master": "config/employers.json",
   "routes": {
@@ -8,6 +8,9 @@
     "C": "config/routes_c.json"
   },
   "route_patches": "config/route_patches.json",
+  "route_hotfixes": {
+    "B": "config/route_hotfixes_b.json"
+  },
   "routing_policy": "config/routing_policy.json",
   "inventory_visibility_policy": "config/inventory_visibility_policy.json",
   "run_receipt_policy": "config/run_receipt_policy.json",
@@ -22,6 +25,7 @@
     "valid": true
   },
   "precedence": [
+    "config/route_hotfixes_b.json matching B employer field overrides",
     "config/route_patches.json matching employer field overrides",
     "config/routing_policy.json employer override",
     "config/routes_<radar>.json employer route",
