@@ -1,6 +1,6 @@
 {
-  "schema_version": 5,
-  "purpose": "Manifest for the authoritative Madrid Job Radar source-routing, inventory-visibility, run-receipt and watchdog-transition configuration",
+  "schema_version": 6,
+  "purpose": "Manifest for the authoritative Madrid Job Radar source-routing, inventory-visibility, run-receipt, watchdog-transition and daily-audit configuration",
   "employer_master": "config/employers.json",
   "routes": {
     "A": "config/routes_a.json",
@@ -9,10 +9,12 @@
   },
   "route_patches": "config/route_patches.json",
   "route_hotfixes": {
+    "A_C": "config/route_hotfixes_ac.json",
     "B": "config/route_hotfixes_b.json"
   },
   "routing_policy": "config/routing_policy.json",
   "inventory_visibility_policy": "config/inventory_visibility_policy.json",
+  "daily_audit_policy": "config/daily_audit_policy.json",
   "run_receipt_policy": "config/run_receipt_policy.json",
   "watchdog_transition_policy": "config/watchdog_transition_policy.json",
   "legacy_gap_registry": "state/transitions/legacy_evidence_gaps.json",
@@ -27,12 +29,14 @@
     "valid": true
   },
   "precedence": [
+    "config/route_hotfixes_ac.json matching A/C employer field overrides",
     "config/route_hotfixes_b.json matching B employer field overrides",
     "config/route_patches.json matching employer field overrides",
     "config/routing_policy.json employer override",
     "config/routes_<radar>.json employer route",
     "config/routing_policy.json global/default policy",
     "config/inventory_visibility_policy.json observation-state semantics",
+    "config/daily_audit_policy.json full-audit completeness semantics",
     "config/run_receipt_policy.json run evidence and state-persistence semantics",
     "config/watchdog_transition_policy.json legacy-gap warning semantics"
   ]
