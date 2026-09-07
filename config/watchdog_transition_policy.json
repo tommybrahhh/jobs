@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "purpose": "Prevent known pre-cutover aggregate-heartbeat failures from being re-reported forever as current execution gaps after recovery has already been attempted.",
+  "principles": {
+    "preserve_history": true,
+    "never_fabricate_missing_coverage": true,
+    "do_not_repeat_recovered_transition_warning": true,
+    "post_cutover_receipts_are_strict": true
+  },
+  "legacy_gap_classification": {
+    "name": "HISTORICAL_ARCHITECTURE_GAP",
+    "definition": "The scheduler/task ran under the old aggregate-heartbeat architecture, but full authoritative end-state evidence could not be persisted or reconstructed.",
+    "after_one_recovery_pass": "If Safety Net performs the configured 48h recovery, finds no qualifying missed role, and no current CRITICAL ledger state remains, move the gap to historical_uncertainty. It remains auditable but must not by itself make future Safety Net runs INCOMPLETE or trigger repeated user-facing coverage warnings.",
+    "never_claim": "Do not claim 100% historical coverage for the affected interval."
+  },
+  "current_gap_rule": "Only a new slot at or after the applicable per-run-receipt cutover may be treated as a current execution gap solely from missing/stale/invalid run evidence.",
+  "warning_rule": "A historical_uncertainty item is shown in Daily Audit history but is not a current Safety Net warning unless new evidence shows a missed qualifying role, an unresolved current source gap, or a CRITICAL ledger consistency problem.",
+  "legacy_gap_registry": "state/transitions/legacy_evidence_gaps.json"
+}
