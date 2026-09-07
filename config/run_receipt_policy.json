@@ -1,5 +1,5 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "purpose": "Avoid large mutable heartbeat rewrites by storing one authoritative receipt per scheduled run.",
   "radars": {
     "A": {
@@ -8,6 +8,14 @@
       "receipt_directory": "state/run_receipts/radar_a",
       "receipt_filename_format": "YYYYMMDDTHHMMSS+ZZZZ.json",
       "legacy_heartbeat": "state/runs/radar_a.json",
+      "legacy_heartbeat_role_after_cutover": "legacy_read_only"
+    },
+    "B": {
+      "cutover": "2026-09-07T09:25:00+02:00",
+      "schedule_minutes": "every 3 hours at :25 Europe/Madrid",
+      "receipt_directory": "state/run_receipts/radar_b",
+      "receipt_filename_format": "YYYYMMDDTHHMMSS+ZZZZ.json",
+      "legacy_heartbeat": "state/runs/radar_b.json",
       "legacy_heartbeat_role_after_cutover": "legacy_read_only"
     }
   },
