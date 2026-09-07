@@ -2,9 +2,10 @@
   "schema_version": 4,
   "task": "Madrid Jobs Safety Net",
   "expected_employers": 198,
-  "run_status": "RUNNING",
+  "run_status": "INCOMPLETE",
   "history_status": "WARMING_UP",
   "last_run_started_at": "2026-09-07T07:47:55+02:00",
+  "last_run_completed_at": "2026-09-07T07:58:00+02:00",
   "config_status": "VALIDATED",
   "config_validation": {
     "unique_employers": 198,
@@ -27,17 +28,64 @@
     "config/run_receipt_policy.json": "4ed20bb57e66e85d9771e63dcd94f40eb809242d"
   },
   "route_patches_sha": "9bac7b0255ba279362548a044faced0da70cffe3",
-  "radar_statuses": {},
-  "missing_or_incomplete_radar_runs": [],
-  "degraded_complete_radar_runs": [],
-  "recovery_coverage_by_employer": {},
-  "ledger_repair_by_delta": [],
-  "unresolved_ledger_deltas": [],
-  "unresolved_coverage": [],
+  "radar_statuses": {
+    "A": {
+      "execution_status": "INCOMPLETE",
+      "source_coverage_status": "UNKNOWN_FOR_LATEST_SLOT",
+      "state_persistence_status": "UNKNOWN_FOR_LATEST_SLOT",
+      "history_status": "WARMING_UP",
+      "note": "Pre-cutover 06:05 slot did execute according to task evidence, but legacy radar_a heartbeat still ends at 2026-09-06 21:09. No persisted current 66-ID coverage/ledger-read/end-heartbeat evidence exists to certify the slot COMPLETE."
+    },
+    "B": {
+      "execution_status": "COMPLETE",
+      "source_coverage_status": "DEGRADED",
+      "state_persistence_status": "DEGRADED",
+      "history_status": "WARMING_UP",
+      "note": "06:25 slot persisted exact 66-ID coverage, ledger read OK and final heartbeat. Three effective HEALTHY sources were UNAVAILABLE in the run: Calidad Pascual, Verisure and Haier Europe. Current recovery restored official visibility for Verisure to PARTIAL_COVERAGE; Pascual remains UNAVAILABLE and Haier could not be re-established in this recovery pass."
+    },
+    "C": {
+      "execution_status": "INCOMPLETE",
+      "source_coverage_status": "UNKNOWN_FOR_LATEST_SLOT",
+      "state_persistence_status": "UNKNOWN_FOR_LATEST_SLOT",
+      "history_status": "WARMING_UP",
+      "note": "06:45 task execution is visible in automation evidence, but state/runs/radar_c.json still ends at 00:43. Under current B/C heartbeat semantics, missing final heartbeat/66-ID map is an execution gap."
+    }
+  },
+  "missing_or_incomplete_radar_runs": [
+    {"radar":"A","slot":"2026-09-07T06:05:00+02:00","reason":"task ran but no persisted current legacy heartbeat with 66-ID coverage, reliable ledger read/classification and end-state evidence"},
+    {"radar":"C","slot":"2026-09-07T06:45:00+02:00","reason":"task ran but radar_c heartbeat remains stale at 00:43; final 66-ID coverage/end-heartbeat evidence missing"}
+  ],
+  "degraded_complete_radar_runs": [
+    {"radar":"B","slot":"2026-09-07T06:25:00+02:00","source_coverage_status":"DEGRADED","state_persistence_status":"DEGRADED"}
+  ],
+  "recovery_coverage_by_employer": {
+    "MAD-B-016": {"employer":"Calidad Pascual","source_radar":"B","source_slot":"2026-09-07T06:25:00+02:00","prior_visibility":"UNAVAILABLE","recovery_result":"STILL_UNAVAILABLE","recovered_visibility":"UNAVAILABLE","effective_route":"VeloraHR listing + exact-site official vacancy recovery","checked_at":"2026-09-07T07:56:00+02:00","note":"No reliable current official vacancy inventory recovered. Prior snapshot preserved."},
+    "MAD-B-022": {"employer":"Verisure","source_radar":"B","source_slot":"2026-09-07T06:25:00+02:00","prior_visibility":"UNAVAILABLE","recovery_result":"OFFICIAL_SITE_RECOVERED_PARTIAL","recovered_visibility":"PARTIAL_COVERAGE","effective_route":"current Verisure Spain careers site and official jobs navigation","checked_at":"2026-09-07T07:55:00+02:00","note":"Current official Spain careers pages are reachable and expose central-services/jobs navigation, but a complete authoritative Madrid inventory count was not reconstructed."},
+    "MAD-B-025": {"employer":"Haier Europe","source_radar":"B","source_slot":"2026-09-07T06:25:00+02:00","prior_visibility":"UNAVAILABLE","recovery_result":"STILL_UNAVAILABLE_THIS_PASS","recovered_visibility":"UNAVAILABLE","effective_route":"Haier Europe careers/search-jobs + official Workday context","checked_at":"2026-09-07T07:56:00+02:00","note":"Current official recruitment ownership remains established, but no reliable current Madrid vacancy inventory was recovered in this pass. Prior snapshot preserved."}
+  },
+  "ledger_repair_by_delta": [
+    {"source_radar":"B","source_slot":"2026-09-07T06:25:00+02:00","employer_id":"MAD-B-037","requisition_key":"Imperial Brands / Altadis|SE00683","result":"STILL_DEGRADED","note":"Live official Madrid role SE00683 re-verified. Old/non-alert-critical. Safe ledger insertion remains pending."},
+    {"source_radar":"A","source_slot":"pre-cutover/backfill","employer_id":"MAD-A-032","requisition_key":"Coca-Cola Europacific Partners|111499","result":"STILL_DEGRADED","note":"Live official CCEP role re-verified with explicit posting date 2026-07-23. Old noncritical backfill. Crawl/index dates ignored."}
+  ],
+  "unresolved_ledger_deltas": [
+    {"employer_id":"MAD-B-037","requisition_key":"Imperial Brands / Altadis|SE00683","state_persistence_status":"DEGRADED","alert_relevance":"NON_ALERT_CRITICAL_OLD_ROLE"},
+    {"employer_id":"MAD-A-032","requisition_key":"Coca-Cola Europacific Partners|111499","state_persistence_status":"DEGRADED","alert_relevance":"NON_ALERT_CRITICAL_OLD_ROLE"}
+  ],
+  "unresolved_coverage": [
+    {"id":"RADAR-A-20260907T060500+0200","status":"EXECUTION_GAP","note":"Latest pre-cutover A execution cannot be certified from persisted evidence"},
+    {"id":"RADAR-C-20260907T064500+0200","status":"EXECUTION_GAP","note":"Latest C execution has no current final heartbeat/66-ID map"},
+    {"id":"MAD-B-016","employer":"Calidad Pascual","effective_health":"HEALTHY","status":"UNAVAILABLE"},
+    {"id":"MAD-B-025","employer":"Haier Europe","effective_health":"HEALTHY","status":"UNAVAILABLE_THIS_RECOVERY"}
+  ],
+  "ledger_read": {"status":"OK","sha_at_start":"ab4a069198dde2971dbeb28394e725e9697978d0"},
+  "ledger_write": {"status":"DEGRADED","note":"Two verified old/non-alert-critical backfills remain pending. No CRITICAL alert-state inconsistency."},
   "qualifying_catchup_roles": 0,
-  "alerts_sent": 0,
+  "alerts_sent": 1,
+  "health_incident": false,
   "recent_runs": [
     {"started_at":"2026-09-06T19:50:25+02:00","completed_at":"2026-09-06T20:01:00+02:00","run_status":"COMPLETE","history_status":"WARMING_UP","effective_healthy_unavailable":1,"qualifying_catchup_roles":0,"alerts_sent":0},
-    {"started_at":"2026-09-07T01:48:58+02:00","completed_at":"2026-09-07T01:56:00+02:00","run_status":"INCOMPLETE","history_status":"WARMING_UP","effective_healthy_unavailable":1,"qualifying_catchup_roles":0,"alerts_sent":1}
-  ]
+    {"started_at":"2026-09-07T01:48:58+02:00","completed_at":"2026-09-07T01:56:00+02:00","run_status":"INCOMPLETE","history_status":"WARMING_UP","effective_healthy_unavailable":1,"qualifying_catchup_roles":0,"alerts_sent":1},
+    {"started_at":"2026-09-07T07:47:55+02:00","completed_at":"2026-09-07T07:58:00+02:00","run_status":"INCOMPLETE","history_status":"WARMING_UP","effective_healthy_unavailable":2,"qualifying_catchup_roles":0,"alerts_sent":1}
+  ],
+  "notes": "Warning is driven by unresolved A/C execution evidence, not source-health threshold. B is execution COMPLETE but source coverage DEGRADED. Current effective HEALTHY unresolved count after recovery is 2, below threshold 4. No qualifying <=48h catch-up role found."
 }
