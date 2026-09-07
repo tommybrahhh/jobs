@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "purpose": "Radar B verified route hotfixes applied after config/route_patches.json.",
+  "verified_at": "2026-09-07",
+  "precedence": "For matching B employer IDs, these fields override config/route_patches.json and config/routes_b.json.",
+  "hotfixes": {
+    "MAD-B-016": {
+      "employer": "Calidad Pascual",
+      "primary": "https://pascual.career.velorahr.com/calidad-pascual-248",
+      "secondary": [
+        "https://www.calidadpascual.com/contacto/",
+        "Exact-site live official pascual.career.velorahr.com vacancy/role pages"
+      ],
+      "health": "HEALTHY",
+      "route_class": "DIRECT_VELORAHR_CURRENT_INVENTORY",
+      "check_mode": "VELORAHR_LISTING_FIRST + MADRID_FILTER + EXACT_SITE_ROLE_RECOVERY + CORPORATE_PORTAL_OWNERSHIP_CONFIRMATION",
+      "reason": "The live VeloraHR site currently exposes Pascual open vacancies directly, including Madrid roles, and Pascual's own corporate site links to that portal. A transient request failure should retry this direct inventory before declaring unavailability."
+    },
+    "MAD-B-025": {
+      "employer": "Haier Europe",
+      "primary": "https://www.haier-europe.com/es_ES/pages/trabaja-en-haier",
+      "secondary": [
+        "Exact-site official haier-europe.com Spain careers vacancy discovery"
+      ],
+      "health": "HEALTHY",
+      "route_class": "DIRECT_SPAIN_CORPORATE_CAREERS_INVENTORY",
+      "check_mode": "SPAIN_CAREERS_PAGE_FIRST + MADRID_ROLE_ENUMERATION + LIVE_OFFICIAL_ROLE_VERIFY",
+      "reason": "Haier Spain currently exposes a readable official vacancies section on its own site, including Madrid jobs. The Spain corporate careers page is a better primary than a generic/dynamic upstream route."
+    },
+    "MAD-B-034": {
+      "employer": "Sephora España",
+      "primary": "https://jobs.sephora.com/Spain/go/Apply-in-Spain-%28es_ES%29/8364100/",
+      "secondary": [
+        "https://jobs.sephora.com/",
+        "Exact official jobs.sephora.com Spain role pages"
+      ],
+      "health": "HEALTHY",
+      "route_class": "SPAIN_SPECIFIC_SUCCESSFACTORS_INVENTORY",
+      "check_mode": "SPAIN_LISTING_FIRST + MADRID_FILTER + LISTING_DATE + OFFICIAL_ROLE_PAGE_VERIFY",
+      "reason": "Sephora's Spain-specific official job listing is currently readable and exposes current titles, locations and dates. Use it directly instead of treating an upstream shell as unavailable."
+    },
+    "MAD-B-036": {
+      "employer": "Barilla",
+      "primary": "https://jobs.barillagroup.com/",
+      "secondary": [
+        "https://www.barillagroup.com/en/careers/",
+        "Exact official jobs.barillagroup.com role/category pages"
+      ],
+      "health": "HEALTHY",
+      "route_class": "DIRECT_SUCCESSFACTORS_GLOBAL_INVENTORY",
+      "check_mode": "GLOBAL_JOB_SEARCH + SPAIN_MADRID_FILTER + POSTING_DATE + OFFICIAL_ROLE_PAGE_VERIFY",
+      "reason": "Barilla's current official job portal is readable and exposes dated live job inventory and search/filter functionality. A failure on a stale or indirect route should not count as a source outage."
+    },
+    "MAD-B-054": {
+      "employer": "Clarins España",
+      "primary": "https://www.groupeclarins.com/es/ofertas-de-trabajo/",
+      "secondary": [
+        "https://careers.groupeclarins.com/",
+        "https://www.clarins.es/jobs-landing.html",
+        "Exact official Groupe Clarins job pages"
+      ],
+      "health": "HEALTHY",
+      "route_class": "CURRENT_GROUPE_CLARINS_JOB_INVENTORY",
+      "check_mode": "OFFICIAL_JOB_OFFERS_FIRST + SPAIN_MARKET_FILTER + MADRID_FILTER + ROLE_VERIFY",
+      "reason": "Groupe Clarins currently exposes a readable official job-offers inventory and Spain corporate careers routes. Use the current group careers inventory instead of a stale/unreadable route."
+    }
+  }
+}
