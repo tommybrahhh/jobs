@@ -1,6 +1,6 @@
 {
-  "schema_version": 5,
-  "purpose": "Reliable per-slot run evidence with one final GitHub write, no aggregate heartbeat rewrites, and no automation self-disabling on persistence failures.",
+  "schema_version": 6,
+  "purpose": "Reliable per-slot run evidence with one final GitHub write, separate scan/evidence semantics, priority recovery of missing receipts, and no automation self-disabling.",
   "radars": {
     "A": {"cutover":"2026-09-07T09:05:00+02:00","schedule_minutes":"every 3 hours at :05 Europe/Madrid","receipt_directory":"state/run_receipts/radar_a","receipt_filename_format":"YYYYMMDDTHHMMSS+ZZZZ.json","legacy_heartbeat":"state/runs/radar_a.json","legacy_heartbeat_role_after_cutover":"legacy_read_only"},
     "B": {"cutover":"2026-09-07T09:25:00+02:00","schedule_minutes":"every 3 hours at :25 Europe/Madrid","receipt_directory":"state/run_receipts/radar_b","receipt_filename_format":"YYYYMMDDTHHMMSS+ZZZZ.json","legacy_heartbeat":"state/runs/radar_b.json","legacy_heartbeat_role_after_cutover":"legacy_read_only"},
@@ -9,48 +9,54 @@
   "safety_net": {"cutover":"2026-09-07T13:50:00+02:00","schedule_minutes":"every 6 hours at :50 Europe/Madrid","receipt_directory":"state/run_receipts/safety_net","receipt_filename_format":"YYYYMMDDTHHMMSS+ZZZZ.json","legacy_heartbeat":"state/runs/safety_net.json","legacy_heartbeat_role_after_cutover":"legacy_read_only"},
   "daily_audit": {"cutover":"2026-09-08T03:30:00+02:00","schedule_minutes":"daily at 03:30 Europe/Madrid","receipt_directory":"state/run_receipts/daily_audit","receipt_filename_format":"YYYYMMDDTHHMMSS+ZZZZ.json","legacy_heartbeat":"state/runs/daily_audit.json","legacy_heartbeat_role_after_cutover":"legacy_read_only"},
   "receipt_authority": {
-    "post_cutover": "The deterministic final per-slot receipt is authoritative run evidence. Legacy aggregate heartbeat files are not completeness authorities after cutover.",
+    "post_cutover": "The deterministic final per-slot receipt is authoritative persisted run evidence. Legacy aggregate heartbeat files are not completeness authorities after cutover.",
     "write_mode": "FINAL_ONLY_IMMUTABLE_PER_SLOT",
     "required_start_write": false,
-    "required_final_states": ["COMPLETE", "INCOMPLETE"],
     "full_employer_coverage_in_final_receipt": true,
     "retain_history": "History is the set of individual final receipt files. Never reconstruct or rewrite prior receipts to append a new run."
   },
   "write_protocol": [
-    "Derive the nominal scheduled slot in Europe/Madrid and deterministic receipt path before scanning, but do not write a RUNNING receipt.",
-    "Perform the scan, coverage classification and ledger read/classification first.",
-    "At end write the complete final receipt in one GitHub operation. If the deterministic path does not exist, create it. If it already exists from an idempotent retry, fetch it and replace only that same slot using its current SHA.",
-    "If the final write fails, retry once. Do not switch back to aggregate heartbeat history and do not invent a receipt.",
-    "A receipt-write failure is receipt_persistence_status=FAILED. It does not retroactively mean the employer scan did not run.",
-    "Never disable, pause, delete or change the schedule of an automation because of receipt, ledger, config, source or GitHub write failures. Only an explicit user action may disable a radar/watchdog/audit."
+    "Derive the nominal Europe/Madrid slot and deterministic receipt path before scanning, but do not write RUNNING.",
+    "Perform scan, coverage classification and ledger read/classification first.",
+    "At end write one complete final receipt. If path exists from an idempotent retry, fetch/update only that same slot with its current SHA.",
+    "If final write fails, retry once. Never revert to aggregate heartbeat writes and never invent evidence.",
+    "Receipt-write failure is receipt_persistence_status=FAILED and does not retroactively mean the scan did not run.",
+    "Never disable, pause, delete or change an automation schedule because of receipt, ledger, config, source or GitHub failures."
   ],
   "status_dimensions": {
     "scan_status": ["COMPLETE", "INCOMPLETE"],
     "receipt_persistence_status": ["OK", "FAILED"],
+    "evidence_gap_status": ["CLEAR", "RECOVERED", "UNRESOLVED"],
+    "gap_resolution_status": ["CLEAR", "PARTIAL", "UNRESOLVED"],
     "source_coverage_status": ["FULL", "DEGRADED"],
     "state_persistence_status": ["OK", "DEGRADED", "CRITICAL"],
     "backfill_status": ["CLEAR", "PENDING_NONCRITICAL", "DEGRADED"],
     "history_status": ["WARMING_UP", "READY"]
   },
   "completion_semantics": {
-    "scan_complete_requires": ["valid configuration","exact configured employer-ID coverage for radars/daily audit or completed watchdog checks for Safety Net","reliable ledger read/classification"],
-    "receipt_persistence_is_separate": "A scan may be COMPLETE with receipt_persistence_status=FAILED. Safety Net treats the missing receipt as an evidence/persistence gap and performs recovery after grace.",
+    "radar_scan_complete_requires": ["valid configuration","exact configured employer-ID coverage","reliable ledger read/classification"],
+    "safety_scan_complete_requires": ["valid configuration","expected slot checks completed","required recovery attempts executed according to priority","reliable ledger read/classification","Safety final receipt successfully persisted or separately marked receipt_persistence_status=FAILED"],
+    "missing_radar_receipt_is_not_execution_failure_when_scan_observed": true,
+    "rule": "If scheduler/task evidence proves a radar scan ran but its receipt is missing, classify RECEIPT_EVIDENCE_GAP, not execution gap. Safety itself may be scan_status=COMPLETE while gap_resolution_status is PARTIAL or UNRESOLVED.",
     "does_not_require": ["updating a legacy aggregate heartbeat","a start-of-run GitHub write","having 12 historical runs","rewriting aggregate history","successful persistence of non-alert-critical ledger backfills"]
   },
   "missing_receipt_recovery": {
     "grace_minutes_radars": 45,
-    "safety_action": "If a post-cutover final receipt is missing after grace, record RECEIPT_PERSISTENCE_GAP and recover the affected radar. If exact employer coverage cannot be reconstructed, re-scan the full configured 66 with up to 48h lookback.",
-    "warning": "Use RECEIPT PERSISTENCE WARNING for a scan known to have run but whose final receipt could not be written. Do not label it a source-health failure and do not disable the radar.",
-    "after_successful_recovery": "Record the gap as recovered evidence uncertainty so it is not re-warned forever, while preserving that the original final receipt was missing."
+    "classification_when_scan_observed": "RECEIPT_EVIDENCE_GAP",
+    "classification_when_scan_not_observed": "EXECUTION_GAP",
+    "lookback_hours": 72,
+    "priority": "HIGHEST",
+    "priority_rule": "When any current RECEIPT_EVIDENCE_GAP exists, defer noncritical ledger backfills and routine source-health recoveries until all such gaps have received the fullest feasible recovery in the current Safety pass.",
+    "recovery_action": "If exact employer coverage cannot be reconstructed from surviving evidence, re-scan the full configured 66 for that radar with up to 72h lookback. Search for qualifying Madrid roles first, then complete the lossless 66-ID recovery map as far as technically possible.",
+    "multiple_gap_rule": "For multiple current evidence gaps, process all affected radars before noncritical work. If full lossless reconstruction cannot finish, persist which employer IDs were recovered and which remain unresolved; do not collapse the entire radar to a generic unresolved range.",
+    "after_successful_recovery": "Record evidence_gap_status=RECOVERED and preserve that the original receipt was missing. Do not repeatedly warn the same recovered gap.",
+    "warning": "Use EVIDENCE RECOVERY WARNING when a scan is known to have run but its final receipt is missing and recovery remains unresolved after priority recovery. Use WATCHDOG/COVERAGE WARNING only for true current execution/control gaps."
   },
-  "automation_liveness": {
-    "self_disable_allowed": false,
-    "rule": "All Madrid radar, Safety Net and Daily Audit automations must remain enabled across transient GitHub/source/state failures. Never call disable/pause on themselves."
-  },
+  "automation_liveness": {"self_disable_allowed":false,"rule":"All Madrid radar, Safety Net and Daily Audit automations remain enabled across transient failures. Only explicit user action may disable them."},
   "ledger_backfill_policy": {
     "fresh_radars_immediate_write_required_for": ["qualifying fresh new requisition that is or will be alerted","Alerted=true persistence for a qualifying fresh alert","material state change needed to prevent immediate duplicate-alert inconsistency"],
     "do_not_require_immediate_write_for": ["newly observed requisition already outside the radar freshness window","old nonqualifying inventory discovered during a scan","canonical URL correction with no alert consequence"],
-    "noncritical_handling": "Store as ledger_backfill_candidates for Safety Net/Daily Audit. Their mere presence does not make scan_status INCOMPLETE, does not trigger COVERAGE WARNING, and does not by itself set state_persistence_status=DEGRADED.",
-    "critical_write_failure": "Use state_persistence_status=CRITICAL and LEDGER STATE WARNING when fresh alert/new requisition/Alerted state cannot be safely persisted and immediate dedup/alert consistency is at risk."
+    "noncritical_handling": "Store as ledger_backfill_candidates. Pending noncritical backfills are lower priority than current evidence-gap recovery and do not make scan_status INCOMPLETE.",
+    "critical_write_failure": "Use state_persistence_status=CRITICAL and LEDGER STATE WARNING only when fresh alert/new requisition/Alerted state cannot be safely persisted and immediate dedup/alert consistency is at risk."
   }
 }
