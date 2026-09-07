@@ -1,5 +1,5 @@
 {
-  "schema_version": 2,
+  "schema_version": 3,
   "purpose": "Avoid large mutable heartbeat rewrites by storing one authoritative receipt per scheduled run.",
   "radars": {
     "A": {
@@ -17,10 +17,26 @@
       "receipt_filename_format": "YYYYMMDDTHHMMSS+ZZZZ.json",
       "legacy_heartbeat": "state/runs/radar_b.json",
       "legacy_heartbeat_role_after_cutover": "legacy_read_only"
+    },
+    "C": {
+      "cutover": "2026-09-07T09:45:00+02:00",
+      "schedule_minutes": "every 3 hours at :45 Europe/Madrid",
+      "receipt_directory": "state/run_receipts/radar_c",
+      "receipt_filename_format": "YYYYMMDDTHHMMSS+ZZZZ.json",
+      "legacy_heartbeat": "state/runs/radar_c.json",
+      "legacy_heartbeat_role_after_cutover": "legacy_read_only"
     }
   },
+  "safety_net": {
+    "cutover": "2026-09-07T13:50:00+02:00",
+    "schedule_minutes": "every 6 hours at :50 Europe/Madrid",
+    "receipt_directory": "state/run_receipts/safety_net",
+    "receipt_filename_format": "YYYYMMDDTHHMMSS+ZZZZ.json",
+    "legacy_heartbeat": "state/runs/safety_net.json",
+    "legacy_heartbeat_role_after_cutover": "legacy_read_only"
+  },
   "receipt_authority": {
-    "post_cutover": "The deterministic per-slot receipt is the authoritative execution and employer-coverage record. The legacy aggregate heartbeat is not required for COMPLETE status.",
+    "post_cutover": "The deterministic per-slot receipt is the authoritative execution and coverage record. The legacy aggregate heartbeat is not required for COMPLETE status.",
     "required_start_state": "RUNNING",
     "required_final_states": ["COMPLETE", "INCOMPLETE"],
     "full_employer_coverage_in_final_receipt": true,
@@ -37,15 +53,16 @@
   "completion_semantics": {
     "complete_requires": [
       "valid configuration",
-      "exact configured employer-ID coverage",
+      "exact configured employer-ID coverage for radars, or completed watchdog checks for Safety Net",
       "reliable ledger read/classification",
       "successful final per-slot receipt write"
     ],
     "does_not_require": [
-      "updating the legacy aggregate heartbeat",
+      "updating a legacy aggregate heartbeat",
       "having 12 historical runs",
       "rewriting or preserving an aggregate history array",
-      "successful persistence of non-alert-critical ledger backfills"
+      "successful persistence of non-alert-critical ledger backfills",
+      "re-warning about acknowledged pre-cutover architecture gaps after recovery is exhausted"
     ]
   },
   "ledger_backfill_policy": {
