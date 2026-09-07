@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "radar": "C",
+  "slot": "2026-09-07T09:45:00+02:00",
+  "run_status": "RUNNING",
+  "started_at": "2026-09-07T09:45:29+02:00",
+  "config_status": "VALID",
+  "config_shas": {
+    "employers_sha": "540e9be6619ebd3fcb85cb95dbfc416f42fe5943",
+    "sources_sha": "517d2154c28f9478f86df42beab0dc53dad18962",
+    "routes_c_sha": "298772c9528375a586b5ed04a067620bc3debd80",
+    "route_patches_sha": "9bac7b0255ba279362548a044faced0da70cffe3",
+    "route_hotfixes_ac_sha": "b78fdea22cbb85e3c6024e3caefe25ad4d535658",
+    "routing_policy_sha": "ffb3b1e8a8755a7a1f8d3b6d8f440c86628f996b",
+    "inventory_visibility_policy_sha": "63c385a03564024ef6f4860564f5594d23a6ee0f",
+    "run_receipt_policy_sha": "5ce4a9b0a788532ec4c71708970871c1fc11eb40"
+  },
+  "ledger_read_status": "OK",
+  "ledger_sha_at_start": "ab4a069198dde2971dbeb28394e725e9697978d0",
+  "employer_coverage": {}
+}
