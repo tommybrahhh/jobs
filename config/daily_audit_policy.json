@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "purpose": "Make the Daily Full Inventory Audit prove inventory completeness where technically possible instead of defaulting most readable sources to PARTIAL_COVERAGE.",
+  "mode": "FULL_INVENTORY_RECONCILIATION",
+  "visibility_rules": {
+    "healthy_complete_capable_source": "If the effective source is HEALTHY and exposes a direct current listing/search/inventory, the audit must attempt to enumerate the complete configured Madrid/Spain scope before final classification. Do not stop at PARTIAL_COVERAGE merely because a lightweight pass did not capture a count.",
+    "checked_zero": "Use CHECKED_ZERO only after authoritative complete current inventory for the configured scope is proven and observed count is exactly 0.",
+    "checked_with_inventory": "Use CHECKED_WITH_INVENTORY only after authoritative complete current inventory for the configured scope is proven and observed count is >=1.",
+    "structural_partial": "Use PARTIAL_COVERAGE as an expected baseline when effective configured health is PARTIAL, WEAK or BLOCKED and current official visibility exists but completeness is structurally not provable.",
+    "runtime_partial_on_healthy": "If an effective HEALTHY source cannot be fully enumerated after its configured primary and recovery despite some official visibility, classify PARTIAL_COVERAGE with limitation_type=RUNTIME_PARTIAL_ON_HEALTHY. This is a material audit limitation and should be retried exactly, not silently treated as normal baseline.",
+    "unavailable": "Use UNAVAILABLE only when no reliable current official inventory visibility remains after configured recovery. Preserve prior snapshot and do not infer zero or close roles by absence."
+  },
+  "required_employer_fields": [
+    "inventory_visibility",
+    "inventory_item_count_observed",
+    "inventory_scope_note",
+    "limitation_type",
+    "inventory_completeness_proven"
+  ],
+  "limitation_types": [
+    "NONE",
+    "STRUCTURAL_PARTIAL",
+    "RUNTIME_PARTIAL_ON_HEALTHY",
+    "UNAVAILABLE_AFTER_RECOVERY"
+  ],
+  "receipt_rollup": {
+    "required_counts": [
+      "checked_zero",
+      "checked_with_inventory",
+      "structural_partial",
+      "runtime_partial_on_healthy",
+      "unavailable"
+    ],
+    "required_id_lists": [
+      "runtime_partial_on_healthy_ids",
+      "unavailable_ids"
+    ]
+  },
+  "state_persistence_semantics": {
+    "noncritical_backfill_only": "If the only outstanding work is old/nonfresh/non-alert-critical ledger backfill candidates, keep state_persistence_status=OK and set backfill_status=PENDING_NONCRITICAL.",
+    "degraded": "Use state_persistence_status=DEGRADED only when a required current material reconciliation write failed but no alert-critical consistency risk exists.",
+    "critical": "Use state_persistence_status=CRITICAL only when fresh alert/new requisition/Alerted state cannot be safely persisted and near-term duplicate-alert consistency is at risk."
+  }
+}
