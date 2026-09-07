@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "purpose": "Avoid large mutable heartbeat rewrites by storing one authoritative receipt per scheduled run.",
+  "radars": {
+    "A": {
+      "cutover": "2026-09-07T09:05:00+02:00",
+      "schedule_minutes": "every 3 hours at :05 Europe/Madrid",
+      "receipt_directory": "state/run_receipts/radar_a",
+      "receipt_filename_format": "YYYYMMDDTHHMMSS+ZZZZ.json",
+      "legacy_heartbeat": "state/runs/radar_a.json",
+      "legacy_heartbeat_role_after_cutover": "legacy_read_only"
+    }
+  },
+  "receipt_authority": {
+    "post_cutover": "The deterministic per-slot receipt is the authoritative execution and employer-coverage record. The legacy aggregate heartbeat is not required for COMPLETE status.",
+    "required_start_state": "RUNNING",
+    "required_final_states": ["COMPLETE", "INCOMPLETE"],
+    "full_employer_coverage_in_final_receipt": true,
+    "retain_history": "History is the set of individual receipt files; never reconstruct or rewrite prior receipts merely to append a new run."
+  },
+  "write_protocol": [
+    "Derive the nominal scheduled slot in Europe/Madrid and deterministic receipt path before scanning.",
+    "At start create only that slot receipt with RUNNING and config SHAs. If the file already exists, fetch it and update only that same slot using its current blob SHA.",
+    "At end fetch that same receipt again to obtain its latest blob SHA, merge final results for that slot only, and replace it.",
+    "Never use the start-write SHA for the end write.",
+    "On an end-write SHA conflict, refetch that same receipt, merge this run's final data, and retry once.",
+    "Do not read or rewrite prior receipt files in order to complete the current run."
+  ],
+  "completion_semantics": {
+    "complete_requires": [
+      "valid configuration",
+      "exact configured employer-ID coverage",
+      "reliable ledger read/classification",
+      "successful final per-slot receipt write"
+    ],
+    "does_not_require": [
+      "updating the legacy aggregate heartbeat",
+      "having 12 historical runs",
+      "rewriting or preserving an aggregate history array",
+      "successful persistence of non-alert-critical ledger backfills"
+    ]
+  },
+  "ledger_backfill_policy": {
+    "fresh_radars_immediate_write_required_for": [
+      "qualifying fresh new requisition that is or will be alerted",
+      "Alerted=true persistence for a qualifying fresh alert",
+      "a material state change needed to prevent immediate duplicate-alert inconsistency"
+    ],
+    "do_not_require_immediate_write_for": [
+      "newly observed requisition already outside the radar freshness window",
+      "old nonqualifying inventory discovered during a scan",
+      "canonical URL correction with no alert consequence"
+    ],
+    "noncritical_handling": "Store these as ledger_backfill_candidates in the per-run receipt for Safety Net/Daily Audit reconciliation. They do not make run_status INCOMPLETE and do not trigger RADAR COVERAGE WARNING.",
+    "critical_write_failure": "Use state_persistence_status=CRITICAL and LEDGER STATE WARNING, while keeping execution status separate if scan/coverage/receipt completion succeeded."
+  }
+}
