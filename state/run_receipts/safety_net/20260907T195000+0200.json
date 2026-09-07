@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "nominal_slot": "2026-09-07T19:50:00+02:00",
+  "completed_at": "2026-09-07T19:50:00+02:00",
+  "scan_status": "COMPLETE",
+  "receipt_persistence_status": "OK",
+  "evidence_gap_status": "CLEAR",
+  "gap_resolution_status": "CLEAR",
+  "source_coverage_status": "DEGRADED",
+  "state_persistence_status": "OK",
+  "backfill_status": "PENDING_NONCRITICAL",
+  "history_status": "WARMING_UP",
+  "config_status": "VALID",
+  "config_shas": {
+    "employers_sha": "540e9be6619ebd3fcb85cb95dbfc416f42fe5943",
+    "sources_sha": "517d2154c28f9478f86df42beab0dc53dad18962",
+    "routes_a_sha": "d2134622a530c82019a2fe29e160500e0bdbb770",
+    "routes_b_sha": "1123965935c0991a4ce0d5f5f37ee343af4260f9",
+    "routes_c_sha": "298772c9528375a586b5ed04a067620bc3debd80",
+    "route_patches_sha": "9bac7b0255ba279362548a044faced0da70cffe3",
+    "route_hotfixes_ac_sha": "b78fdea22cbb85e3c6024e3caefe25ad4d535658",
+    "route_hotfixes_b_sha": "b24e0b28ce3f396f4013ba4cfa7d137bf8a23b22",
+    "routing_policy_sha": "ffb3b1e8a8755a7a1f8d3b6d8f440c86628f996b",
+    "inventory_visibility_policy_sha": "63c385a03564024ef6f4860564f5594d23a6ee0f",
+    "run_receipt_policy_sha": "ea6e59f5430d125a2fd8049aeef10369b6c36caa",
+    "watchdog_transition_policy_sha": "ef936b167539a18c28f411f7863d5b70bc4661b1",
+    "legacy_evidence_gaps_sha": "1124935513e05efc97037a737597011619b73558",
+    "ledger_sha_at_read": "ab4a069198dde2971dbeb28394e725e9697978d0"
+  },
+  "validation": {
+    "employers_total": 198,
+    "radar_counts": {"A":66,"B":66,"C":66},
+    "unique_ids": 198,
+    "unique_names": 198,
+    "valid": true
+  },
+  "expected_slot_findings": {
+    "radar_a": {"slot":"2026-09-07T18:05:00+02:00","receipt":"state/run_receipts/radar_a/20260907T180500+0200.json","scan_status":"COMPLETE","receipt_persistence_status":"OK","source_coverage_status":"DEGRADED","state_persistence_status":"OK"},
+    "radar_b": {"slot":"2026-09-07T18:25:00+02:00","receipt":"state/run_receipts/radar_b/20260907T182500+0200.json","scan_status":"COMPLETE","receipt_persistence_status":"OK","source_coverage_status":"DEGRADED","state_persistence_status":"OK"},
+    "radar_c": {"slot":"2026-09-07T18:45:00+02:00","receipt":"state/run_receipts/radar_c/20260907T184500+0200.json","scan_status":"COMPLETE","receipt_persistence_status":"OK","source_coverage_status":"DEGRADED","state_persistence_status":"OK"}
+  },
+  "current_execution_gaps": [],
+  "current_evidence_gaps": [],
+  "recovered_evidence_gaps": [],
+  "exact_unresolved_employer_ids": [],
+  "historical_uncertainty": [
+    "A 2026-09-07T00:05:00+02:00 HISTORICAL_ARCHITECTURE_GAP",
+    "B 2026-09-07T00:25:00+02:00 HISTORICAL_ARCHITECTURE_GAP",
+    "A 2026-09-07T06:05:00+02:00 HISTORICAL_ARCHITECTURE_GAP",
+    "C 2026-09-07T06:45:00+02:00 HISTORICAL_ARCHITECTURE_GAP"
+  ],
+  "source_recovery": {
+    "MAD-B-016": {"employer":"Calidad Pascual","prior_visibility":"UNAVAILABLE","effective_health":"HEALTHY","recovery_result":"UNAVAILABLE","recovered_visibility":"UNAVAILABLE","note":"Current exact-site recovery did not establish reliable live official inventory; prior snapshot preserved"},
+    "MAD-B-042": {"employer":"EssilorLuxottica","prior_visibility":"UNAVAILABLE","effective_health":"HEALTHY","recovery_result":"RECOVERED_PARTIAL","recovered_visibility":"PARTIAL_COVERAGE","note":"Current official Madrid role page recovered, dated 2026-08-25; no qualifying fresh target role established"}
+  },
+  "effective_healthy_sources_genuinely_unavailable_after_recovery": ["MAD-B-016"],
+  "source_health_incident": false,
+  "ledger_read_status": "OK",
+  "ledger_repairs": [],
+  "unresolved_ledger_deltas": [],
+  "noncritical_backfills_deferred": ["Haier Europe|REQ-24959","Imperial Brands / Altadis|SE00683"],
+  "qualifying_catchup_roles": [],
+  "alerts_sent": 0,
+  "notification_required": false
+}
