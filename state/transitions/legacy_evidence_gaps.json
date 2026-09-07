@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-09-07T08:37:00+02:00",
+  "purpose": "Audit known pre-cutover aggregate-heartbeat gaps without repeatedly treating them as current execution failures.",
+  "gaps": [
+    {
+      "radar": "A",
+      "scheduled_for": "2026-09-07T00:05:00+02:00",
+      "classification": "HISTORICAL_ARCHITECTURE_GAP",
+      "evidence_summary": "Automation ran, but the old aggregate radar_a.json did not persist a complete current-slot 66-ID end state.",
+      "recovery_status": "RECOVERY_ATTEMPTED_NO_QUALIFYING_ROLE_FOUND",
+      "current_warning": false,
+      "historical_uncertainty": true
+    },
+    {
+      "radar": "B",
+      "scheduled_for": "2026-09-07T00:25:00+02:00",
+      "classification": "HISTORICAL_ARCHITECTURE_GAP",
+      "evidence_summary": "Automation accounted for all 66 employers and read the ledger, but the old aggregate heartbeat did not persist the mandatory full employer_coverage object.",
+      "recovery_status": "RECOVERY_ATTEMPTED_NO_QUALIFYING_ROLE_FOUND",
+      "current_warning": false,
+      "historical_uncertainty": true
+    },
+    {
+      "radar": "A",
+      "scheduled_for": "2026-09-07T06:05:00+02:00",
+      "classification": "HISTORICAL_ARCHITECTURE_GAP",
+      "evidence_summary": "Automation ran, but the old aggregate heartbeat did not persist the required current-slot final state.",
+      "recovery_status": "RECOVERY_ATTEMPTED_NO_QUALIFYING_ROLE_FOUND",
+      "current_warning": false,
+      "historical_uncertainty": true
+    },
+    {
+      "radar": "C",
+      "scheduled_for": "2026-09-07T06:45:00+02:00",
+      "classification": "HISTORICAL_ARCHITECTURE_GAP",
+      "evidence_summary": "Automation ran, but radar_c.json remained on the prior stored run and did not persist the current-slot final heartbeat.",
+      "recovery_status": "RECOVERY_ATTEMPTED_NO_QUALIFYING_ROLE_FOUND",
+      "current_warning": false,
+      "historical_uncertainty": true
+    }
+  ],
+  "policy": "These records remain auditable and must be included as historical uncertainty in Daily Audit, but must not by themselves make future Safety Net runs INCOMPLETE or trigger repeated coverage warnings after the documented recovery attempt. Never claim 100% historical coverage for these intervals."
+}
