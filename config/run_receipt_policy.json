@@ -1,5 +1,5 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "purpose": "Avoid large mutable heartbeat rewrites by storing one authoritative receipt per scheduled run.",
   "radars": {
     "A": {
@@ -35,6 +35,14 @@
     "legacy_heartbeat": "state/runs/safety_net.json",
     "legacy_heartbeat_role_after_cutover": "legacy_read_only"
   },
+  "daily_audit": {
+    "cutover": "2026-09-08T03:30:00+02:00",
+    "schedule_minutes": "daily at 03:30 Europe/Madrid",
+    "receipt_directory": "state/run_receipts/daily_audit",
+    "receipt_filename_format": "YYYYMMDDTHHMMSS+ZZZZ.json",
+    "legacy_heartbeat": "state/runs/daily_audit.json",
+    "legacy_heartbeat_role_after_cutover": "legacy_read_only"
+  },
   "receipt_authority": {
     "post_cutover": "The deterministic per-slot receipt is the authoritative execution and coverage record. The legacy aggregate heartbeat is not required for COMPLETE status.",
     "required_start_state": "RUNNING",
@@ -53,7 +61,7 @@
   "completion_semantics": {
     "complete_requires": [
       "valid configuration",
-      "exact configured employer-ID coverage for radars, or completed watchdog checks for Safety Net",
+      "exact configured employer-ID coverage for radars/daily audit, or completed watchdog checks for Safety Net",
       "reliable ledger read/classification",
       "successful final per-slot receipt write"
     ],
@@ -76,7 +84,10 @@
       "old nonqualifying inventory discovered during a scan",
       "canonical URL correction with no alert consequence"
     ],
-    "noncritical_handling": "Store these as ledger_backfill_candidates in the per-run receipt for Safety Net/Daily Audit reconciliation. They do not make run_status INCOMPLETE and do not trigger RADAR COVERAGE WARNING.",
-    "critical_write_failure": "Use state_persistence_status=CRITICAL and LEDGER STATE WARNING, while keeping execution status separate if scan/coverage/receipt completion succeeded."
+    "noncritical_handling": "Store these as ledger_backfill_candidates in the per-run receipt for Safety Net/Daily Audit reconciliation. Their mere presence does not make run_status INCOMPLETE, does not trigger COVERAGE WARNING, and does not by itself set state_persistence_status=DEGRADED.",
+    "backfill_status_values": ["CLEAR", "PENDING_NONCRITICAL", "DEGRADED"],
+    "backfill_status_pending": "Use backfill_status=PENDING_NONCRITICAL when old/nonfresh/non-alert-critical candidates are waiting for later reconciliation but no required current-state write has failed.",
+    "state_persistence_degraded": "Use state_persistence_status=DEGRADED only when a required current material state write failed after reliable classification, without alert-critical consistency risk.",
+    "critical_write_failure": "Use state_persistence_status=CRITICAL and LEDGER STATE WARNING when fresh alert/new requisition/Alerted state cannot be safely persisted and immediate dedup/alert consistency is at risk."
   }
 }
