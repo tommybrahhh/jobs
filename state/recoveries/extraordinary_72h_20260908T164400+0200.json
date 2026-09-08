@@ -1,0 +1,259 @@
+{
+  "schema_version": 1,
+  "operation": "extraordinary_198_employer_72h_recovery",
+  "requested_by_user": true,
+  "architecture_frozen": true,
+  "architecture_freeze_started_at": "2026-09-08T16:44:00+02:00",
+  "started_at": "2026-09-08T16:44:00+02:00",
+  "completed_at": "2026-09-08T17:09:04+02:00",
+  "timezone": "Europe/Madrid",
+  "lookback_hours": 72,
+  "employer_universe": {
+    "source": "config/employers.json",
+    "expected": 198,
+    "queried": 198,
+    "radar_counts": {"A": 66, "B": 66, "C": 66},
+    "discovery_pass_complete": true
+  },
+  "method": {
+    "primary": "Current official employer careers/search/listing/role pages where discoverable, using current effective employer identity and Madrid scope.",
+    "secondary": "Fresh public web and employer LinkedIn discovery used to locate candidate role pages and supplement timing when official role pages are date-only or undated.",
+    "ledger_reconciliation": "Exact stable requisition IDs and canonical role URLs checked against state/requisitions.json.",
+    "important_limitation": "This recovery is a 198-employer discovery and candidate-validation sweep, not a lossless reconstruction of every dynamic or previously unavailable ATS at every historical instant. A role that appeared and disappeared without leaving any recoverable official, indexed or LinkedIn trace cannot be ruled out.",
+    "config_changes_made": false,
+    "automation_prompt_changes_made": false,
+    "route_changes_made": false
+  },
+  "baseline_from_daily_audit_20260908T033000": {
+    "checked_zero": 3,
+    "checked_with_inventory": 15,
+    "structural_partial": 34,
+    "runtime_partial_on_healthy": 133,
+    "unavailable": 13,
+    "source_config_review_required_after_freeze": true
+  },
+  "gaps_in_scope": [
+    {
+      "radar": "B",
+      "slot": "2026-09-07T21:25:00+02:00",
+      "original_classification": "EXECUTION_GAP",
+      "recovery_search_completed": true,
+      "closure_status": "UNRESOLVABLE_HISTORICAL_GAP",
+      "missed_role_proven_for_slot": false,
+      "note": "No persisted scan execution evidence exists for the original slot. The 72h recovery searched the current surviving employer universe, but cannot recreate a lossless historical inventory for that exact instant."
+    },
+    {
+      "radar": "C",
+      "slot": "2026-09-07T15:45:00+02:00",
+      "original_classification": "EXECUTION_GAP",
+      "recovery_search_completed": true,
+      "closure_status": "UNRESOLVABLE_HISTORICAL_GAP",
+      "missed_role_proven_for_slot": false,
+      "note": "No persisted scan execution evidence exists for the original slot; target-role recovery found no role that can be proven to have required an alert specifically in this slot, but lossless historical reconstruction is impossible."
+    },
+    {
+      "radar": "C",
+      "slot": "2026-09-07T21:45:00+02:00",
+      "original_classification": "EXECUTION_GAP",
+      "recovery_search_completed": true,
+      "closure_status": "UNRESOLVABLE_HISTORICAL_GAP",
+      "missed_role_proven_for_slot": false,
+      "note": "No persisted scan execution evidence exists for the original slot; target-role recovery found no role that can be proven to have required an alert specifically in this slot, but lossless historical reconstruction is impossible."
+    },
+    {
+      "radar": "A",
+      "slot": "2026-09-07T12:05:00+02:00",
+      "original_classification": "RECEIPT_EVIDENCE_GAP",
+      "scan_execution_observed": true,
+      "recovery_search_completed": true,
+      "closure_status": "UNRESOLVABLE_HISTORICAL_GAP",
+      "missed_role_proven_for_slot": false,
+      "note": "The scan ran but its lossless 66-ID receipt was never persisted. Current 72h recovery cannot prove the exact original 66-employer state."
+    },
+    {
+      "radar": "C",
+      "slot": "2026-09-07T12:45:00+02:00",
+      "original_classification": "RECEIPT_EVIDENCE_GAP",
+      "scan_execution_observed": true,
+      "recovery_search_completed": true,
+      "closure_status": "UNRESOLVABLE_HISTORICAL_GAP",
+      "missed_role_proven_for_slot": false,
+      "note": "The scan ran but its lossless 66-ID receipt was never persisted. Current 72h recovery cannot prove the exact original 66-employer state."
+    },
+    {
+      "radar": "C",
+      "slot": "2026-09-08T15:45:00+02:00",
+      "original_classification": "RECEIPT_EVIDENCE_GAP",
+      "scan_execution_observed": true,
+      "final_receipt_observed": false,
+      "recovery_search_completed": true,
+      "closure_status": "UNRESOLVABLE_HISTORICAL_GAP",
+      "missed_role_proven_for_slot": false,
+      "note": "Automation execution was observed but the deterministic receipt was absent after grace. Current C discovery did not surface a qualifying fresh role that can be tied to this slot, but the original exact 66-ID state is not recoverable."
+    }
+  ],
+  "high_priority_recovery_findings": [
+    {
+      "employer_id": "MAD-A-006",
+      "employer": "Johnson & Johnson MedTech",
+      "title": "Product Manager Trauma & Power Tools",
+      "requisition_id": "R-083592",
+      "canonical_official_url": "https://www.careers.jnj.com/en/jobs/r-083592/product-manager-trauma-power-tools/",
+      "location": "Madrid, Spain",
+      "official_posted_date": "2026-09-07",
+      "target_fit": "HIGH",
+      "seniority_evidence": "5+ years Marketing/Sales MedTech; product management and portfolio ownership required",
+      "function_fit": ["Product Management", "Marketing", "Go-To-Market", "Market Insights", "Pricing", "Portfolio Strategy"],
+      "ledger_exact_id_present_before_recovery": false,
+      "recovery_status": "RECOVERY_SURFACED_TARGET_ROLE",
+      "strict_missed_alert_status": "UNPROVEN",
+      "reason": "Official role is live and clearly in the 72h recovery window. Current LinkedIn timing is very recent but inconsistent across cached surfaces, so the exact original <=6h alert window cannot be reconstructed reliably.",
+      "action": "SURFACE_TO_USER_NOW_AND_RECONCILE_LEDGER"
+    },
+    {
+      "employer_id": "MAD-B-030",
+      "employer": "Cabify",
+      "title": "Fleet partnerships - Business Unit Director",
+      "requisition_id": "8651149002",
+      "canonical_official_url": "https://job-boards.greenhouse.io/cabify/jobs/8651149002",
+      "location": "Madrid",
+      "official_live": true,
+      "target_fit": "VERY_HIGH",
+      "seniority_evidence": "Business Unit Director; +7 years leading BU/country/franchise/P&L; owns strategy, partners and commercial/operations result",
+      "function_fit": ["Business Strategy", "Commercial Strategy", "Partnerships", "P&L", "Market Development"],
+      "ledger_exact_id_present_before_recovery": false,
+      "radar_b_20260908T1525_receipt_contains_id": false,
+      "recovery_status": "RECOVERY_SURFACED_TARGET_ROLE",
+      "strict_missed_alert_status": "PROBABLE_BUT_NOT_PROVEN",
+      "reason": "Official Cabify inventory is live and LinkedIn surfaces currently show the role as only a few hours old, but cached LinkedIn ages are not perfectly consistent. The 15:25 B receipt did not contain this stable ID.",
+      "action": "SURFACE_TO_USER_NOW_AND_RECONCILE_LEDGER"
+    },
+    {
+      "employer_id": "MAD-B-030",
+      "employer": "Cabify",
+      "title": "Operational Excellence Specialist",
+      "requisition_id": "8785165002",
+      "canonical_official_url": "https://cabify.careers/es/job/8785165002",
+      "location": "Madrid",
+      "official_live": true,
+      "official_board_label": "New",
+      "target_fit": "HIGH",
+      "seniority_evidence": "3-5 years in Continuous Improvement, Customer Experience, Operational Excellence, Process Consulting or Project Management",
+      "function_fit": ["Customer Experience", "Voice of Customer", "Operational Excellence", "Continuous Improvement"],
+      "ledger_exact_id_present_before_recovery": false,
+      "radar_b_20260908T1525_receipt_contains_id": false,
+      "recovery_status": "RECOVERY_SURFACED_TARGET_ROLE",
+      "strict_missed_alert_status": "PROBABLE_BUT_NOT_PROVEN",
+      "reason": "The current official Greenhouse/Cabify board marks the role as new, and current LinkedIn surfaces place it within hours. Historical timestamp consistency is insufficient to label a strict missed alert as proven.",
+      "action": "SURFACE_TO_USER_NOW_AND_RECONCILE_LEDGER"
+    }
+  ],
+  "other_validated_roles": [
+    {
+      "employer": "SC Johnson",
+      "requisition_id": "30853",
+      "title": "Associate Manager, Sales Account Management",
+      "classification": "CURRENT_UNDATED_ALREADY_CAPTURED_BY_RADAR_B",
+      "missed_alert": false,
+      "note": "Present in Radar B 2026-09-08 15:25 backfill candidates; freshness not established."
+    },
+    {
+      "employer": "Deoleo",
+      "requisition_id": "7539464",
+      "title": "Group Key Account Manager",
+      "classification": "CURRENT_UNDATED_ALREADY_CAPTURED_BY_RADAR_B",
+      "missed_alert": false,
+      "note": "Present in Radar B 2026-09-08 15:25 backfill candidates; freshness not established."
+    },
+    {
+      "employer": "BD",
+      "requisition_id": "R-550881",
+      "title": "Country Business Leader BD MDS, Iberia",
+      "classification": "LIVE_OLD",
+      "missed_alert": false,
+      "note": "Excellent target fit but employer/LinkedIn evidence shows approximately one month old."
+    },
+    {
+      "employer": "Stryker",
+      "requisition_id": "R566366",
+      "title": "Senior Manager Brand Marketing EMEA | Minimally Invasive Surgery Visualization",
+      "classification": "LIVE_OLDER_OR_REPOST",
+      "missed_alert": false,
+      "note": "Official role is live but independent LinkedIn crawl history establishes older presence; current short displayed ages are treated as repost/index noise."
+    },
+    {
+      "employer": "Stryker",
+      "requisition_id": "R566038",
+      "title": "Senior Manager Brand Marketing EMEA | Sports Medicine",
+      "classification": "LIVE_OLDER_OR_REPOST",
+      "missed_alert": false,
+      "note": "Official role is live but independent crawl history establishes older presence; current short displayed ages do not reset freshness."
+    },
+    {
+      "employer": "Align Technology",
+      "title": "Marketing Manager Iberia & Italy",
+      "classification": "REPOST_OLDER_THAN_72H",
+      "missed_alert": false
+    },
+    {
+      "employer": "Meliá Hotels International",
+      "requisition_id": "41378",
+      "title": "SALES MANAGER LUXURY MADRID",
+      "classification": "LIVE_OLDER_THAN_72H",
+      "missed_alert": false
+    },
+    {
+      "employer": "Expedia Group",
+      "requisition_id": "R-109410-1",
+      "title": "Sr. Manager, Commercial Incentives & Revenue Operations",
+      "official_posted_date": "2026-09-03",
+      "classification": "LIVE_OLD_ALREADY_KNOWN",
+      "missed_alert": false
+    },
+    {
+      "employer": "Civitatis",
+      "requisition_id": "8291813",
+      "title": "Affiliates & Partnerships Account Manager",
+      "classification": "LIVE_OLD_ALREADY_KNOWN",
+      "missed_alert": false
+    }
+  ],
+  "recovery_result": {
+    "proven_missed_alerts": 0,
+    "probable_but_not_proven_missed_alerts": 2,
+    "recovery_surfaced_high_priority_live_target_roles": 3,
+    "high_priority_roles_not_previously_present_by_exact_id_in_ledger": [
+      "Johnson & Johnson MedTech|R-083592",
+      "Cabify|8651149002",
+      "Cabify|8785165002"
+    ],
+    "conclusion": "No missed alert can be proven from surviving timestamp evidence. However, the extraordinary recovery surfaced three live, strongly matching Madrid roles whose stable IDs were absent from the ledger before recovery. Two Cabify roles are probable missed-alert candidates and the J&J role is a possible missed-alert candidate; all should be surfaced immediately rather than waiting for another radar cycle."
+  },
+  "ledger_reconciliation": {
+    "status": "PENDING_FOR_RECOVERY_SURFACED_IDS",
+    "reason": "The monolithic shared ledger was not rewritten during the architecture freeze/recovery pass. This report is the durable evidence record for the newly surfaced stable IDs until safe ledger reconciliation is performed.",
+    "pending_keys": [
+      "Johnson & Johnson MedTech|R-083592",
+      "Cabify|8651149002",
+      "Cabify|8785165002"
+    ]
+  },
+  "source_config_review_after_freeze": {
+    "status": "SOURCE_CONFIG_REVIEW_REQUIRED",
+    "do_not_apply_during_freeze": true,
+    "reason": "The Daily Audit classified 133 employers as RUNTIME_PARTIAL_ON_HEALTHY and 13 as UNAVAILABLE. The recovery found examples where current official inventory is actually readable (for example BD), confirming that source completeness expectations/routes need systematic review after the freeze rather than more ad-hoc changes now."
+  },
+  "stability_gate_next": {
+    "required_clean_cycles": 3,
+    "criteria": [
+      "Radar A 66/66 with final receipt",
+      "Radar B 66/66 with final receipt",
+      "Radar C 66/66 with final receipt",
+      "Safety Net final receipt",
+      "no current execution gap",
+      "no current evidence gap",
+      "ledger read OK",
+      "no CRITICAL persistence state"
+    ]
+  }
+}
