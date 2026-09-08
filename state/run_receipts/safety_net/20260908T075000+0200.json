@@ -1,0 +1,52 @@
+{
+  "schema_version": 6,
+  "slot": "2026-09-08T07:50:00+02:00",
+  "completed_at": "2026-09-08T07:50:00+02:00",
+  "scan_status": "COMPLETE",
+  "receipt_persistence_status": "OK",
+  "evidence_gap_status": "UNRESOLVED",
+  "gap_resolution_status": "PARTIAL",
+  "source_coverage_status": "DEGRADED",
+  "state_persistence_status": "OK",
+  "backfill_status": "PENDING_NONCRITICAL",
+  "history_status": "WARMING_UP",
+  "config_status": "VALID_WITH_CURRENT_SHAS_AND_POLICY",
+  "config_shas": {
+    "employers": "540e9be6619ebd3fcb85cb95dbfc416f42fe5943",
+    "sources": "517d2154c28f9478f86df42beab0dc53dad18962",
+    "routes_a": "d2134622a530c82019a2fe29e160500e0bdbb770",
+    "routes_b": "1123965935c0991a4ce0d5f5f37ee343af4260f9",
+    "routes_c": "298772c9528375a586b5ed04a067620bc3debd80",
+    "route_patches": "9bac7b0255ba279362548a044faced0da70cffe3",
+    "route_hotfixes_ac": "b78fdea22cbb85e3c6024e3caefe25ad4d535658",
+    "route_hotfixes_b": "b24e0b28ce3f396f4013ba4cfa7d137bf8a23b22",
+    "routing_policy": "ffb3b1e8a8755a7a1f8d3b6d8f440c86628f996b",
+    "inventory_visibility_policy": "63c385a03564024ef6f4860564f5594d23a6ee0f",
+    "run_receipt_policy": "ea6e59f5430d125a2fd8049aeef10369b6c36caa",
+    "watchdog_transition_policy": "ef936b167539a18c28f411f7863d5b70bc4661b1",
+    "legacy_evidence_gaps": "1124935513e05efc97037a737597011619b73558"
+  },
+  "config_validation": {"employers":198,"A":66,"B":66,"C":66,"unique":198,"valid":true},
+  "ledger": {"read_status":"OK","classification_reliable":true,"write_status":"NOT_REQUIRED_FOR_ALERT_CONSISTENCY"},
+  "expected_slot_findings": {
+    "radar_a_0605": {"receipt":"PRESENT","scan_status":"COMPLETE","receipt_persistence_status":"OK","employers_accounted":66},
+    "radar_b_0625": {"receipt":"PRESENT","scan_status":"COMPLETE","receipt_persistence_status":"OK","employers_accounted":66},
+    "radar_c_0645": {"receipt":"MISSING_AFTER_GRACE","scheduler_scan_evidence":"OBSERVED","classification":"RECEIPT_EVIDENCE_GAP"}
+  },
+  "current_execution_gaps": [],
+  "current_evidence_gaps": [{"radar":"C","slot":"2026-09-08T06:45:00+02:00","classification":"RECEIPT_EVIDENCE_GAP","scan_observed":true,"receipt_missing":true,"recovery_status":"PARTIAL"}],
+  "recovered_evidence_gaps": [],
+  "recovery_coverage_by_employer": {
+    "MAD-C-034": {"employer":"Expedia Group","recovery_result":"OFFICIAL_ROLE_EVIDENCE_RECOVERED","recovered_visibility":"PARTIAL_COVERAGE","evidence":"Live official Madrid roles found; R-109410-1 dated 2026-09-03 and R-108873 dated 2026-08-17, both outside 72h"},
+    "MAD-C-046": {"employer":"ING Spain","recovery_result":"OFFICIAL_ROLE_EVIDENCE_RECOVERED","recovered_visibility":"PARTIAL_COVERAGE","evidence":"Live Madrid official role REQ-10121102 dated 2026-09-07 is an Intern/Trainee and excluded; no qualifying experienced role established"},
+    "MAD-C-048": {"employer":"Sanitas / Bupa","recovery_result":"OFFICIAL_INVENTORY_VISIBILITY_RECOVERED","recovered_visibility":"PARTIAL_COVERAGE","evidence":"Official Sanitas vacancy inventory reachable; sampled current Madrid results did not establish a qualifying experienced target role inside 72h"}
+  },
+  "exact_unresolved_employer_ids": ["MAD-C-001","MAD-C-002","MAD-C-003","MAD-C-004","MAD-C-005","MAD-C-006","MAD-C-007","MAD-C-008","MAD-C-009","MAD-C-010","MAD-C-011","MAD-C-012","MAD-C-013","MAD-C-014","MAD-C-015","MAD-C-016","MAD-C-017","MAD-C-018","MAD-C-019","MAD-C-020","MAD-C-021","MAD-C-022","MAD-C-023","MAD-C-024","MAD-C-025","MAD-C-026","MAD-C-027","MAD-C-028","MAD-C-029","MAD-C-030","MAD-C-031","MAD-C-032","MAD-C-033","MAD-C-035","MAD-C-036","MAD-C-037","MAD-C-038","MAD-C-039","MAD-C-040","MAD-C-041","MAD-C-042","MAD-C-043","MAD-C-044","MAD-C-045","MAD-C-047","MAD-C-049","MAD-C-050","MAD-C-051","MAD-C-052","MAD-C-053","MAD-C-054","MAD-C-055","MAD-C-056","MAD-C-057","MAD-C-058","MAD-C-059","MAD-C-060","MAD-C-061","MAD-C-062","MAD-C-063","MAD-C-064","MAD-C-065","MAD-C-066"],
+  "historical_uncertainty": ["A 2026-09-07T00:05+02:00","B 2026-09-07T00:25+02:00","A 2026-09-07T06:05+02:00","C 2026-09-07T06:45+02:00"],
+  "source_recovery": {"routine_health_retries_deferred":true,"reason":"Current Radar C receipt evidence gap had priority"},
+  "ledger_repairs": [],
+  "noncritical_backfills_deferred": true,
+  "qualifying_catchup_roles": [],
+  "alerts_sent": ["EVIDENCE_RECOVERY_WARNING"],
+  "notes": "Radar C scheduler/task evidence shows the 06:45 scan ran, but its deterministic final receipt is absent after grace. This is not an execution gap and not 66 source outages. Priority recovery established partial official evidence for three C employers and found no qualifying 72-hour catch-up among those recovered. Lossless 66-ID reconstruction remains unresolved for the exact IDs listed."
+}
