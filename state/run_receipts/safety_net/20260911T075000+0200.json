@@ -1,0 +1,121 @@
+{
+  "schema_version": 1,
+  "nominal_slot": "2026-09-11T07:50:00+02:00",
+  "completed_at": "2026-09-11T07:50:00+02:00",
+  "scan_status": "COMPLETE",
+  "receipt_persistence_status": "OK",
+  "evidence_gap_status": "CLEAR",
+  "gap_resolution_status": "PARTIAL",
+  "source_coverage_status": "DEGRADED",
+  "state_persistence_status": "OK",
+  "backfill_status": "PENDING_NONCRITICAL",
+  "history_status": "READY",
+  "config_status": "VALID",
+  "config_shas": {
+    "employers_sha": "540e9be6619ebd3fcb85cb95dbfc416f42fe5943",
+    "sources_sha": "517d2154c28f9478f86df42beab0dc53dad18962",
+    "routes_a_sha": "d2134622a530c82019a2fe29e160500e0bdbb770",
+    "routes_b_sha": "1123965935c0991a4ce0d5f5f37ee343af4260f9",
+    "routes_c_sha": "298772c9528375a586b5ed04a067620bc3debd80",
+    "route_patches_sha": "9bac7b0255ba279362548a044faced0da70cffe3",
+    "route_hotfixes_ac_sha": "b78fdea22cbb85e3c6024e3caefe25ad4d535658",
+    "route_hotfixes_b_sha": "b24e0b28ce3f396f4013ba4cfa7d137bf8a23b22",
+    "routing_policy_sha": "ffb3b1e8a8755a7a1f8d3b6d8f440c86628f996b",
+    "inventory_visibility_policy_sha": "63c385a03564024ef6f4860564f5594d23a6ee0f",
+    "run_receipt_policy_sha": "ea6e59f5430d125a2fd8049aeef10369b6c36caa",
+    "watchdog_transition_policy_sha": "ef936b167539a18c28f411f7863d5b70bc4661b1",
+    "legacy_evidence_gaps_sha": "1124935513e05efc97037a737597011619b73558"
+  },
+  "effective_route_precedence": {
+    "A_C": "route_hotfixes_ac > route_patches > base > routing_policy",
+    "B": "route_hotfixes_b > route_patches > base > routing_policy"
+  },
+  "ledger": {
+    "read_status": "OK",
+    "classification_status": "OK",
+    "read_sha": "e2c87e98120623b417d6e77e7215fee1cb0552ca",
+    "critical_alert_consistency_issue": false,
+    "repairs": []
+  },
+  "expected_slot_findings": {
+    "A": {
+      "slot": "2026-09-11T06:05:00+02:00",
+      "receipt_path": "state/run_receipts/radar_a/20260911T060500+0200.json",
+      "scan_status": "COMPLETE",
+      "receipt_persistence_status": "OK",
+      "employers_accounted_for": 66,
+      "source_coverage_status": "DEGRADED"
+    },
+    "B": {
+      "slot": "2026-09-11T06:25:00+02:00",
+      "receipt_path": "state/run_receipts/radar_b/20260911T062500+0200.json",
+      "scan_status": "INCOMPLETE",
+      "receipt_persistence_status": "OK",
+      "coverage_expected": 66,
+      "coverage_valid_in_receipt": 6,
+      "coverage_missing_or_invalid_in_receipt": 60,
+      "source_coverage_status": "DEGRADED",
+      "classification": "EXECUTION_CONTROL_GAP_INVALID_EMPLOYER_COVERAGE"
+    },
+    "C": {
+      "slot": "2026-09-11T06:45:00+02:00",
+      "receipt_path": "state/run_receipts/radar_c/20260911T064500+0200.json",
+      "scan_status": "COMPLETE",
+      "receipt_persistence_status": "OK",
+      "employers_accounted_for": 66,
+      "source_coverage_status": "DEGRADED"
+    }
+  },
+  "current_execution_gaps": [
+    {
+      "radar": "B",
+      "slot": "2026-09-11T06:25:00+02:00",
+      "reason": "Actual final receipt is INCOMPLETE and contains valid coverage for only 6 of 66 configured B employer IDs",
+      "initial_missing_or_invalid_count": 60,
+      "recovered_this_safety_pass": 11,
+      "remaining_unresolved_count": 49
+    }
+  ],
+  "current_evidence_gaps": [],
+  "recovered_evidence_gaps": [],
+  "recovery_coverage_by_employer": {
+    "MAD-B-002": {"employer_name":"General Mills","source_radar":"B","source_slot":"2026-09-11T06:25:00+02:00","prior_visibility":"UNCLASSIFIED","recovery_result":"OFFICIAL_ROLE_PAGE_RECOVERED","recovered_visibility":"PARTIAL_COVERAGE","checked_at":"2026-09-11T07:50:00+02:00","note":"Live official Madrid requisition 10129491 verified; official Workday now shows Posted 8 Days Ago, so it is outside catch-up freshness"},
+    "MAD-B-004": {"employer_name":"AstraZeneca","source_radar":"B","source_slot":"2026-09-11T06:25:00+02:00","prior_visibility":"UNCLASSIFIED","recovery_result":"OFFICIAL_SPAIN_INVENTORY_AND_ROLE_EVIDENCE","recovered_visibility":"PARTIAL_COVERAGE","checked_at":"2026-09-11T07:50:00+02:00","note":"Official Spain inventory and Madrid role pages readable; no qualifying fresh Madrid target role established"},
+    "MAD-B-006": {"employer_name":"Colgate-Palmolive","source_radar":"B","source_slot":"2026-09-11T06:25:00+02:00","prior_visibility":"UNCLASSIFIED","recovery_result":"OFFICIAL_ROLE_PAGE_RECOVERED","recovered_visibility":"PARTIAL_COVERAGE","checked_at":"2026-09-11T07:50:00+02:00","note":"Live official Madrid role evidence found, but visible candidate is trainee/old and excluded; full Madrid inventory not proven"},
+    "MAD-B-014": {"employer_name":"Grupo Lactalis Iberia","source_radar":"B","source_slot":"2026-09-11T06:25:00+02:00","prior_visibility":"UNCLASSIFIED","recovery_result":"OFFICIAL_MADRID_ROLE_PAGES_RECOVERED","recovered_visibility":"PARTIAL_COVERAGE","checked_at":"2026-09-11T07:50:00+02:00","note":"Current official Madrid role pages readable; visible marketing roles are internships or old"},
+    "MAD-B-022": {"employer_name":"Verisure","source_radar":"B","source_slot":"2026-09-11T06:25:00+02:00","prior_visibility":"UNCLASSIFIED","recovery_result":"OFFICIAL_SPAIN_CAREERS_SURFACE_RECOVERED","recovered_visibility":"PARTIAL_COVERAGE","checked_at":"2026-09-11T07:50:00+02:00","note":"Official Spain careers surface is live; exact complete Madrid target inventory not established"},
+    "MAD-B-023": {"employer_name":"LEGO Group","source_radar":"B","source_slot":"2026-09-11T06:25:00+02:00","prior_visibility":"UNCLASSIFIED","recovery_result":"OFFICIAL_MADRID_ROLE_PAGE_RECOVERED","recovered_visibility":"PARTIAL_COVERAGE","checked_at":"2026-09-11T07:50:00+02:00","note":"Madrid Analytics & Insights Partner requisition 0000036572 is live but posted 17 days ago"},
+    "MAD-B-027": {"employer_name":"IKEA España","source_radar":"B","source_slot":"2026-09-11T06:25:00+02:00","prior_visibility":"UNCLASSIFIED","recovery_result":"OFFICIAL_MADRID_INVENTORY_VISIBLE","recovered_visibility":"PARTIAL_COVERAGE","checked_at":"2026-09-11T07:50:00+02:00","note":"Official IKEA search exposes current Madrid inventory; no fresh qualifying experienced target role established"},
+    "MAD-B-030": {"employer_name":"Cabify","source_radar":"B","source_slot":"2026-09-11T06:25:00+02:00","prior_visibility":"UNCLASSIFIED","recovery_result":"OFFICIAL_MADRID_ROLE_PAGES_RECOVERED","recovered_visibility":"PARTIAL_COVERAGE","checked_at":"2026-09-11T07:50:00+02:00","note":"Current official Madrid roles visible; recovered candidates were internship or outside target function"},
+    "MAD-B-031": {"employer_name":"British American Tobacco (BAT)","source_radar":"B","source_slot":"2026-09-11T06:25:00+02:00","prior_visibility":"UNCLASSIFIED","recovery_result":"OFFICIAL_MADRID_ROLE_PAGE_RECOVERED","recovered_visibility":"PARTIAL_COVERAGE","checked_at":"2026-09-11T07:50:00+02:00","note":"Current Madrid Retail Activation role is explicitly Internship and excluded"},
+    "MAD-B-034": {"employer_name":"Sephora España","source_radar":"B","source_slot":"2026-09-11T06:25:00+02:00","prior_visibility":"UNCLASSIFIED","recovery_result":"OFFICIAL_SPAIN_INVENTORY_RECOVERED","recovered_visibility":"CHECKED_WITH_INVENTORY","checked_at":"2026-09-11T07:50:00+02:00","note":"Official Spain listing is readable and exposes live Madrid roles; visible dates are older than catch-up window"},
+    "MAD-B-037": {"employer_name":"Imperial Brands / Altadis","source_radar":"B","source_slot":"2026-09-11T06:25:00+02:00","prior_visibility":"UNCLASSIFIED","recovery_result":"OFFICIAL_INVENTORY_RECOVERED","recovered_visibility":"CHECKED_WITH_INVENTORY","checked_at":"2026-09-11T07:50:00+02:00","note":"Official inventory is readable with Spain inventory and one Madrid item; no fresh qualifying target role established"}
+  },
+  "exact_unresolved_employer_ids": [
+    "MAD-B-001","MAD-B-003","MAD-B-007","MAD-B-008","MAD-B-009","MAD-B-010","MAD-B-011","MAD-B-012","MAD-B-013","MAD-B-015","MAD-B-016","MAD-B-017","MAD-B-018","MAD-B-019","MAD-B-020","MAD-B-021","MAD-B-024","MAD-B-025","MAD-B-026","MAD-B-028","MAD-B-029","MAD-B-032","MAD-B-033","MAD-B-035","MAD-B-036","MAD-B-038","MAD-B-039","MAD-B-040","MAD-B-041","MAD-B-042","MAD-B-043","MAD-B-045","MAD-B-046","MAD-B-047","MAD-B-048","MAD-B-050","MAD-B-052","MAD-B-053","MAD-B-054","MAD-B-055","MAD-B-056","MAD-B-057","MAD-B-058","MAD-B-059","MAD-B-061","MAD-B-063","MAD-B-064","MAD-B-065","MAD-B-066"
+  ],
+  "historical_uncertainty": [
+    "A 2026-09-07T00:05:00+02:00 HISTORICAL_ARCHITECTURE_GAP",
+    "B 2026-09-07T00:25:00+02:00 HISTORICAL_ARCHITECTURE_GAP",
+    "A 2026-09-07T06:05:00+02:00 HISTORICAL_ARCHITECTURE_GAP",
+    "C 2026-09-07T06:45:00+02:00 HISTORICAL_ARCHITECTURE_GAP"
+  ],
+  "source_recovery": {
+    "routine_source_health_retries_deferred": true,
+    "reason": "Current B execution/control gap recovery took priority",
+    "effective_healthy_unavailable_threshold_incident": false
+  },
+  "ledger_repair_by_delta": [],
+  "unresolved_ledger_deltas": [],
+  "qualifying_catchup_roles": [],
+  "alerts_sent": [],
+  "warnings": ["WATCHDOG/COVERAGE WARNING: Radar B 06:25 final receipt is INCOMPLETE; 49 configured B employer IDs remain unresolved after partial recovery"],
+  "notes": [
+    "A and C current deterministic receipts are COMPLETE with 66 configured employers accounted",
+    "B receipt exists and is authoritative persisted evidence; this is not a RECEIPT_EVIDENCE_GAP",
+    "Missing B coverage was not interpreted as source outage or zero inventory",
+    "General Mills requisition 10129491 is live but current official Workday evidence shows Posted 8 Days Ago, so it does not qualify for catch-up freshness",
+    "No qualifying catch-up role was established in this pass",
+    "No critical ledger alert-state inconsistency was established"
+  ]
+}
