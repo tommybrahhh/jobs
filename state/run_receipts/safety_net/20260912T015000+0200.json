@@ -1,0 +1,94 @@
+{
+  "schema_version": 6,
+  "safety_net": "Madrid Reconciliation + Health",
+  "nominal_slot": "2026-09-12T01:50:00+02:00",
+  "completed_at": "2026-09-12T01:48:43+02:00",
+  "scan_status": "COMPLETE",
+  "receipt_persistence_status": "OK",
+  "evidence_gap_status": "CLEAR",
+  "gap_resolution_status": "CLEAR",
+  "source_coverage_status": "DEGRADED",
+  "state_persistence_status": "OK",
+  "backfill_status": "PENDING_NONCRITICAL",
+  "history_status": "READY",
+  "config_status": "VALID",
+  "config_shas": {
+    "config/employers.json": "540e9be6619ebd3fcb85cb95dbfc416f42fe5943",
+    "config/sources.json": "517d2154c28f9478f86df42beab0dc53dad18962",
+    "config/routes_a.json": "d2134622a530c82019a2fe29e160500e0bdbb770",
+    "config/routes_b.json": "1123965935c0991a4ce0d5f5f37ee343af4260f9",
+    "config/routes_c.json": "298772c9528375a586b5ed04a067620bc3debd80",
+    "config/route_patches.json": "9bac7b0255ba279362548a044faced0da70cffe3",
+    "config/route_hotfixes_ac.json": "b78fdea22cbb85e3c6024e3caefe25ad4d535658",
+    "config/route_hotfixes_b.json": "b24e0b28ce3f396f4013ba4cfa7d137bf8a23b22",
+    "config/routing_policy.json": "ffb3b1e8a8755a7a1f8d3b6d8f440c86628f996b",
+    "config/inventory_visibility_policy.json": "63c385a03564024ef6f4860564f5594d23a6ee0f",
+    "config/run_receipt_policy.json": "ea6e59f5430d125a2fd8049aeef10369b6c36caa",
+    "config/watchdog_transition_policy.json": "ef936b167539a18c28f411f7863d5b70bc4661b1",
+    "state/transitions/legacy_evidence_gaps.json": "1124935513e05efc97037a737597011619b73558",
+    "state/requisitions.json": "e2c87e98120623b417d6e77e7215fee1cb0552ca",
+    "state/requisition_overlays/critical_alerts.json": "6349a08b32a1bfd4fcc3d97fc5fe120f513b6f3d"
+  },
+  "config_validation": {
+    "employers_unique": 198,
+    "radar_counts": {"A": 66, "B": 66, "C": 66},
+    "exact_route_ownership": true,
+    "patch_ids_valid": true,
+    "hotfix_ids_valid": true,
+    "policy_references_valid": true,
+    "effective_route_precedence_ac": "route_hotfixes_ac > route_patches > base > routing_policy",
+    "effective_route_precedence_b": "route_hotfixes_b > route_patches > base > routing_policy"
+  },
+  "expected_slot_findings": {
+    "radar_a": {"slot": "2026-09-12T00:05:00+02:00", "receipt": "state/run_receipts/radar_a/20260912T000500+0200.json", "scan_status": "COMPLETE", "receipt_persistence_status": "OK", "employers_accounted_for": 66, "source_coverage_status": "DEGRADED"},
+    "radar_b": {"slot": "2026-09-12T00:25:00+02:00", "receipt": "state/run_receipts/radar_b/20260912T002500+0200.json", "scan_status": "COMPLETE", "receipt_persistence_status": "OK", "employers_accounted_for": 66, "source_coverage_status": "DEGRADED"},
+    "radar_c": {"slot": "2026-09-12T00:45:00+02:00", "receipt": "state/run_receipts/radar_c/20260912T004500+0200.json", "scan_status": "COMPLETE", "receipt_persistence_status": "OK", "employers_accounted_for": 66, "source_coverage_status": "DEGRADED"}
+  },
+  "current_execution_gaps": [],
+  "current_evidence_gaps": [],
+  "recovered_evidence_gaps": [],
+  "exact_unresolved_employer_ids": [],
+  "historical_uncertainty": {"source": "state/transitions/legacy_evidence_gaps.json", "status": "AUDIT_ONLY_NO_REPEAT_WARNING"},
+  "recovery_coverage_by_employer": {
+    "MAD-A-009": {"employer": "Mondelēz International, especially Travel Retail", "prior_visibility": "UNAVAILABLE", "effective_health": "PARTIAL", "recovery_result": "UNAVAILABLE", "recovered_visibility": "UNAVAILABLE", "evidence": "Current exact official Workday/corporate recovery did not establish reliable current Madrid inventory", "checked_at": "2026-09-12T01:48:43+02:00"},
+    "MAD-A-020": {"employer": "Laboratorios ROVI", "prior_visibility": "UNAVAILABLE", "effective_health": "PARTIAL", "recovery_result": "RECOVERED_PARTIAL", "recovered_visibility": "PARTIAL_COVERAGE", "evidence": "Live official ROVI Madrid role pages recovered. Observed roles were old or excluded and no qualifying <=48h role was established", "checked_at": "2026-09-12T01:48:43+02:00"},
+    "MAD-B-006": {"employer": "Colgate-Palmolive", "prior_visibility": "UNAVAILABLE", "effective_health": "HEALTHY", "recovery_result": "RECOVERED_PARTIAL", "recovered_visibility": "PARTIAL_COVERAGE", "evidence": "Official Colgate careers root is live during site upgrade and an official Madrid posting is visible. The visible Madrid trainee role is dated 2026-08-27 and excluded", "checked_at": "2026-09-12T01:48:43+02:00"},
+    "MAD-C-009": {"employer": "KFC Iberia corporate", "prior_visibility": "UNAVAILABLE", "effective_health": "WEAK", "recovery_result": "UNAVAILABLE", "recovered_visibility": "UNAVAILABLE", "evidence": "No reliable current official corporate vacancy inventory established", "checked_at": "2026-09-12T01:48:43+02:00"},
+    "MAD-C-041": {"employer": "DAZN", "prior_visibility": "UNAVAILABLE", "effective_health": "HEALTHY", "recovery_result": "RECOVERED_PARTIAL", "recovered_visibility": "PARTIAL_COVERAGE", "evidence": "Official DAZN Madrid careers surface and a live Madrid People Assistant posting are visible. Assistant role excluded. Full inventory completeness not proven", "checked_at": "2026-09-12T01:48:43+02:00"},
+    "MAD-C-050": {"employer": "Amadeus", "prior_visibility": "UNAVAILABLE", "effective_health": "PARTIAL", "recovery_result": "RECOVERED_PARTIAL", "recovered_visibility": "PARTIAL_COVERAGE", "evidence": "Live official Amadeus Madrid role page recovered. Observed IT Audit Manager is 30+ days old and outside target/freshness", "checked_at": "2026-09-12T01:48:43+02:00"},
+    "MAD-C-051": {"employer": "Nintendo Ibérica / Nintendo of Europe Spain branch", "prior_visibility": "UNAVAILABLE", "effective_health": "WEAK", "recovery_result": "UNAVAILABLE", "recovered_visibility": "UNAVAILABLE", "evidence": "Current official CSOD/Spain recovery did not establish reliable vacancy inventory", "checked_at": "2026-09-12T01:48:43+02:00"},
+    "MAD-C-056": {"employer": "Mercedes-Benz España", "prior_visibility": "UNAVAILABLE", "effective_health": "HEALTHY", "recovery_result": "UNAVAILABLE", "recovered_visibility": "UNAVAILABLE", "evidence": "Official Mercedes-Benz jobs surface is reachable but current Spain/Madrid inventory could not be reliably established", "checked_at": "2026-09-12T01:48:43+02:00"}
+  },
+  "source_recovery": {
+    "current_unavailable_checked": 8,
+    "recovered_to_partial_or_better": 4,
+    "remaining_unavailable": ["MAD-A-009", "MAD-C-009", "MAD-C-051", "MAD-C-056"],
+    "current_effective_healthy_unavailable": ["MAD-C-056"],
+    "current_effective_healthy_unavailable_count": 1,
+    "source_health_warning": false
+  },
+  "ledger_overlay_status": {
+    "ledger_read_status": "OK",
+    "ledger_sha": "e2c87e98120623b417d6e77e7215fee1cb0552ca",
+    "overlay_read_status": "OK",
+    "overlay_sha": "6349a08b32a1bfd4fcc3d97fc5fe120f513b6f3d",
+    "dedup_authority": "UNION(state/requisitions.json,state/requisition_overlays/critical_alerts.json)",
+    "critical_alert_consistency_risk": false
+  },
+  "ledger_repairs": [],
+  "noncritical_backfills_deferred_or_pending": [
+    "TAG Heuer / LVMH Watches & Jewelry|TAGH02352",
+    "Primark|JR-5351",
+    "Sephora España|1365836355"
+  ],
+  "qualifying_catchup_roles": [],
+  "alerts_sent": 0,
+  "warnings": [],
+  "notes": [
+    "No current execution-control gap",
+    "No current receipt-evidence gap",
+    "No qualifying catch-up role established in the normal <=48h Safety window",
+    "One current effective HEALTHY source remains unavailable after recovery, below the threshold of four",
+    "Pending old/nonfresh backfills remain noncritical and do not change state_persistence_status"
+  ]
+}
