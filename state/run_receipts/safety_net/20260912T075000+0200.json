@@ -1,0 +1,92 @@
+{
+  "schema_version": 6,
+  "nominal_slot": "2026-09-12T07:50:00+02:00",
+  "completed_at": "2026-09-12T07:50:58+02:00",
+  "scan_status": "COMPLETE",
+  "receipt_persistence_status": "OK",
+  "evidence_gap_status": "CLEAR",
+  "gap_resolution_status": "CLEAR",
+  "source_coverage_status": "DEGRADED",
+  "state_persistence_status": "OK",
+  "backfill_status": "PENDING_NONCRITICAL",
+  "history_status": "READY",
+  "config_status": "VALID",
+  "config_shas": {
+    "config/employers.json": "540e9be6619ebd3fcb85cb95dbfc416f42fe5943",
+    "config/sources.json": "517d2154c28f9478f86df42beab0dc53dad18962",
+    "config/routes_a.json": "d2134622a530c82019a2fe29e160500e0bdbb770",
+    "config/routes_b.json": "1123965935c0991a4ce0d5f5f37ee343af4260f9",
+    "config/routes_c.json": "298772c9528375a586b5ed04a067620bc3debd80",
+    "config/route_patches.json": "9bac7b0255ba279362548a044faced0da70cffe3",
+    "config/route_hotfixes_ac.json": "b78fdea22cbb85e3c6024e3caefe25ad4d535658",
+    "config/route_hotfixes_b.json": "b24e0b28ce3f396f4013ba4cfa7d137bf8a23b22",
+    "config/routing_policy.json": "ffb3b1e8a8755a7a1f8d3b6d8f440c86628f996b",
+    "config/inventory_visibility_policy.json": "63c385a03564024ef6f4860564f5594d23a6ee0f",
+    "config/run_receipt_policy.json": "ea6e59f5430d125a2fd8049aeef10369b6c36caa",
+    "config/watchdog_transition_policy.json": "ef936b167539a18c28f411f7863d5b70bc4661b1",
+    "state/transitions/legacy_evidence_gaps.json": "1124935513e05efc97037a737597011619b73558",
+    "state/requisitions.json": "e2c87e98120623b417d6e77e7215fee1cb0552ca",
+    "state/requisition_overlays/critical_alerts.json": "ab1c31e32695d176a4dbe0dfba717ec67da25bbf"
+  },
+  "config_validation": {
+    "employers_unique": 198,
+    "radar_counts": {"A": 66, "B": 66, "C": 66},
+    "exact_route_ownership": true,
+    "patch_ids_valid": true,
+    "hotfix_ids_valid": true,
+    "policy_references_valid": true,
+    "effective_precedence": {"A_C": "route_hotfixes_ac > route_patches > base > routing_policy", "B": "route_hotfixes_b > route_patches > base > routing_policy"}
+  },
+  "expected_slot_findings": {
+    "A": {"slot": "2026-09-12T06:05:00+02:00", "receipt": "state/run_receipts/radar_a/20260912T060500+0200.json", "scan_status": "COMPLETE", "receipt_persistence_status": "OK", "employers_accounted_for": 66, "source_coverage_status": "DEGRADED", "state_persistence_status": "OK"},
+    "B": {"slot": "2026-09-12T06:25:00+02:00", "receipt": "state/run_receipts/radar_b/20260912T062500+0200.json", "scan_status": "COMPLETE", "receipt_persistence_status": "OK", "employers_accounted_for": 66, "source_coverage_status": "DEGRADED", "state_persistence_status": "OK"},
+    "C": {"slot": "2026-09-12T06:45:00+02:00", "receipt": "state/run_receipts/radar_c/20260912T064500+0200.json", "scan_status": "COMPLETE", "receipt_persistence_status": "OK", "employers_accounted_for": 66, "source_coverage_status": "DEGRADED", "state_persistence_status": "OK"}
+  },
+  "current_execution_gaps": [],
+  "current_evidence_gaps": [],
+  "recovered_evidence_gaps": [],
+  "exact_unresolved_employer_ids": [],
+  "historical_uncertainty": [
+    {"radar":"A","slot":"2026-09-07T00:05:00+02:00","classification":"HISTORICAL_ARCHITECTURE_GAP"},
+    {"radar":"B","slot":"2026-09-07T00:25:00+02:00","classification":"HISTORICAL_ARCHITECTURE_GAP"},
+    {"radar":"A","slot":"2026-09-07T06:05:00+02:00","classification":"HISTORICAL_ARCHITECTURE_GAP"},
+    {"radar":"C","slot":"2026-09-07T06:45:00+02:00","classification":"HISTORICAL_ARCHITECTURE_GAP"}
+  ],
+  "recovery_coverage_by_employer": {
+    "MAD-B-025": {"employer":"Haier Europe","source_radar":"B","source_slot":"2026-09-12T06:25:00+02:00","prior_visibility":"UNAVAILABLE","recovery_result":"RECOVERED","recovered_visibility":"CHECKED_WITH_INVENTORY","effective_route":"https://www.haier-europe.com/es_ES/pages/trabaja-en-haier","checked_at":"2026-09-12T07:50:58+02:00","note":"Official Spain careers page readable and exposes current vacancies"},
+    "MAD-B-030": {"employer":"Cabify","source_radar":"B","source_slot":"2026-09-12T06:25:00+02:00","prior_visibility":"UNAVAILABLE","recovery_result":"RECOVERED","recovered_visibility":"CHECKED_WITH_INVENTORY","effective_route":"https://cabify.careers/","checked_at":"2026-09-12T07:50:58+02:00","note":"Official jobs inventory readable; two fresh qualifying Madrid B2B roles recovered"},
+    "MAD-B-038": {"employer":"Bel Group","source_radar":"B","source_slot":"2026-09-12T06:25:00+02:00","prior_visibility":"UNAVAILABLE","recovery_result":"RECOVERED","recovered_visibility":"PARTIAL_COVERAGE","effective_route":"https://jobs.groupe-bel.com/","checked_at":"2026-09-12T07:50:58+02:00","note":"Official job search is readable; Madrid-complete scope not established"},
+    "MAD-B-048": {"employer":"Aegon España","source_radar":"B","source_slot":"2026-09-12T06:25:00+02:00","prior_visibility":"UNAVAILABLE","recovery_result":"RECOVERED","recovered_visibility":"CHECKED_WITH_INVENTORY","effective_route":"https://wwwedit-va-nl.aegon.com/careers/vacancies","checked_at":"2026-09-12T07:50:58+02:00","note":"Official vacancy inventory readable with Spain filter and current Madrid roles"},
+    "MAD-C-047": {"employer":"AXA Spain","source_radar":"C","source_slot":"2026-09-12T06:45:00+02:00","prior_visibility":"UNAVAILABLE","recovery_result":"RECOVERED","recovered_visibility":"PARTIAL_COVERAGE","effective_route":"https://careers.axa.com/careers-home?lang=es-ES","checked_at":"2026-09-12T07:50:58+02:00","note":"Live official Madrid role pages and AXA Spain careers route are readable; full inventory completeness not established"},
+    "MAD-C-056": {"employer":"Mercedes-Benz España","source_radar":"C","source_slot":"2026-09-12T06:45:00+02:00","prior_visibility":"UNAVAILABLE","recovery_result":"RECOVERED","recovered_visibility":"PARTIAL_COVERAGE","effective_route":"current official Mercedes-Benz careers/job search","checked_at":"2026-09-12T07:50:58+02:00","note":"Official careers and Spain location evidence readable; Madrid-complete inventory not established"},
+    "MAD-C-062": {"employer":"Vodafone España","source_radar":"C","source_slot":"2026-09-12T06:45:00+02:00","prior_visibility":"UNAVAILABLE","recovery_result":"RECOVERED","recovered_visibility":"PARTIAL_COVERAGE","effective_route":"https://careers.vodafone.com/spain/es/","checked_at":"2026-09-12T07:50:58+02:00","note":"Current official Spain careers route readable; Madrid-complete inventory not established"}
+  },
+  "source_recovery": {
+    "effective_healthy_unavailable_before_recovery": 7,
+    "effective_healthy_unavailable_after_recovery": 0,
+    "source_health_warning": false
+  },
+  "ledger": {
+    "read_status": "OK",
+    "read_sha": "e2c87e98120623b417d6e77e7215fee1cb0552ca",
+    "overlay_read_status": "OK",
+    "overlay_write_status": "OK",
+    "overlay_sha_after_write": "ab1c31e32695d176a4dbe0dfba717ec67da25bbf",
+    "dedup_authority": "UNION_MAIN_LEDGER_PLUS_CRITICAL_ALERT_OVERLAY",
+    "critical_alert_consistency": "OK",
+    "ledger_repairs": [],
+    "unresolved_critical_deltas": []
+  },
+  "qualifying_catchup_roles": [
+    {"duplicate_key":"Cabify|8795592002","employer":"Cabify","requisition_id":"8795592002","title":"SDR Lead","location":"Madrid","official_url":"https://cabify.careers/en/job/8795592002","freshness":"Employer LinkedIn about 1 day; official role live and undated; no older requisition evidence","alerted":true},
+    {"duplicate_key":"Cabify|8795509002","employer":"Cabify","requisition_id":"8795509002","title":"Sales Executive","location":"Madrid","official_url":"https://cabify.careers/en/job/8795509002","freshness":"Employer LinkedIn about 1 day; official role live and undated; no older requisition evidence","alerted":true}
+  ],
+  "alerts_sent": ["Cabify|8795592002", "Cabify|8795509002"],
+  "warnings": [],
+  "notes": [
+    "No current execution or receipt-evidence gaps",
+    "No source-health warning remains after current exact-ID recovery",
+    "No CRITICAL ledger state",
+    "Noncritical old backfills remain lower-priority and do not affect Safety completeness"
+  ]
+}
