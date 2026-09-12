@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "slot": "2026-09-12T13:50:00+02:00",
+  "completed_at": "2026-09-12T13:50:02+02:00",
+  "scan_status": "COMPLETE",
+  "receipt_persistence_status": "OK",
+  "evidence_gap_status": "CLEAR",
+  "gap_resolution_status": "CLEAR",
+  "source_coverage_status": "DEGRADED",
+  "state_persistence_status": "OK",
+  "backfill_status": "PENDING_NONCRITICAL",
+  "history_status": "READY",
+  "config_validation": {
+    "valid": true,
+    "employers_total": 198,
+    "A": 66,
+    "B": 66,
+    "C": 66,
+    "unique_employers": 198,
+    "effective_route_precedence_ac": ["route_hotfixes_ac", "route_patches", "base", "routing_policy"],
+    "effective_route_precedence_b": ["route_hotfixes_b", "route_patches", "base", "routing_policy"],
+    "current_run_receipt_policy_schema": 6
+  },
+  "config_shas": {
+    "employers": "540e9be6619ebd3fcb85cb95dbfc416f42fe5943",
+    "sources": "517d2154c28f9478f86df42beab0dc53dad18962",
+    "routes_a": "d2134622a530c82019a2fe29e160500e0bdbb770",
+    "routes_b": "1123965935c0991a4ce0d5f5f37ee343af4260f9",
+    "routes_c": "298772c9528375a586b5ed04a067620bc3debd80",
+    "route_patches": "9bac7b0255ba279362548a044faced0da70cffe3",
+    "route_hotfixes_ac": "b78fdea22cbb85e3c6024e3caefe25ad4d535658",
+    "route_hotfixes_b": "b24e0b28ce3f396f4013ba4cfa7d137bf8a23b22",
+    "routing_policy": "ffb3b1e8a8755a7a1f8d3b6d8f440c86628f996b",
+    "inventory_visibility_policy": "63c385a03564024ef6f4860564f5594d23a6ee0f",
+    "run_receipt_policy": "ea6e59f5430d125a2fd8049aeef10369b6c36caa",
+    "watchdog_transition_policy": "ef936b167539a18c28f411f7863d5b70bc4661b1",
+    "legacy_evidence_gaps": "1124935513e05efc97037a737597011619b73558",
+    "requisitions": "e2c87e98120623b417d6e77e7215fee1cb0552ca",
+    "critical_alerts": "ab1c31e32695d176a4dbe0dfba717ec67da25bbf"
+  },
+  "expected_slot_findings": {
+    "radar_a": {"slot":"2026-09-12T12:05:00+02:00","receipt":"state/run_receipts/radar_a/20260912T120500+0200.json","scan_status":"COMPLETE","configured_employers_accounted":66},
+    "radar_b": {"slot":"2026-09-12T12:25:00+02:00","receipt":"state/run_receipts/radar_b/20260912T122500+0200.json","scan_status":"COMPLETE","configured_employers_accounted":66},
+    "radar_c": {"slot":"2026-09-12T12:45:00+02:00","receipt":"state/run_receipts/radar_c/20260912T124500+0200.json","scan_status":"COMPLETE","configured_employers_accounted":66}
+  },
+  "current_execution_gaps": [],
+  "current_evidence_gaps": [],
+  "recovered_evidence_gaps": [],
+  "recovery_coverage_by_employer": [],
+  "exact_unresolved_employer_ids": [],
+  "historical_uncertainty": [
+    {"radar":"A","slot":"2026-09-07T00:05:00+02:00","classification":"HISTORICAL_ARCHITECTURE_GAP"},
+    {"radar":"B","slot":"2026-09-07T00:25:00+02:00","classification":"HISTORICAL_ARCHITECTURE_GAP"},
+    {"radar":"A","slot":"2026-09-07T06:05:00+02:00","classification":"HISTORICAL_ARCHITECTURE_GAP"},
+    {"radar":"C","slot":"2026-09-07T06:45:00+02:00","classification":"HISTORICAL_ARCHITECTURE_GAP"}
+  ],
+  "source_recovery": [
+    {"employer_id":"MAD-B-002","employer":"General Mills","prior_visibility":"UNAVAILABLE","effective_health":"HEALTHY","recovery_result":"RECOVERED_PARTIAL","recovered_visibility":"PARTIAL_COVERAGE","evidence":"Current General Mills careers site is live and identifies the official Workday careers site; Workday root itself was in outage during this recovery."},
+    {"employer_id":"MAD-B-016","employer":"Calidad Pascual","prior_visibility":"UNAVAILABLE","effective_health":"HEALTHY","recovery_result":"STILL_DEGRADED","recovered_visibility":"UNAVAILABLE","evidence":"Current Pascual corporate site and privacy policy confirm the exact VeloraHR recruiting URL, but current inventory could not be losslessly verified in this pass."},
+    {"employer_id":"MAD-B-028","employer":"Carrefour España","prior_visibility":"UNAVAILABLE","effective_health":"HEALTHY","recovery_result":"RECOVERED_PARTIAL","recovered_visibility":"PARTIAL_COVERAGE","evidence":"Current official Carrefour employment page confirms its own active employment portal and ongoing vacancy publishing; complete Madrid inventory was not established."},
+    {"employer_id":"MAD-B-029","employer":"El Corte Inglés","prior_visibility":"UNAVAILABLE","effective_health":"HEALTHY","recovery_result":"RECOVERED_PARTIAL","recovered_visibility":"PARTIAL_COVERAGE","evidence":"Current official El Corte Inglés employment portal loaded and the official help page confirms active vacancies by location; full Madrid inventory was not enumerated."},
+    {"employer_id":"MAD-B-059","employer":"Canon España","prior_visibility":"UNAVAILABLE","effective_health":"HEALTHY","recovery_result":"STILL_DEGRADED","recovered_visibility":"UNAVAILABLE","evidence":"Current effective Oracle careers route/fallback did not yield reliable Madrid inventory in this pass; prior snapshot preserved."}
+  ],
+  "source_health": {
+    "receipt_reported_effective_healthy_unavailable": 5,
+    "after_current_recovery_effective_healthy_unavailable": 2,
+    "unresolved_ids": ["MAD-B-016", "MAD-B-059"],
+    "incident_triggered": false
+  },
+  "ledger": {
+    "read_status": "OK",
+    "dedup_authority": "UNION(state/requisitions.json,state/requisition_overlays/critical_alerts.json)",
+    "requisitions_sha": "e2c87e98120623b417d6e77e7215fee1cb0552ca",
+    "critical_alerts_sha": "ab1c31e32695d176a4dbe0dfba717ec67da25bbf",
+    "critical_consistency_risk": false,
+    "overlay_status": "ACTIVE_PENDING_MAIN_LEDGER_MERGE"
+  },
+  "ledger_repairs": [],
+  "qualifying_catchup_roles": [],
+  "candidate_checks": [
+    {"employer":"El Corte Inglés","title":"KAM Call Center","decision":"NOT_ALERTED","reason":"Employer LinkedIn shows a fresh Madrid KAM role, but no live role-specific official El Corte Inglés posting was verified in this pass, so it does not satisfy the live-official-role requirement."}
+  ],
+  "alerts_sent": []
+}
