@@ -1,0 +1,85 @@
+{
+  "schema_version": 6,
+  "task": "Madrid Reconciliation + Health",
+  "nominal_slot": "2026-09-12T19:50:00+02:00",
+  "completed_at": "2026-09-12T19:48:25+02:00",
+  "scan_status": "COMPLETE",
+  "receipt_persistence_status": "OK",
+  "evidence_gap_status": "CLEAR",
+  "gap_resolution_status": "CLEAR",
+  "source_coverage_status": "DEGRADED",
+  "state_persistence_status": "OK",
+  "backfill_status": "PENDING_NONCRITICAL",
+  "history_status": "READY",
+  "config_validation": {
+    "valid": true,
+    "employers_total": 198,
+    "unique_employers": 198,
+    "radar_counts": {"A": 66, "B": 66, "C": 66},
+    "effective_route_precedence": {
+      "A_C": ["route_hotfixes_ac", "route_patches", "base_routes", "routing_policy"],
+      "B": ["route_hotfixes_b", "route_patches", "base_routes", "routing_policy"]
+    }
+  },
+  "config_shas": {
+    "config/employers.json": "540e9be6619ebd3fcb85cb95dbfc416f42fe5943",
+    "config/sources.json": "517d2154c28f9478f86df42beab0dc53dad18962",
+    "config/routes_a.json": "d2134622a530c82019a2fe29e160500e0bdbb770",
+    "config/routes_b.json": "1123965935c0991a4ce0d5f5f37ee343af4260f9",
+    "config/routes_c.json": "298772c9528375a586b5ed04a067620bc3debd80",
+    "config/route_patches.json": "9bac7b0255ba279362548a044faced0da70cffe3",
+    "config/route_hotfixes_ac.json": "b78fdea22cbb85e3c6024e3caefe25ad4d535658",
+    "config/route_hotfixes_b.json": "b24e0b28ce3f396f4013ba4cfa7d137bf8a23b22",
+    "config/routing_policy.json": "ffb3b1e8a8755a7a1f8d3b6d8f440c86628f996b",
+    "config/inventory_visibility_policy.json": "63c385a03564024ef6f4860564f5594d23a6ee0f",
+    "config/run_receipt_policy.json": "ea6e59f5430d125a2fd8049aeef10369b6c36caa",
+    "config/watchdog_transition_policy.json": "ef936b167539a18c28f411f7863d5b70bc4661b1",
+    "state/transitions/legacy_evidence_gaps.json": "1124935513e05efc97037a737597011619b73558",
+    "state/requisitions.json": "e2c87e98120623b417d6e77e7215fee1cb0552ca",
+    "state/requisition_overlays/critical_alerts.json": "ab1c31e32695d176a4dbe0dfba717ec67da25bbf"
+  },
+  "expected_slot_findings": {
+    "A": {"slot": "2026-09-12T18:05:00+02:00", "receipt": "state/run_receipts/radar_a/20260912T180500+0200.json", "scan_status": "COMPLETE", "configured_employers": 66, "current_gap": false},
+    "B": {"slot": "2026-09-12T18:25:00+02:00", "receipt": "state/run_receipts/radar_b/20260912T182500+0200.json", "scan_status": "COMPLETE", "configured_employers": 66, "current_gap": false},
+    "C": {"slot": "2026-09-12T18:45:00+02:00", "receipt": "state/run_receipts/radar_c/20260912T184500+0200.json", "scan_status": "COMPLETE", "configured_employers": 66, "current_gap": false}
+  },
+  "current_execution_gaps": [],
+  "current_evidence_gaps": [],
+  "recovered_evidence_gaps": [],
+  "recovery_coverage_by_employer": [],
+  "unresolved_employer_ids": [],
+  "historical_uncertainty": [
+    "A 2026-09-07T00:05:00+02:00 HISTORICAL_ARCHITECTURE_GAP",
+    "B 2026-09-07T00:25:00+02:00 HISTORICAL_ARCHITECTURE_GAP",
+    "A 2026-09-07T06:05:00+02:00 HISTORICAL_ARCHITECTURE_GAP",
+    "C 2026-09-07T06:45:00+02:00 HISTORICAL_ARCHITECTURE_GAP"
+  ],
+  "source_recovery": [
+    {"employer_id": "MAD-B-010", "employer": "Essity", "prior_visibility": "UNAVAILABLE", "result": "RECOVERED_PARTIAL", "recovered_visibility": "PARTIAL_COVERAGE", "evidence": "Live official Essity Madrid Account Manager role and current careers inventory reachable"},
+    {"employer_id": "MAD-B-016", "employer": "Calidad Pascual", "prior_visibility": "UNAVAILABLE", "result": "RECOVERED_WITH_INVENTORY", "recovered_visibility": "CHECKED_WITH_INVENTORY", "evidence": "Current official VeloraHR inventory reachable with Madrid vacancies"},
+    {"employer_id": "MAD-B-029", "employer": "El Corte Inglés", "prior_visibility": "UNAVAILABLE", "result": "RECOVERED_PARTIAL", "recovered_visibility": "PARTIAL_COVERAGE", "evidence": "Current employer job inventory shows Madrid roles; official corporate employment route remains JS-fragile"},
+    {"employer_id": "MAD-C-059", "employer": "IHG Hotels & Resorts / InterContinental", "prior_visibility": "UNAVAILABLE", "result": "RECOVERED_PARTIAL", "recovered_visibility": "PARTIAL_COVERAGE", "evidence": "Current official IHG careers search is reachable"},
+    {"employer_id": "MAD-C-062", "employer": "Vodafone España", "prior_visibility": "UNAVAILABLE", "result": "RECOVERED_PARTIAL", "recovered_visibility": "PARTIAL_COVERAGE", "evidence": "Current official Vodafone careers search is reachable"}
+  ],
+  "unresolved_current_healthy_sources": {
+    "B": ["MAD-B-002", "MAD-B-028", "MAD-B-059"],
+    "C": ["MAD-C-031", "MAD-C-056"]
+  },
+  "source_health_incident": false,
+  "source_health_reason": "After current recovery, each radar is below the threshold of four genuinely unavailable effective-HEALTHY sources.",
+  "ledger": {
+    "read_status": "OK",
+    "classification_reliable": true,
+    "dedup_authority": "UNION(state/requisitions.json, state/requisition_overlays/critical_alerts.json)",
+    "critical_overlay_status": "ACTIVE_PENDING_MAIN_LEDGER_MERGE",
+    "critical_alert_state_unresolved": false
+  },
+  "ledger_repairs": [],
+  "qualifying_catchup_roles": [],
+  "candidate_notes": [
+    "El Corte Inglés KAM Call Center is a repost of an older same-role vacancy and does not qualify as fresh new requisition evidence.",
+    "Pascual KAM Distribución Moderna Bezoya has older August requisition evidence, so the current LinkedIn age does not reset freshness.",
+    "Financiera El Corte Inglés Especialista Desarrollo de Negocio / Medios de Pago / Financiación is fresh on LinkedIn, but no live role-specific official employer page was verified, so it does not qualify under routing_policy."
+  ],
+  "alerts_sent": 0
+}
