@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "purpose": "Alert-critical dedup hotfix after Safety Net persistence failure on 2026-09-13 07:50 Europe/Madrid",
+  "status": "ACTIVE_PENDING_MAIN_OVERLAY_MERGE",
+  "records": {
+    "Stryker|R566366": {
+      "duplicate_key": "Stryker|R566366",
+      "employer": "Stryker",
+      "radar": "A",
+      "requisition_id": "R566366",
+      "canonical_official_url": "https://careers.stryker.com/jobs?filter%5Bcountry%5D%5B0%5D=Spain",
+      "title": "Senior Manager, Brand Marketing, EMEA | Minimally Invasive Surgery Visualization",
+      "madrid_location": "Madrid, Spain",
+      "alerted": true,
+      "alert_source": "Madrid Jobs Safety Net",
+      "alert_timestamp": "2026-09-13T07:50:00+02:00"
+    },
+    "Stryker|R566038": {
+      "duplicate_key": "Stryker|R566038",
+      "employer": "Stryker",
+      "radar": "A",
+      "requisition_id": "R566038",
+      "canonical_official_url": "https://careers.stryker.com/jobs?filter%5Bcountry%5D%5B0%5D=Spain",
+      "title": "Senior Manager, Brand Marketing, EMEA | Sports Medicine",
+      "madrid_location": "Madrid, Spain",
+      "alerted": true,
+      "alert_source": "Madrid Jobs Safety Net",
+      "alert_timestamp": "2026-09-13T07:50:00+02:00"
+    }
+  }
+}
