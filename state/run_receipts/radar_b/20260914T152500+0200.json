@@ -1,0 +1,96 @@
+{
+  "schema_version": 1,
+  "radar": "B",
+  "slot": "2026-09-14T15:25:00+02:00",
+  "completed_at": "2026-09-14T15:29:13+02:00",
+  "scan_status": "COMPLETE",
+  "receipt_persistence_status": "OK",
+  "source_coverage_status": "DEGRADED",
+  "state_persistence_status": "OK",
+  "backfill_status": "PENDING_NONCRITICAL",
+  "history_status": "READY",
+  "config_validation": {
+    "valid": true,
+    "employers_unique": 198,
+    "radar_counts": {
+      "A": 66,
+      "B": 66,
+      "C": 66
+    },
+    "b_route_ownership_count": 66,
+    "supported_policies": true,
+    "effective_route_precedence": [
+      "route_hotfixes_b",
+      "route_patches",
+      "routes_b",
+      "routing_policy"
+    ]
+  },
+  "config_shas": {
+    "config/employers.json": "540e9be6619ebd3fcb85cb95dbfc416f42fe5943",
+    "config/sources.json": "517d2154c28f9478f86df42beab0dc53dad18962",
+    "config/routes_b.json": "1123965935c0991a4ce0d5f5f37ee343af4260f9",
+    "config/route_patches.json": "9bac7b0255ba279362548a044faced0da70cffe3",
+    "config/route_hotfixes_b.json": "b24e0b28ce3f396f4013ba4cfa7d137bf8a23b22",
+    "config/routing_policy.json": "ffb3b1e8a8755a7a1f8d3b6d8f440c86628f996b",
+    "config/inventory_visibility_policy.json": "63c385a03564024ef6f4860564f5594d23a6ee0f",
+    "config/run_receipt_policy.json": "ea6e59f5430d125a2fd8049aeef10369b6c36caa",
+    "state/requisitions.json": "e2c87e98120623b417d6e77e7215fee1cb0552ca",
+    "state/requisition_overlays/critical_alerts.json": "ab1c31e32695d176a4dbe0dfba717ec67da25bbf",
+    "state/requisition_overlays/critical_alerts_hotfix_20260913.json": "04cee1e8da512f28481c4c5301fb16716a45bd97"
+  },
+  "phase1_attempted_count": 66,
+  "phase1_classified_count": 66,
+  "not_run_ids": [],
+  "visibility_counts": {
+    "CHECKED_ZERO": 6,
+    "CHECKED_WITH_INVENTORY": 8,
+    "PARTIAL_COVERAGE": 47,
+    "UNAVAILABLE": 5
+  },
+  "unavailable_healthy_ids": [
+    "MAD-B-002",
+    "MAD-B-016",
+    "MAD-B-028",
+    "MAD-B-029",
+    "MAD-B-059"
+  ],
+  "failures": [
+    {"employer_id":"MAD-B-002","employer_name":"General Mills","failure_type":"PRIMARY_AND_OFFICIAL_RECOVERY_UNAVAILABLE"},
+    {"employer_id":"MAD-B-016","employer_name":"Calidad Pascual","failure_type":"PRIMARY_AND_OFFICIAL_RECOVERY_UNAVAILABLE"},
+    {"employer_id":"MAD-B-028","employer_name":"Carrefour España","failure_type":"PRIMARY_AND_OFFICIAL_RECOVERY_UNAVAILABLE"},
+    {"employer_id":"MAD-B-029","employer_name":"El Corte Inglés","failure_type":"JS_FRAGILE_PORTAL_AND_RECOVERY_NO_INVENTORY"},
+    {"employer_id":"MAD-B-059","employer_name":"Canon España","failure_type":"ORACLE_DYNAMIC_AND_CORPORATE_RECOVERY_NO_INVENTORY"}
+  ],
+  "recoveries": [
+    {"employer_id":"MAD-B-010","employer_name":"Essity","result":"Official Spain careers route readable after Workday root failure; partial current coverage retained"},
+    {"employer_id":"MAD-B-013","employer_name":"Pernod Ricard España","result":"Exact-site official role recovery found old Madrid inventory"},
+    {"employer_id":"MAD-B-023","employer_name":"LEGO Group","result":"Exact-site official role recovery found Madrid A&I Partner posted 17 days ago"}
+  ],
+  "ledger": {
+    "read_status":"OK",
+    "classification_status":"OK",
+    "base_blob_sha":"e2c87e98120623b417d6e77e7215fee1cb0552ca",
+    "dedup_union_status":"OK",
+    "required_current_write":false,
+    "write_status":"NOT_REQUIRED"
+  },
+  "overlays": {
+    "critical_alerts":{"read_status":"OK","status":"ACTIVE_PENDING_MAIN_LEDGER_MERGE","sha":"ab1c31e32695d176a4dbe0dfba717ec67da25bbf"},
+    "critical_alerts_hotfix_20260913":{"read_status":"OK","status":"ACTIVE_PENDING_MAIN_OVERLAY_MERGE","sha":"04cee1e8da512f28481c4c5301fb16716a45bd97"}
+  },
+  "ledger_backfill_candidates": [
+    {"employer":"LEGO Group","requisition_id":"0000036572","title":"Analytics & Insights (A&I) Partner","reason":"Live Madrid target-fit role observed but posted 17 days ago; nonfresh"},
+    {"employer":"Aegon España","requisition_id":null,"title":"Gerente de Corredores (Madrid)","reason":"Live official Madrid sales/marketing role observed but <=6h freshness not established"}
+  ],
+  "candidates": [
+    {"employer":"LEGO Group","requisition_id":"0000036572","title":"Analytics & Insights (A&I) Partner","location":"Madrid","freshness":"POSTED_17_DAYS_AGO","qualifying":false,"reason":"Outside 6h freshness"},
+    {"employer":"Aegon España","requisition_id":null,"title":"Gerente de Corredores (Madrid)","location":"Madrid","freshness":"UNESTABLISHED","qualifying":false,"reason":"No employer LinkedIn <=6h evidence established"},
+    {"employer":"The Walt Disney Company / Disney+","requisition_id":null,"title":"Social Media Intern","location":"Madrid","freshness":"2026-09-04","qualifying":false,"reason":"Intern excluded and outside freshness"},
+    {"employer":"Suntory Beverage & Food Spain","requisition_id":null,"title":"Brand Marketing Trainee","location":"Madrid","freshness":"2026-09-11","qualifying":false,"reason":"Trainee excluded and outside freshness"}
+  ],
+  "qualifying_roles": [],
+  "alerts_sent": [],
+  "warnings": ["RADAR HEALTH WARNING"],
+  "coverage": []
+}
