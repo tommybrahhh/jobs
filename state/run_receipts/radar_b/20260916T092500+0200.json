@@ -8,21 +8,23 @@
   "classified": 66,
   "not_run_ids": [],
   "per_employer_status": {
-    "MAD-B-001":"CHECKED","MAD-B-002":"PARTIAL","MAD-B-003":"PARTIAL","MAD-B-004":"PARTIAL","MAD-B-005":"PARTIAL","MAD-B-006":"PARTIAL","MAD-B-007":"PARTIAL","MAD-B-008":"CHECKED","MAD-B-009":"PARTIAL","MAD-B-010":"PARTIAL","MAD-B-011":"PARTIAL","MAD-B-012":"CHECKED","MAD-B-013":"PARTIAL","MAD-B-014":"CHECKED","MAD-B-015":"CHECKED","MAD-B-016":"PARTIAL","MAD-B-017":"PARTIAL","MAD-B-018":"PARTIAL","MAD-B-019":"PARTIAL","MAD-B-020":"PARTIAL","MAD-B-021":"PARTIAL","MAD-B-022":"PARTIAL","MAD-B-023":"PARTIAL","MAD-B-024":"PARTIAL","MAD-B-025":"PARTIAL","MAD-B-026":"PARTIAL","MAD-B-027":"PARTIAL","MAD-B-028":"PARTIAL","MAD-B-029":"PARTIAL","MAD-B-030":"PARTIAL","MAD-B-031":"PARTIAL","MAD-B-032":"PARTIAL","MAD-B-033":"CHECKED","MAD-B-034":"CHECKED","MAD-B-035":"PARTIAL","MAD-B-036":"PARTIAL","MAD-B-037":"PARTIAL","MAD-B-038":"PARTIAL","MAD-B-039":"CHECKED","MAD-B-040":"CHECKED","MAD-B-041":"PARTIAL","MAD-B-042":"PARTIAL","MAD-B-043":"PARTIAL","MAD-B-044":"PARTIAL","MAD-B-045":"PARTIAL","MAD-B-046":"PARTIAL","MAD-B-047":"PARTIAL","MAD-B-048":"PARTIAL","MAD-B-049":"PARTIAL","MAD-B-050":"PARTIAL","MAD-B-051":"CHECKED","MAD-B-052":"PARTIAL","MAD-B-053":"PARTIAL","MAD-B-054":"CHECKED","MAD-B-055":"PARTIAL","MAD-B-056":"PARTIAL","MAD-B-057":"CHECKED","MAD-B-058":"PARTIAL","MAD-B-059":"PARTIAL","MAD-B-060":"CHECKED","MAD-B-061":"PARTIAL","MAD-B-062":"PARTIAL","MAD-B-063":"PARTIAL","MAD-B-064":"PARTIAL","MAD-B-065":"PARTIAL","MAD-B-066":"PARTIAL"
+    "MAD-B-001":"CHECKED","MAD-B-002":"PARTIAL","MAD-B-003":"PARTIAL","MAD-B-004":"PARTIAL","MAD-B-005":"PARTIAL","MAD-B-006":"PARTIAL","MAD-B-007":"CHECKED","MAD-B-008":"CHECKED","MAD-B-009":"PARTIAL","MAD-B-010":"PARTIAL","MAD-B-011":"PARTIAL","MAD-B-012":"CHECKED","MAD-B-013":"PARTIAL","MAD-B-014":"CHECKED","MAD-B-015":"CHECKED","MAD-B-016":"PARTIAL","MAD-B-017":"PARTIAL","MAD-B-018":"PARTIAL","MAD-B-019":"PARTIAL","MAD-B-020":"CHECKED","MAD-B-021":"PARTIAL","MAD-B-022":"PARTIAL","MAD-B-023":"PARTIAL","MAD-B-024":"PARTIAL","MAD-B-025":"PARTIAL","MAD-B-026":"PARTIAL","MAD-B-027":"PARTIAL","MAD-B-028":"UNAVAILABLE","MAD-B-029":"PARTIAL","MAD-B-030":"PARTIAL","MAD-B-031":"PARTIAL","MAD-B-032":"CHECKED","MAD-B-033":"PARTIAL","MAD-B-034":"CHECKED","MAD-B-035":"PARTIAL","MAD-B-036":"CHECKED","MAD-B-037":"CHECKED","MAD-B-038":"PARTIAL","MAD-B-039":"PARTIAL","MAD-B-040":"PARTIAL","MAD-B-041":"PARTIAL","MAD-B-042":"PARTIAL","MAD-B-043":"CHECKED","MAD-B-044":"PARTIAL","MAD-B-045":"PARTIAL","MAD-B-046":"PARTIAL","MAD-B-047":"PARTIAL","MAD-B-048":"PARTIAL","MAD-B-049":"PARTIAL","MAD-B-050":"PARTIAL","MAD-B-051":"PARTIAL","MAD-B-052":"PARTIAL","MAD-B-053":"PARTIAL","MAD-B-054":"CHECKED","MAD-B-055":"PARTIAL","MAD-B-056":"PARTIAL","MAD-B-057":"PARTIAL","MAD-B-058":"UNAVAILABLE","MAD-B-059":"PARTIAL","MAD-B-060":"PARTIAL","MAD-B-061":"PARTIAL","MAD-B-062":"PARTIAL","MAD-B-063":"PARTIAL","MAD-B-064":"PARTIAL","MAD-B-065":"PARTIAL","MAD-B-066":"PARTIAL"
   },
   "qualifying_roles": [],
   "alerts_sent": [],
   "dedup": {
     "main_ledger_read": "OK",
-    "main_ledger_blob_sha": "7a23b0b4ed54e0922f0404a41c3dc2962a3f0b32",
+    "main_ledger_blob_sha": "e2c87e98120623b417d6e77e7215fee1cb0552ca",
     "critical_alerts_overlay_read": "OK",
     "critical_alerts_hotfix_20260913_read": "OK"
   },
   "material_failures": [],
   "notes": [
-    "Exactly 66 B employers validated from current employers/routes config.",
-    "Light pass only. Official-route discovery was limited to one primary-oriented search and no more than one recovery-oriented check per employer where needed.",
+    "Exactly 66 B employers validated from current config.",
+    "Mandatory light pass completed before optional work. Each employer received one official primary attempt and at most one official recovery attempt where needed.",
     "No role had reliable qualifying Madrid freshness evidence within 12 hours.",
-    "Damm location conflict correction respected. No Damm role was treated as Madrid based on descriptive text when structured/canonical location did not support Madrid."
+    "Damm CATEGORY MANAGER 9041 remains excluded: structured official location is 08025-BARC and official date is 7 Sep 2026.",
+    "SC Johnson authoritative Madrid listing currently reports zero positions.",
+    "Suntory Global Spirits listed a Madrid Analyst - Demand Planning Data Modeling dated 16 Sep 2026, excluded as technical/data-oriented rather than a target business role."
   ]
 }
