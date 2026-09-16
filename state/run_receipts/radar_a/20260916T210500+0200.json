@@ -1,0 +1,22 @@
+{
+  "radar": "A",
+  "slot": "2026-09-16T21:05:00+02:00",
+  "scan_status": "COMPLETE",
+  "receipt_persistence_status": "OK",
+  "expected": 66,
+  "attempted": 66,
+  "classified": 66,
+  "not_run_ids": [],
+  "employer_statuses": {
+    "MAD-A-001":"CHECKED","MAD-A-002":"CHECKED","MAD-A-003":"CHECKED","MAD-A-004":"CHECKED","MAD-A-005":"CHECKED","MAD-A-006":"CHECKED","MAD-A-007":"CHECKED","MAD-A-008":"CHECKED","MAD-A-009":"PARTIAL","MAD-A-010":"CHECKED","MAD-A-011":"CHECKED","MAD-A-012":"CHECKED","MAD-A-013":"CHECKED","MAD-A-014":"CHECKED","MAD-A-015":"PARTIAL","MAD-A-016":"PARTIAL","MAD-A-017":"PARTIAL","MAD-A-018":"CHECKED","MAD-A-019":"CHECKED","MAD-A-020":"PARTIAL","MAD-A-021":"CHECKED","MAD-A-022":"CHECKED","MAD-A-023":"PARTIAL","MAD-A-024":"CHECKED","MAD-A-025":"PARTIAL","MAD-A-026":"PARTIAL","MAD-A-027":"CHECKED","MAD-A-028":"CHECKED","MAD-A-029":"PARTIAL","MAD-A-030":"PARTIAL","MAD-A-031":"CHECKED","MAD-A-032":"CHECKED","MAD-A-033":"PARTIAL","MAD-A-034":"CHECKED","MAD-A-035":"CHECKED","MAD-A-036":"PARTIAL","MAD-A-037":"PARTIAL","MAD-A-038":"CHECKED","MAD-A-039":"CHECKED","MAD-A-040":"CHECKED","MAD-A-041":"CHECKED","MAD-A-042":"CHECKED","MAD-A-043":"CHECKED","MAD-A-044":"CHECKED","MAD-A-045":"CHECKED","MAD-A-046":"PARTIAL","MAD-A-047":"CHECKED","MAD-A-048":"CHECKED","MAD-A-049":"PARTIAL","MAD-A-050":"CHECKED","MAD-A-051":"CHECKED","MAD-A-052":"CHECKED","MAD-A-053":"CHECKED","MAD-A-054":"PARTIAL","MAD-A-055":"PARTIAL","MAD-A-056":"CHECKED","MAD-A-057":"CHECKED","MAD-A-058":"CHECKED","MAD-A-059":"CHECKED","MAD-A-060":"PARTIAL","MAD-A-061":"CHECKED","MAD-A-062":"PARTIAL","MAD-A-063":"PARTIAL","MAD-A-064":"CHECKED","MAD-A-065":"CHECKED","MAD-A-066":"CHECKED"
+  },
+  "qualifying_roles": [],
+  "alerts_sent": [],
+  "dedup_read": {
+    "requisitions": {"status":"OK","sha":"e2c87e98120623b417d6e77e7215fee1cb0552ca"},
+    "critical_alerts": {"status":"OK","sha":"83b114b1cda1a002d290061a0e70aac1803b0d08"},
+    "critical_alerts_hotfix_20260913": {"status":"OK","sha":"04cee1e8da512f28481c4c5301fb16716a45bd97"}
+  },
+  "material_failures": [],
+  "notes": ["66/66 light pass completed with one primary attempt per employer and at most one official recovery/discovery attempt where needed.","Coloplast listed Jr. Marketing Specialist Medical Device in Madrid dated 2026-09-16; excluded as clearly junior."]
+}
