@@ -1,0 +1,15 @@
+{
+  "slot": "2026-09-17T01:50:00+02:00",
+  "radars": {
+    "A": {"slot":"2026-09-17T00:05:00+02:00","receipt":"READABLE","execution":"SUCCESS","expected":66,"attempted":66,"classified":66},
+    "B": {"slot":"2026-09-17T00:25:00+02:00","receipt":"READABLE","execution":"SUCCESS","expected":66,"attempted":66,"classified":66},
+    "C": {"slot":"2026-09-17T00:45:00+02:00","receipt":"READABLE","execution":"SUCCESS","expected":66,"attempted":66,"classified":66}
+  },
+  "current_execution_gaps": [],
+  "current_evidence_gaps": [],
+  "daily_audit": {"slot":"2026-09-17T03:30:00+02:00","status":"NOT_DUE","receipt_date_defects":[]},
+  "recovery": {"performed":false,"reason":"NO_CURRENT_RADAR_GAP"},
+  "alerts_sent": [],
+  "dedup": {"main_ledger":"READ_OK","critical_alerts_overlay":"READ_OK","critical_alerts_hotfix_20260913":"READ_OK","unprotected_critical_risk":false,"protected_keys":["Stryker|R566366","Stryker|R566038"]},
+  "severe_source_health": {"warning":false,"reason":"NO_QUALIFYING_BROAD_SOURCE_OUTAGE_ESTABLISHED; no deep source-health retry performed"}
+}
