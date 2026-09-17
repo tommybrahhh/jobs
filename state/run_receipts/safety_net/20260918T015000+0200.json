@@ -1,0 +1,15 @@
+{
+  "slot": "2026-09-18T01:50:00+02:00",
+  "radars": {
+    "A": {"expected_slot":"2026-09-18T00:05:00+02:00","receipt":"READABLE","execution":"SUCCESS_66_OF_66"},
+    "B": {"expected_slot":"2026-09-18T00:25:00+02:00","receipt":"MISSING","execution":"UNKNOWN_NO_POSITIVE_EXECUTION_EVIDENCE"},
+    "C": {"expected_slot":"2026-09-18T00:45:00+02:00","receipt":"READABLE","execution":"SUCCESS_66_OF_66"}
+  },
+  "current_execution_gaps": [],
+  "current_evidence_gaps": [],
+  "daily_audit": {"expected_slot":"2026-09-18T03:30:00+02:00","status":"NOT_DUE","receipt_date_defects":[]},
+  "recovery_performed": [],
+  "alerts_sent": [],
+  "ledger_overlay_status": {"main_ledger":"READABLE","critical_alerts":"READABLE","critical_alerts_hotfix_20260913":"READABLE","dedup_union":"PROTECTED","stryker_R566366":"ALREADY_ALERTED","stryker_R566038":"ALREADY_ALERTED"},
+  "severe_source_health": {"warning":false,"reason":"threshold_not_established"}
+}
