@@ -26,6 +26,21 @@
       "alerted": true,
       "alert_source": "Madrid Jobs Safety Net",
       "alert_timestamp": "2026-09-13T07:50:00+02:00"
+    },
+    "Expedia Group|R-109375-1": {
+      "duplicate_key": "Expedia Group|R-109375-1",
+      "employer": "Expedia Group",
+      "radar": "C",
+      "requisition_id": "R-109375-1",
+      "canonical_official_url": "https://careers.expediagroup.com/job/field-enablement-manager-advertisment/madrid-madrid/R-109375-1/",
+      "title": "Field Enablement Manager, Advertisment",
+      "madrid_location": "Madrid, Spain",
+      "official_posted_date": "2026-09-16",
+      "status": "Fresh qualifying alert",
+      "alerted": true,
+      "alert_source": "Madrid Fresh Radar C",
+      "alert_timestamp": "2026-09-17T06:47:59+02:00",
+      "freshness_evidence": "Live official Expedia role page is dated 2026-09-16; matching Expedia Group LinkedIn listing observed about 1 hour old on 2026-09-17; no older requisition evidence found in current ledger or overlays"
     }
   }
 }
