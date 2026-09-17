@@ -1,0 +1,62 @@
+{
+  "nominal_slot": "2026-09-17T03:30:00+02:00",
+  "today_madrid": "2026-09-17",
+  "receipt_path": "state/run_receipts/daily_audit/20260917T033000+0200.json",
+  "expected_employers": 198,
+  "accounted_employers": 198,
+  "scan_status": "COMPLETE",
+  "receipt_persistence_status": "OK",
+  "source_coverage_status": "DEGRADED",
+  "visibility": {
+    "CHECKED_ZERO": 0,
+    "CHECKED_WITH_INVENTORY": 0,
+    "STRUCTURAL_PARTIAL": 23,
+    "RUNTIME_PARTIAL_ON_HEALTHY": 170,
+    "UNAVAILABLE": 5
+  },
+  "visibility_method_note": "Conservative daily classification from current official-route evidence and latest lossless A/B/C receipts. No HEALTHY source was promoted to CHECKED_ZERO or CHECKED_WITH_INVENTORY without complete current-scope enumeration/count evidence. The five current UNAVAILABLE entries are structurally limited A sources and therefore do not imply zero inventory or closure.",
+  "unavailable_employer_ids": ["MAD-A-015","MAD-A-017","MAD-A-026","MAD-A-029","MAD-A-037"],
+  "source_health_summary": {
+    "needs_route_config_review": [],
+    "note": "No current broken HEALTHY route/fallback was established. Current unavailable A sources are already configured structural PARTIAL/WEAK via base/patch/hotfix semantics. Broad PARTIAL results on B/C are treated as unproven completeness, not route outages."
+  },
+  "latest_radar_status": {
+    "A": {"slot":"2026-09-17T03:05:00+02:00","status":"COMPLETE","expected":66,"attempted":66,"classified":66,"qualifying_roles":0},
+    "B": {"slot":"2026-09-17T03:25:00+02:00","status":"COMPLETE","expected":66,"attempted":66,"classified":66,"qualifying_roles":0},
+    "C": {"slot":"2026-09-17T00:45:00+02:00","status":"COMPLETE","expected":66,"attempted":66,"classified":66,"qualifying_roles":0}
+  },
+  "latest_safety_status": {
+    "slot":"2026-09-17T01:50:00+02:00",
+    "current_execution_gaps":[],
+    "current_evidence_gaps":[],
+    "recovery_performed":false,
+    "critical_dedup_risk":false
+  },
+  "missed_roles_previous_24h": [],
+  "ledger_status": {
+    "main_ledger":"READ_OK",
+    "critical_alerts_overlay":"READ_OK",
+    "critical_alerts_hotfix_20260913":"READ_OK",
+    "dedup_union_reliable":true,
+    "protected_hotfix_keys":["Stryker|R566366","Stryker|R566038"]
+  },
+  "recent_alert_overlay_keys_observed": [
+    "Bacardi|https://jobs.bacardilimited.com/job-search/72135535a0f61000cd708123c8d90000",
+    "Bacardi|https://jobs.bacardilimited.com/job-search/72135535a0f61000fe54334078a40000",
+    "Radisson Hotel Group|521ddb6b-b9a6-4dcf-b5d0-6f5e925526a5"
+  ],
+  "backfills": {
+    "status":"PENDING_NONCRITICAL",
+    "note":"No current alert/dedup consistency risk established. Old nonfresh backfills remain noncritical and were not allowed to affect alerting."
+  },
+  "role_closure_policy":"No role was closed or disappeared from PARTIAL/UNAVAILABLE absence.",
+  "new_disappeared_removed": {"new":[],"disappeared":[],"removed":[]},
+  "missed_alerts": [],
+  "notifications": [],
+  "notes": [
+    "A/B/C latest persisted receipts each account for 66/66 and report no qualifying fresh role.",
+    "Safety reports no current execution or evidence gap.",
+    "Ferrero 76808 remains live per Radar A but freshness was not established inside the alert window, so no alert was generated.",
+    "Already-alerted Bacardi and Radisson roles remain suppressed by overlay dedup."
+  ]
+}
