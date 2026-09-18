@@ -1,0 +1,16 @@
+{
+  "slot": "2026-09-19T01:50:00+02:00",
+  "latest_radar_execution": {
+    "A": {"slot":"2026-09-19T00:05:00+02:00","receipt":"READABLE","expected":66,"attempted":66,"classified":66,"status":"SUCCESS"},
+    "B": {"slot":"2026-09-19T00:25:00+02:00","receipt":"READABLE","expected":66,"attempted":66,"classified":66,"status":"SUCCESS"},
+    "C": {"slot":"2026-09-19T00:45:00+02:00","receipt":"READABLE","expected":66,"attempted":66,"classified":66,"status":"SUCCESS"}
+  },
+  "current_execution_gaps": [],
+  "current_evidence_gaps": [],
+  "daily_audit": {"slot":"2026-09-19T03:30:00+02:00","receipt":"NOT_YET_DUE","date_defects":[]},
+  "recovery": {"performed":false,"reason":"No current radar execution/control or receipt-evidence gap"},
+  "alerts_sent": [],
+  "dedup": {"main_ledger":"READ_OK","critical_alerts":"READ_OK","critical_alerts_hotfix_20260913":"READ_OK","union_reliable":true,"protected_keys":["Stryker|R566366","Stryker|R566038"]},
+  "severe_source_health": {"warning":false,"note":"No evidence in this Safety pass establishing the severe-source-health threshold"},
+  "notes": ["PARTIAL and UNAVAILABLE source states were treated as completed classifications where the radar receipt accounted for 66/66.","Daily Audit 03:30 slot is not yet due, so no Daily receipt/date defect is classified."]
+}
