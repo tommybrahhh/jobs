@@ -1,0 +1,55 @@
+{
+  "nominal_slot": "2026-09-18T03:30:00+02:00",
+  "today_madrid": "2026-09-18",
+  "receipt_path": "state/run_receipts/daily_audit/20260918T033000+0200.json",
+  "expected_employers": 198,
+  "accounted_employers": 198,
+  "scan_status": "COMPLETE",
+  "receipt_persistence_status": "OK",
+  "source_coverage_status": "DEGRADED",
+  "visibility": {
+    "CHECKED_ZERO": 0,
+    "CHECKED_WITH_INVENTORY": 0,
+    "STRUCTURAL_PARTIAL": 23,
+    "RUNTIME_PARTIAL_ON_HEALTHY": 170,
+    "UNAVAILABLE": 5
+  },
+  "visibility_method_note": "Conservative current classification using effective route health, current official-route evidence, and latest lossless A/B/C receipts. No HEALTHY source was promoted to CHECKED_ZERO or CHECKED_WITH_INVENTORY without complete current-scope enumeration evidence. PARTIAL or UNAVAILABLE absence was not used to infer zero inventory or role closure.",
+  "unavailable_employer_ids": ["MAD-A-063","MAD-C-003","MAD-C-029","MAD-C-047","MAD-C-050"],
+  "source_health_summary": {
+    "needs_route_config_review": ["MAD-A-063","MAD-C-029","MAD-C-047","MAD-C-050"],
+    "note": "Current HEALTHY-route failures needing focused route/fallback review: Siemens Healthineers, Just Eat Spain, AXA Spain, and Amadeus. Zamora Company remains structurally WEAK and is not treated as a HEALTHY outage. Broad dynamic-site incompleteness is classified conservatively without creating a route alarm."
+  },
+  "latest_radar_status": {
+    "A": {"slot":"2026-09-18T03:05:00+02:00","status":"COMPLETE","expected":66,"attempted":66,"classified":66,"qualifying_roles":0},
+    "B": {"slot":"2026-09-18T03:25:00+02:00","status":"COMPLETE","expected":66,"attempted":66,"classified":66,"qualifying_roles":0},
+    "C": {"slot":"2026-09-18T00:45:00+02:00","status":"COMPLETE","expected":66,"attempted":66,"classified":66,"qualifying_roles":0}
+  },
+  "latest_safety_status": {
+    "slot":"2026-09-18T01:50:00+02:00",
+    "current_execution_gaps":[],
+    "current_evidence_gaps":[],
+    "note":"Safety observed the 00:25 B receipt missing with no positive execution evidence at 01:50, but the later 03:25 B run completed 66/66. No current gap is carried into this receipt."
+  },
+  "missed_roles_previous_24h": [],
+  "ledger_status": {
+    "main_ledger":"READ_OK",
+    "critical_alerts_overlay":"READ_OK",
+    "critical_alerts_hotfix_20260913":"READ_OK",
+    "dedup_union_reliable":true,
+    "protected_hotfix_keys":["Stryker|R566366","Stryker|R566038","Expedia Group|R-109375-1"]
+  },
+  "backfills": {
+    "status":"PENDING_NONCRITICAL",
+    "note":"Old/nonfresh backfills remain noncritical. No current alert/dedup consistency risk was established and no alert-critical ledger write was required."
+  },
+  "new_disappeared_removed": {"new":[],"disappeared":[],"removed":[]},
+  "missed_alerts": [],
+  "notifications": ["SOURCE_HEALTH_REVIEW"],
+  "notes": [
+    "Latest A/B/C persisted receipts each account for 66/66 and report no qualifying fresh role.",
+    "No role was closed or disappeared from PARTIAL/UNAVAILABLE absence.",
+    "Teva Madrid Associate Director Procurement Product Owner AI/ML was observed by Radar A and excluded as technical AI/ML procurement outside target scope.",
+    "Damm CATEGORY MANAGER 9041 was not treated as a fresh Madrid alert because current radar evidence records canonical route/location conflict and older posting evidence."
+  ]
+}
