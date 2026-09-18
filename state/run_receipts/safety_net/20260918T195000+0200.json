@@ -1,0 +1,16 @@
+{
+  "slot": "2026-09-18T19:50:00+02:00",
+  "latest_radar_execution": {
+    "A": {"slot":"2026-09-18T18:05:00+02:00","receipt":"READABLE","expected":66,"attempted":66,"classified":66,"status":"SUCCESS"},
+    "B": {"slot":"2026-09-18T18:25:00+02:00","receipt":"MISSING_AFTER_GRACE","execution_evidence":"NOT_ESTABLISHED","status":"UNKNOWN_NO_RECEIPT"},
+    "C": {"slot":"2026-09-18T18:45:00+02:00","receipt":"READABLE","expected":66,"attempted":66,"classified":66,"status":"SUCCESS"}
+  },
+  "current_execution_gaps": [],
+  "current_evidence_gaps": [],
+  "daily_audit": {"slot":"2026-09-18T03:30:00+02:00","receipt":"READABLE","scan_status":"COMPLETE","date_defects":[]},
+  "recovery": {"performed":false,"reason":"No classified current radar execution/control or receipt-evidence gap"},
+  "alerts_sent": [],
+  "dedup": {"main_ledger":"READ_OK","critical_alerts":"READ_OK","critical_alerts_hotfix_20260913":"READ_OK","union_reliable":true,"protected_keys":["Stryker|R566366","Stryker|R566038"]},
+  "severe_source_health": {"warning":false,"note":"No same-cycle evidence establishing 10+ effective HEALTHY sources genuinely unavailable and no two-run broad outage established in this pass"},
+  "notes": ["A/C PARTIAL or UNAVAILABLE employer source states were not treated as execution failures because each receipt accounts for 66/66.","B expected deterministic receipt is absent after grace. No positive execution evidence was found, so it is not classified as RECEIPT_EVIDENCE_GAP or EXECUTION_CONTROL_GAP under current Safety rules."]
+}
