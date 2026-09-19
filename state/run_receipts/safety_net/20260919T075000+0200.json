@@ -1,0 +1,16 @@
+{
+  "slot": "2026-09-19T07:50:00+02:00",
+  "latest_radar_execution": {
+    "A": {"slot":"2026-09-19T06:05:00+02:00","status":"COMPLETE","expected":66,"attempted":66,"classified":66},
+    "B": {"slot":"2026-09-19T06:25:00+02:00","status":"COMPLETE","expected":66,"attempted":66,"classified":66},
+    "C": {"slot":"2026-09-19T06:45:00+02:00","status":"COMPLETE","expected":66,"attempted":66,"classified":66}
+  },
+  "current_execution_gaps": [],
+  "current_evidence_gaps": [],
+  "daily_audit": {"slot":"2026-09-19T03:30:00+02:00","receipt_status":"OK","date_defects":[]},
+  "recovery_performed": false,
+  "alerts_sent": [],
+  "ledger_overlay_status": {"main_ledger":"READ_OK","critical_alerts":"READ_OK","critical_alerts_hotfix_20260913":"READ_OK","dedup_union_reliable":true,"critical_unprotected_risk":false,"protected_keys":["Stryker|R566366","Stryker|R566038"]},
+  "severe_source_health": {"warning":false,"current_cycle_unavailable_count":9,"threshold":10},
+  "receipt_persistence_status": "OK"
+}
