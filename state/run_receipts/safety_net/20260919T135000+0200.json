@@ -1,0 +1,16 @@
+{
+  "slot": "2026-09-19T13:50:00+02:00",
+  "scan_status": "COMPLETE",
+  "latest_execution": {
+    "A": {"slot":"2026-09-19T12:05:00+02:00","status":"COMPLETE","expected":66,"attempted":66,"classified":66},
+    "B": {"slot":"2026-09-19T12:25:00+02:00","status":"COMPLETE","expected":66,"attempted":66,"classified":66},
+    "C": {"slot":"2026-09-19T12:45:00+02:00","status":"COMPLETE","expected":66,"attempted":66,"classified":66}
+  },
+  "current_execution_gaps": [],
+  "current_evidence_gaps": [],
+  "daily_audit": {"expected_slot":"2026-09-19T03:30:00+02:00","receipt":"state/run_receipts/daily_audit/20260919T033000+0200.json","status":"COMPLETE","date_defects":[]},
+  "recovery_performed": false,
+  "alerts_sent": [],
+  "dedup": {"main_ledger":"READ_OK","critical_alerts":"READ_OK","critical_alerts_hotfix_20260913":"READ_OK","union_reliable":true,"critical_unprotected_risk":false,"protected_keys":["Stryker|R566366","Stryker|R566038"]},
+  "severe_source_health": {"warning":false,"reason":"No >=10 effective HEALTHY-source outage or qualifying two-run broad outage established in this Safety pass."}
+}
