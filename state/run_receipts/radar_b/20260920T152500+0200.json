@@ -1,0 +1,30 @@
+{
+  "radar": "B",
+  "slot": "2026-09-20T15:25:00+02:00",
+  "scan_status": "COMPLETE",
+  "receipt_persistence_status": "OK",
+  "expected": 66,
+  "attempted": 66,
+  "classified": 66,
+  "not_run_ids": [],
+  "employer_status": {
+    "MAD-B-001":"CHECKED","MAD-B-002":"PARTIAL","MAD-B-003":"PARTIAL","MAD-B-004":"PARTIAL","MAD-B-005":"PARTIAL","MAD-B-006":"PARTIAL","MAD-B-007":"CHECKED","MAD-B-008":"PARTIAL","MAD-B-009":"PARTIAL","MAD-B-010":"PARTIAL","MAD-B-011":"PARTIAL","MAD-B-012":"CHECKED","MAD-B-013":"PARTIAL","MAD-B-014":"CHECKED","MAD-B-015":"CHECKED","MAD-B-016":"PARTIAL","MAD-B-017":"PARTIAL","MAD-B-018":"PARTIAL","MAD-B-019":"PARTIAL","MAD-B-020":"CHECKED","MAD-B-021":"PARTIAL","MAD-B-022":"PARTIAL","MAD-B-023":"PARTIAL","MAD-B-024":"PARTIAL","MAD-B-025":"CHECKED","MAD-B-026":"PARTIAL","MAD-B-027":"PARTIAL","MAD-B-028":"PARTIAL","MAD-B-029":"PARTIAL","MAD-B-030":"PARTIAL","MAD-B-031":"PARTIAL","MAD-B-032":"CHECKED","MAD-B-033":"PARTIAL","MAD-B-034":"CHECKED","MAD-B-035":"PARTIAL","MAD-B-036":"PARTIAL","MAD-B-037":"CHECKED","MAD-B-038":"PARTIAL","MAD-B-039":"PARTIAL","MAD-B-040":"PARTIAL","MAD-B-041":"PARTIAL","MAD-B-042":"PARTIAL","MAD-B-043":"CHECKED","MAD-B-044":"PARTIAL","MAD-B-045":"PARTIAL","MAD-B-046":"PARTIAL","MAD-B-047":"PARTIAL","MAD-B-048":"PARTIAL","MAD-B-049":"PARTIAL","MAD-B-050":"PARTIAL","MAD-B-051":"PARTIAL","MAD-B-052":"PARTIAL","MAD-B-053":"PARTIAL","MAD-B-054":"PARTIAL","MAD-B-055":"PARTIAL","MAD-B-056":"PARTIAL","MAD-B-057":"PARTIAL","MAD-B-058":"UNAVAILABLE","MAD-B-059":"PARTIAL","MAD-B-060":"PARTIAL","MAD-B-061":"CHECKED","MAD-B-062":"PARTIAL","MAD-B-063":"PARTIAL","MAD-B-064":"PARTIAL","MAD-B-065":"PARTIAL","MAD-B-066":"PARTIAL"
+  },
+  "qualifying_roles": [],
+  "alerts_sent": [],
+  "dedup": {
+    "main_ledger_read":"OK",
+    "critical_alerts_overlay_read":"OK",
+    "critical_alerts_hotfix_20260913_read":"OK"
+  },
+  "material_failures": [
+    {"employer_id":"MAD-B-058","status":"UNAVAILABLE","note":"Lenovo effective careers route and one official corporate fallback were not readable in the lightweight pass"}
+  ],
+  "notes": [
+    "Validated authoritative employer universe: 198 unique employers, A/B/C = 66/66/66.",
+    "Effective B precedence applied: route_hotfixes_b > route_patches > routes_b > routing_policy.",
+    "Damm CATEGORY MANAGER remains excluded: official inventory location is 08025-BARC and posting date is 2026-09-07.",
+    "CHANEL Madrid Marketing Intern surfaced in official recovery but is excluded as an internship.",
+    "No fresh qualifying Madrid role was verified within the 12-hour window."
+  ]
+}
