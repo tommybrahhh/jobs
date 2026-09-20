@@ -1,0 +1,15 @@
+{
+  "slot": "2026-09-20T07:50:00+02:00",
+  "radars": {
+    "A": {"slot":"2026-09-20T06:05:00+02:00","receipt":"READ_OK","execution_status":"COMPLETE","attempted":66,"classified":66},
+    "B": {"slot":"2026-09-20T06:25:00+02:00","receipt":"MISSING","execution_status":"UNKNOWN"},
+    "C": {"slot":"2026-09-20T06:45:00+02:00","receipt":"READ_OK","execution_status":"COMPLETE","attempted":66,"classified":66}
+  },
+  "current_execution_gaps": [],
+  "current_evidence_gaps": [{"radar":"B","slot":"2026-09-20T06:25:00+02:00","classification":"UNRESOLVED_RECEIPT_EVIDENCE","note":"Deterministic receipt absent after grace. No positive evidence of execution failure was found."}],
+  "daily_audit": {"slot":"2026-09-20T03:30:00+02:00","receipt":"READ_OK","date_defects":[]},
+  "recovery": {"performed":false,"note":"No execution evidence was available to distinguish a B receipt-evidence loss from an unobserved run. No lossless historical reconstruction attempted."},
+  "alerts_sent": [],
+  "dedup": {"main_ledger":"READ_OK","critical_alerts":"READ_OK","critical_alerts_hotfix_20260913":"READ_OK","union_reliable":true,"protected_keys":["Stryker|R566366","Stryker|R566038"]},
+  "severe_source_health": {"warning":false,"note":"No same-current-cycle evidence established 10+ effective HEALTHY sources unavailable, and no two-consecutive-Safety broad outage was established in this pass."}
+}
