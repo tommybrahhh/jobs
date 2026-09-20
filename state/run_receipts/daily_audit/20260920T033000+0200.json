@@ -1,0 +1,60 @@
+{
+  "nominal_slot": "2026-09-20T03:30:00+02:00",
+  "today_madrid": "2026-09-20",
+  "receipt_path": "state/run_receipts/daily_audit/20260920T033000+0200.json",
+  "expected_employers": 198,
+  "accounted_employers": 198,
+  "scan_status": "COMPLETE",
+  "receipt_persistence_status": "OK",
+  "source_coverage_status": "DEGRADED",
+  "visibility": {
+    "CHECKED_ZERO": 0,
+    "CHECKED_WITH_INVENTORY": 0,
+    "STRUCTURAL_PARTIAL": 22,
+    "RUNTIME_PARTIAL_ON_HEALTHY": 158,
+    "UNAVAILABLE": 18
+  },
+  "visibility_method_note": "Conservative deep-audit classification from current effective route health, prior deep baseline, latest lossless A/B/C receipts, and current official-route recovery. No HEALTHY source was promoted to CHECKED_ZERO or CHECKED_WITH_INVENTORY without complete current-scope enumeration proof. PARTIAL or UNAVAILABLE absence was not used to infer zero inventory or role closure.",
+  "unavailable_employer_ids": ["MAD-A-026","MAD-A-029","MAD-A-037","MAD-A-049","MAD-A-054","MAD-A-062","MAD-B-016","MAD-B-028","MAD-B-058","MAD-B-060","MAD-C-006","MAD-C-008","MAD-C-030","MAD-C-036","MAD-C-047","MAD-C-050","MAD-C-056","MAD-C-063"],
+  "source_health_summary": {
+    "needs_route_config_review": ["MAD-B-016","MAD-B-058","MAD-C-030","MAD-C-047","MAD-C-050"],
+    "note": "Recurring current route/fallback failures needing review: Calidad Pascual, Lenovo, Too Good To Go Spain, AXA Spain, and Amadeus. AXA official careers is currently externally readable, which points to route/fallback handling rather than true source disappearance. Other one-pass unavailable results are retained as current visibility limitations without escalating them to config incidents. MAD-A-029 remains structurally PARTIAL by hotfix and is not treated as a HEALTHY-route incident."
+  },
+  "latest_radar_status": {
+    "A": {"slot":"2026-09-20T03:05:00+02:00","status":"COMPLETE","expected":66,"attempted":66,"classified":66,"qualifying_roles":0},
+    "B": {"slot":"2026-09-20T00:25:00+02:00","status":"COMPLETE","expected":66,"attempted":66,"classified":66,"qualifying_roles":0,"note":"03:25 occurrence was still in progress/not yet due for final persistence at audit start and is not a current gap."},
+    "C": {"slot":"2026-09-20T00:45:00+02:00","status":"COMPLETE","expected":66,"attempted":66,"classified":66,"qualifying_roles":0}
+  },
+  "latest_safety_status": {
+    "slot":"2026-09-20T01:50:00+02:00",
+    "current_execution_gaps":[],
+    "current_evidence_gaps":[],
+    "recovery_performed":false
+  },
+  "missed_roles_previous_24h": [],
+  "ledger_status": {
+    "main_ledger":"READ_OK",
+    "main_ledger_sha":"e2c87e98120623b417d6e77e7215fee1cb0552ca",
+    "critical_alerts_overlay":"READ_OK",
+    "critical_alerts_overlay_sha":"83b114b1cda1a002d290061a0e70aac1803b0d08",
+    "critical_alerts_hotfix_20260913":"READ_OK",
+    "critical_alerts_hotfix_sha":"a5a83126f89a1b53901d0dbe3f1ec51052ae69f1",
+    "dedup_union_reliable":true,
+    "critical_dedup_risk":"NONE",
+    "protected_hotfix_keys":["Stryker|R566366","Stryker|R566038","Expedia Group|R-109375-1"]
+  },
+  "backfills": {
+    "status":"PENDING_NONCRITICAL",
+    "note":"Old/nonfresh backfills remain noncritical. No current alert/dedup consistency risk was established and no alert-critical ledger write was required."
+  },
+  "new_disappeared_removed": {"new":[],"disappeared":[],"removed":[]},
+  "missed_alerts": [],
+  "notifications": ["SOURCE_HEALTH_REVIEW"],
+  "notes": [
+    "Current employer universe validates exactly 198 unique employers with A/B/C ownership 66/66/66.",
+    "Latest completed A/B/C scans each classified 66/66 and found no qualifying fresh role.",
+    "Safety reports no current execution or evidence gaps and reliable union dedup.",
+    "No role was closed or marked disappeared from partial or unavailable source absence.",
+    "Dynamic-site incompleteness by itself was not escalated as a route/config incident."
+  ]
+}
