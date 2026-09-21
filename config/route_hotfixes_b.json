@@ -63,6 +63,18 @@
       "route_class": "CURRENT_GROUPE_CLARINS_JOB_INVENTORY",
       "check_mode": "OFFICIAL_JOB_OFFERS_FIRST + SPAIN_MARKET_FILTER + MADRID_FILTER + ROLE_VERIFY",
       "reason": "Groupe Clarins currently exposes a readable official job-offers inventory and Spain corporate careers routes. Use the current group careers inventory instead of a stale/unreadable route."
+    },
+    "MAD-B-008": {
+      "employer": "Beiersdorf",
+      "primary": "https://www.beiersdorf.com/career/your-application/job-search?count=50&country=Spain&sort=date",
+      "secondary": [
+        "https://www.beiersdorf.com/career/locations/spain",
+        "https://www.beiersdorf.com/career/your-application/job-search"
+      ],
+      "health": "PARTIAL",
+      "route_class": "SPAIN_FILTERED_OFFICIAL_INVENTORY_WITH_ROLE_VERIFICATION",
+      "check_mode": "FIRST_READ_SPAIN_FILTERED_LISTING; ENUMERATE_VISIBLE_MADRID_TITLES_AND_OFFICIAL_ROLE_URLS; OPEN_EACH_POTENTIALLY_RELEVANT_MADRID_ROLE_AND_RECORD_STABLE_ID_OR_CANONICAL_URL_AND_OFFICIAL_POSTING_DATE_IF_AVAILABLE; WHEN_LISTING_NOT_ENUMERATED_MARK_PARTIAL_NOT_CHECKED; NEVER_EQUATE_PAGE_OPENED_WITH_JOB_INVENTORY_CHECKED; IF_KAM_MADRID_LISTED_VERIFY_LIVE_ROLE_BEFORE_FRESHNESS_OR_DEDUP_DECISION",
+      "reason": "2026-09-21 detection test: Beiersdorf official Spain-filtered listing shows Key Account Manager Madrid whereas the former global first-page route and repeated CHECKED receipts failed to record a KAM candidate. Spain listing is validated as readable but complete live Madrid inventory was not proven; classify PARTIAL until completeness demonstrated."
     }
   }
 }
