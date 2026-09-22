@@ -1,0 +1,47 @@
+{
+  "radar": "B",
+  "slot": "2026-09-22T18:25:00+02:00",
+  "scan_status": "COMPLETE",
+  "receipt_persistence_status": "OK",
+  "expected": 66,
+  "attempted": 66,
+  "classified": 66,
+  "not_run_ids": [],
+  "authority": {
+    "employers_valid": true,
+    "employers_expected": 66,
+    "employers_sha": "ad1db2b4085039188b985a610547d60dddebd37f",
+    "routes_b_sha": "unknown_in_compact_read",
+    "route_patches_sha": "unknown_in_compact_read",
+    "route_hotfixes_b_sha": "2042c559f3a1bfc918194503990ed2713f7396be",
+    "routing_policy_sha": "ffb3b1e8a8755a7a1f8d3b6d8f440c86628f996b"
+  },
+  "dedup_read": {
+    "main_ledger": "OK",
+    "critical_alerts_overlay": "OK",
+    "critical_alerts_hotfix_20260913": "OK",
+    "critical_alerts_overlay_sha": "8b6235ca8b7a0a1cc16c51e41d00522f72e72341",
+    "critical_alerts_hotfix_sha": "a5a83126f89a1b53901d0dbe3f1ec51052ae69f1"
+  },
+  "employer_statuses": {
+    "MAD-B-001":"CHECKED","MAD-B-002":"PARTIAL","MAD-B-003":"UNAVAILABLE","MAD-B-004":"PARTIAL","MAD-B-005":"UNAVAILABLE","MAD-B-006":"PARTIAL","MAD-B-007":"CHECKED","MAD-B-008":"PARTIAL","MAD-B-009":"PARTIAL","MAD-B-010":"UNAVAILABLE","MAD-B-011":"PARTIAL","MAD-B-012":"CHECKED","MAD-B-013":"PARTIAL","MAD-B-014":"PARTIAL","MAD-B-015":"CHECKED","MAD-B-016":"UNAVAILABLE","MAD-B-017":"PARTIAL","MAD-B-018":"PARTIAL","MAD-B-019":"PARTIAL","MAD-B-020":"CHECKED","MAD-B-021":"PARTIAL","MAD-B-022":"PARTIAL","MAD-B-023":"PARTIAL","MAD-B-024":"PARTIAL","MAD-B-025":"CHECKED","MAD-B-026":"PARTIAL","MAD-B-027":"PARTIAL","MAD-B-028":"UNAVAILABLE","MAD-B-029":"PARTIAL","MAD-B-030":"PARTIAL","MAD-B-031":"PARTIAL","MAD-B-032":"PARTIAL","MAD-B-033":"PARTIAL","MAD-B-034":"CHECKED","MAD-B-035":"PARTIAL","MAD-B-036":"CHECKED","MAD-B-037":"CHECKED","MAD-B-038":"CHECKED","MAD-B-039":"PARTIAL","MAD-B-040":"PARTIAL","MAD-B-041":"PARTIAL","MAD-B-042":"UNAVAILABLE","MAD-B-043":"CHECKED","MAD-B-044":"PARTIAL","MAD-B-045":"PARTIAL","MAD-B-046":"PARTIAL","MAD-B-047":"PARTIAL","MAD-B-048":"CHECKED","MAD-B-049":"PARTIAL","MAD-B-050":"PARTIAL","MAD-B-051":"PARTIAL","MAD-B-052":"PARTIAL","MAD-B-053":"CHECKED","MAD-B-054":"CHECKED","MAD-B-055":"PARTIAL","MAD-B-056":"PARTIAL","MAD-B-057":"PARTIAL","MAD-B-058":"UNAVAILABLE","MAD-B-059":"PARTIAL","MAD-B-060":"PARTIAL","MAD-B-061":"CHECKED","MAD-B-062":"UNAVAILABLE","MAD-B-063":"PARTIAL","MAD-B-064":"PARTIAL","MAD-B-065":"PARTIAL","MAD-B-066":"PARTIAL"
+  },
+  "candidate_roles": [
+    {
+      "employer_id":"MAD-B-008","employer_name":"Beiersdorf","observed_title":"Key Account Manager","madrid_location_evidence":"Official Beiersdorf Spain page lists Key Account Manager, Sales, Professional, Madrid, Spain","identifier_unavailable":true,"source_url":"https://www.beiersdorf.com/career/locations/spain","observed_listing_detail_evidence":"Current official Spain page exposes 7 open positions including Key Account Manager in Madrid","relevance":"QUALIFYING_FUNCTION_AND_SENIORITY","freshness_status":"UNKNOWN","dedup_status":"not_in_ledger_or_overlay","source_status":"PARTIAL"
+    },
+    {
+      "employer_id":"MAD-B-003","employer_name":"Amazon","observed_title":"AWS Enterprise Greenfield Account Manager, Enterprise Iberia","madrid_location_evidence":"Official Amazon role page lists ESP, M, Madrid","official_role_url":"https://www.amazon.jobs/en/jobs/10486935/aws-enterprise-greenfield-account-manager-enterprise-iberia","stable_id":"10486935","source_url":"https://www.amazon.jobs/en/jobs/10486935/aws-enterprise-greenfield-account-manager-enterprise-iberia","observed_listing_detail_evidence":"Live official role evidence retrieved; experienced enterprise account management role","relevance":"POTENTIALLY_QUALIFYING_ACCOUNT_MANAGEMENT","freshness_status":"UNKNOWN","dedup_status":"not_in_ledger_or_overlay","source_status":"PARTIAL"
+    },
+    {
+      "employer_id":"MAD-B-006","employer_name":"Colgate-Palmolive","observed_title":"Customer Engagement Specialist Iberia","madrid_location_evidence":"Official role page lists Madrid, Community of Madrid, Spain","official_role_url":"https://jobs.colgate.com/job/Madrid-Customer-Engagement-Specialist-Iberia-MD/176143-en_GB/","stable_id":"176143","source_url":"https://jobs.colgate.com/job/Madrid-Customer-Engagement-Specialist-Iberia-MD/176143-en_GB/","observed_listing_detail_evidence":"Official role page describes Iberia customer engagement and process/customer projects","relevance":"POTENTIALLY_RELEVANT_CUSTOMER_COMMERCIAL_ROLE","freshness_status":"OUTSIDE_12H","dedup_status":"not_in_ledger_or_overlay","source_status":"CHECKED"
+    },
+    {
+      "employer_id":"MAD-B-039","employer_name":"TAG Heuer / LVMH Watches & Jewelry","observed_title":"TAG Heuer Marketing Manager Iberia","madrid_location_evidence":"Official LVMH role page lists Madrid, Spain","official_role_url":"https://www.lvmh.com/en/join-us/our-job-offers/TAGH02352","stable_id":"TAGH02352","source_url":"https://www.lvmh.com/en/join-us/our-job-offers/TAGH02352","observed_listing_detail_evidence":"Official role page states Marketing Manager Iberia, minimum 10 years experience, published 2026-08-30","relevance":"QUALIFYING_MARKETING_MANAGER","freshness_status":"OUTSIDE_12H","dedup_status":"not_in_ledger_or_overlay","source_status":"CHECKED"
+    }
+  ],
+  "qualifying_fresh_roles": [],
+  "alerts_sent": [],
+  "material_failures": [],
+  "notes": ["Damm current official inventory lists CATEGORY MANAGER at ES, 08025-BARC dated 7 Sep 2026, so it is not a Madrid candidate.","PARTIAL and UNAVAILABLE classifications do not imply zero inventory. No deep recovery or noncritical backfill was performed."]
+}
