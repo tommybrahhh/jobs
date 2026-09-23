@@ -1,0 +1,21 @@
+{
+  "scan_status": "INCOMPLETE",
+  "receipt_persistence_status": "SAVED",
+  "expected": 66,
+  "attempted": 44,
+  "classified": 44,
+  "not_run_ids": ["MAD-B-045","MAD-B-046","MAD-B-047","MAD-B-048","MAD-B-049","MAD-B-050","MAD-B-051","MAD-B-052","MAD-B-053","MAD-B-054","MAD-B-055","MAD-B-056","MAD-B-057","MAD-B-058","MAD-B-059","MAD-B-060","MAD-B-061","MAD-B-062","MAD-B-063","MAD-B-064","MAD-B-065","MAD-B-066"],
+  "employer_statuses": {
+    "MAD-B-001":"CHECKED","MAD-B-002":"PARTIAL","MAD-B-003":"PARTIAL","MAD-B-004":"PARTIAL","MAD-B-005":"UNAVAILABLE","MAD-B-006":"PARTIAL","MAD-B-007":"CHECKED","MAD-B-008":"PARTIAL","MAD-B-009":"PARTIAL","MAD-B-010":"UNAVAILABLE","MAD-B-011":"PARTIAL","MAD-B-012":"PARTIAL","MAD-B-013":"PARTIAL","MAD-B-014":"CHECKED","MAD-B-015":"PARTIAL","MAD-B-016":"UNAVAILABLE","MAD-B-017":"PARTIAL","MAD-B-018":"PARTIAL","MAD-B-019":"PARTIAL","MAD-B-020":"PARTIAL","MAD-B-021":"PARTIAL","MAD-B-022":"PARTIAL","MAD-B-023":"PARTIAL","MAD-B-024":"PARTIAL","MAD-B-025":"CHECKED","MAD-B-026":"PARTIAL","MAD-B-027":"PARTIAL","MAD-B-028":"UNAVAILABLE","MAD-B-029":"PARTIAL","MAD-B-030":"PARTIAL","MAD-B-031":"PARTIAL","MAD-B-032":"PARTIAL","MAD-B-033":"PARTIAL","MAD-B-034":"CHECKED","MAD-B-035":"PARTIAL","MAD-B-036":"CHECKED","MAD-B-037":"CHECKED","MAD-B-038":"PARTIAL","MAD-B-039":"PARTIAL","MAD-B-040":"PARTIAL","MAD-B-041":"PARTIAL","MAD-B-042":"PARTIAL","MAD-B-043":"CHECKED","MAD-B-044":"PARTIAL"
+  },
+  "candidate_roles": [
+    {"employer_id":"MAD-B-008","employer":"Beiersdorf","observed_title":"Key Account Manager","madrid_location_evidence":"Official Beiersdorf Spain page lists Key Account Manager | Sales | Professional | Madrid, Spain","identifier":"identifier_unavailable","source_url":"https://www.beiersdorf.com/career/locations/spain","observed_evidence":"Current Spain page shows 7 open positions including this Madrid role","relevance":"KAM / Account Management","freshness_status":"UNKNOWN","dedup_status":"unreadable","source_status":"PARTIAL"},
+    {"employer_id":"MAD-B-014","employer":"Grupo Lactalis Iberia","observed_title":"BRAND MANAGER QUESOS Temporal","madrid_location_evidence":"Official Lactalis listing shows Madrid","official_role_url":"https://empleo.lactalis.es/jobs/brand-manager-quesos-temporal","source_url":"https://empleo.lactalis.es/jobs","observed_evidence":"Visible on current official listing; main ledger records official date 2026-07-09","relevance":"Brand Management / Marketing","freshness_status":"OUTSIDE_12H","dedup_status":"known_unalerted","source_status":"CHECKED"},
+    {"employer_id":"MAD-B-039","employer":"TAG Heuer / LVMH Watches & Jewelry","observed_title":"TAG Heuer Marketing Manager Iberia","madrid_location_evidence":"Official LVMH role page lists Madrid, Spain","stable_id":"TAGH02352","official_role_url":"https://www.lvmh.com/en/join-us/our-job-offers/TAGH02352","source_url":"https://www.lvmh.com/en/join-us/our-job-offers","observed_evidence":"Official role page published 2026-08-30; minimum 10 years experience","relevance":"Marketing / Brand Strategy","freshness_status":"OUTSIDE_12H","dedup_status":"unreadable","source_status":"PARTIAL"}
+  ],
+  "qualifying_fresh_roles": [],
+  "alerts_sent": [],
+  "dedup_read_status": {"state/requisitions.json":"UNRELIABLE_TRUNCATED","state/requisition_overlays/critical_alerts.json":"READ","state/requisition_overlays/critical_alerts_hotfix_20260913.json":"READ","union_reliable":false},
+  "genuine_defects": ["Mandatory 66/66 light pass did not complete: 22 employers NOT_RUN","Main requisitions ledger response was truncated, so full dedup union was not reliable"],
+  "notes":"No fresh alert sent. Search-engine discovery was not counted as an official employer route attempt. No automation configuration was changed."
+}
