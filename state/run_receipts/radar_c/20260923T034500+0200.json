@@ -1,0 +1,29 @@
+{
+  "radar": "C",
+  "slot": "2026-09-23T03:45:00+02:00",
+  "completed_at": "2026-09-23T03:44:00+02:00",
+  "scan_status": "COMPLETE",
+  "receipt_persistence_status": "OK",
+  "expected": 66,
+  "attempted": 66,
+  "classified": 66,
+  "not_run_ids": [],
+  "route_tail_read_status": "OK",
+  "route_validation": {"c_employers":66,"route_material_all_66":true,"precedence":"route_hotfixes_ac > route_patches > base route"},
+  "dedup": {
+    "main_ledger_read_status": "OK",
+    "main_ledger_sha": "e2c87e98120623b417d6e77e7215fee1cb0552ca",
+    "critical_alerts_overlay_read_status": "OK",
+    "critical_alerts_hotfix_overlay_read_status": "OK"
+  },
+  "per_employer_status": {
+    "MAD-C-001":"CHECKED","MAD-C-002":"PARTIAL","MAD-C-003":"PARTIAL","MAD-C-004":"CHECKED","MAD-C-005":"CHECKED","MAD-C-006":"PARTIAL","MAD-C-007":"CHECKED","MAD-C-008":"CHECKED","MAD-C-009":"PARTIAL","MAD-C-010":"CHECKED","MAD-C-011":"CHECKED","MAD-C-012":"CHECKED","MAD-C-013":"CHECKED","MAD-C-014":"CHECKED","MAD-C-015":"CHECKED","MAD-C-016":"CHECKED","MAD-C-017":"CHECKED","MAD-C-018":"CHECKED","MAD-C-019":"CHECKED","MAD-C-020":"CHECKED","MAD-C-021":"CHECKED","MAD-C-022":"CHECKED","MAD-C-023":"CHECKED","MAD-C-024":"CHECKED","MAD-C-025":"CHECKED","MAD-C-026":"CHECKED","MAD-C-027":"CHECKED","MAD-C-028":"CHECKED","MAD-C-029":"CHECKED","MAD-C-030":"PARTIAL","MAD-C-031":"CHECKED","MAD-C-032":"CHECKED","MAD-C-033":"CHECKED","MAD-C-034":"CHECKED","MAD-C-035":"PARTIAL","MAD-C-036":"PARTIAL","MAD-C-037":"PARTIAL","MAD-C-038":"CHECKED","MAD-C-039":"PARTIAL","MAD-C-040":"PARTIAL","MAD-C-041":"CHECKED","MAD-C-042":"CHECKED","MAD-C-043":"CHECKED","MAD-C-044":"CHECKED","MAD-C-045":"PARTIAL","MAD-C-046":"CHECKED","MAD-C-047":"UNAVAILABLE","MAD-C-048":"CHECKED","MAD-C-049":"CHECKED","MAD-C-050":"UNAVAILABLE","MAD-C-051":"PARTIAL","MAD-C-052":"CHECKED","MAD-C-053":"CHECKED","MAD-C-054":"CHECKED","MAD-C-055":"CHECKED","MAD-C-056":"PARTIAL","MAD-C-057":"CHECKED","MAD-C-058":"CHECKED","MAD-C-059":"CHECKED","MAD-C-060":"CHECKED","MAD-C-061":"CHECKED","MAD-C-062":"CHECKED","MAD-C-063":"PARTIAL","MAD-C-064":"CHECKED","MAD-C-065":"CHECKED","MAD-C-066":"PARTIAL"
+  },
+  "status_counts": {"CHECKED":49,"PARTIAL":15,"UNAVAILABLE":2},
+  "qualifying_roles": [],
+  "alerts_sent": [],
+  "ledger_write_status": "NOT_REQUIRED",
+  "critical_dedup_risk": false,
+  "material_failures": [],
+  "notes": "Mandatory 66/66 light pass completed. Each effective primary route was attempted once; at most one official fallback was used where needed. No qualifying Madrid role with reliable <=12h freshness evidence survived dedup. PARTIAL/UNAVAILABLE source states did not make the scan incomplete."
+}
