@@ -1,0 +1,61 @@
+{
+  "nominal_slot": "2026-09-23T03:30:00+02:00",
+  "today_madrid": "2026-09-23",
+  "receipt_path": "state/run_receipts/daily_audit/20260923T033000+0200.json",
+  "expected_employers": 198,
+  "accounted_employers": 198,
+  "scan_status": "COMPLETE",
+  "receipt_persistence_status": "OK",
+  "source_coverage_status": "DEGRADED",
+  "visibility": {
+    "CHECKED_ZERO": 0,
+    "CHECKED_WITH_INVENTORY": 0,
+    "STRUCTURAL_PARTIAL": 23,
+    "RUNTIME_PARTIAL_ON_HEALTHY": 162,
+    "UNAVAILABLE": 13
+  },
+  "visibility_method_note": "Conservative daily deep-audit reconciliation using current effective route precedence, current source-health semantics, latest lossless A/B/C receipts, Safety status, and prior deep baseline. No HEALTHY source was promoted to CHECKED_ZERO or CHECKED_WITH_INVENTORY without complete current-scope enumeration proof. Partial/unavailable absence was not used to infer zero inventory or role closure.",
+  "source_health_summary": {
+    "needs_route_config_review": ["MAD-A-063","MAD-B-016","MAD-B-058","MAD-C-047","MAD-C-050"],
+    "note": "Recurring repair list remains Siemens Healthineers, Calidad Pascual, Lenovo, AXA Spain and Amadeus. Other current unavailable observations are retained as runtime visibility failures unless recurrence establishes a route/config defect. Beiersdorf remains structurally PARTIAL under the current B hotfix."
+  },
+  "latest_radar_status": {
+    "A": {"slot":"2026-09-23T00:05:00+02:00","status":"COMPLETE","expected":66,"attempted":66,"classified":66,"qualifying_roles":0,"unavailable_ids":["MAD-A-039","MAD-A-058","MAD-A-063"]},
+    "B": {"slot":"2026-09-23T00:25:00+02:00","status":"COMPLETE","expected":66,"attempted":66,"classified":66,"qualifying_fresh_roles":0,"unavailable_ids":["MAD-B-005","MAD-B-016","MAD-B-028","MAD-B-058"]},
+    "C": {"slot":"2026-09-23T00:45:00+02:00","status":"COMPLETE","expected":66,"attempted":66,"classified":66,"qualifying_roles":0,"unavailable_ids":["MAD-C-001","MAD-C-006","MAD-C-030","MAD-C-047","MAD-C-050","MAD-C-059"]}
+  },
+  "latest_safety_status": {
+    "slot":"2026-09-23T01:50:00+02:00",
+    "current_execution_gaps":[],
+    "current_evidence_gaps":[],
+    "recovery_performed":false
+  },
+  "missed_roles_previous_24h": [],
+  "candidate_review": [
+    {"employer_id":"MAD-B-008","title":"Key Account Manager","result":"NOT_MISSED","reason":"Live official Madrid role remains visible but freshness is unknown; no reliable previous-24h evidence."},
+    {"employer_id":"MAD-B-014","title":"BRAND MANAGER QUESOS Temporal","result":"NOT_MISSED","reason":"Official role date 2026-07-09, outside freshness window."},
+    {"employer_id":"MAD-B-048","title":"Gerente de Corredores (Madrid)","result":"NOT_MISSED","reason":"Current official role remains visible but freshness is unknown; no reliable previous-24h evidence."}
+  ],
+  "ledger_status": {
+    "main_ledger":"READ_OK",
+    "critical_alerts_overlay":"READ_OK",
+    "critical_alerts_hotfix_20260913":"READ_OK",
+    "dedup_union_reliable":true,
+    "critical_dedup_risk":"NONE",
+    "protected_hotfix_keys":["Stryker|R566366","Stryker|R566038","Expedia Group|R-109375-1"],
+    "recent_overlay_keys":["Telefónica / Movistar|1398089133","Telefónica / Movistar|1439305433"]
+  },
+  "backfills": {
+    "status":"PENDING_NONCRITICAL",
+    "note":"Old/nonfresh ledger backfills remain noncritical. No current alert/dedup consistency risk or alert-critical ledger write was established."
+  },
+  "new_disappeared_removed": {"new":[],"disappeared":[],"removed":[]},
+  "missed_alerts": [],
+  "notifications": ["SOURCE_HEALTH_REVIEW"],
+  "notes": [
+    "Current employer universe validates exactly 198 unique employers with A/B/C ownership 66/66/66.",
+    "Latest completed A/B/C receipts each account for 66/66 and show no qualifying fresh role.",
+    "Safety reports no current execution or evidence gaps and reliable union dedup.",
+    "No role was closed or marked disappeared from partial or unavailable source absence."
+  ]
+}
