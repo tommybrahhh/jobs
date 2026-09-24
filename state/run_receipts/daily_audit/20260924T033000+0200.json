@@ -1,0 +1,61 @@
+{
+  "nominal_slot": "2026-09-24T03:30:00+02:00",
+  "today_madrid": "2026-09-24",
+  "receipt_path": "state/run_receipts/daily_audit/20260924T033000+0200.json",
+  "expected_employers": 198,
+  "accounted_employers": 198,
+  "scan_status": "COMPLETE",
+  "receipt_persistence_status": "OK",
+  "source_coverage_status": "DEGRADED",
+  "visibility": {
+    "CHECKED_ZERO": 0,
+    "CHECKED_WITH_INVENTORY": 0,
+    "STRUCTURAL_PARTIAL": 23,
+    "RUNTIME_PARTIAL_ON_HEALTHY": 166,
+    "UNAVAILABLE": 9
+  },
+  "visibility_method_note": "Conservative full-inventory reconciliation using current effective route precedence, current inventory-visibility semantics, latest lossless A/B/C evidence, Safety status, and prior deep baseline. No HEALTHY source was promoted to complete inventory without current complete-scope enumeration proof. No zero or role closure was inferred from partial or unavailable evidence.",
+  "source_health_summary": {
+    "needs_route_config_review": ["MAD-B-016","MAD-B-058","MAD-C-047","MAD-C-050"],
+    "note": "Current recurring repair focus is Calidad Pascual, Lenovo, AXA Spain and Amadeus. Siemens Healthineers returned current official visibility in the latest A pass and is not raised as a repair incident today. Beiersdorf remains structurally PARTIAL by hotfix. Other dynamic-site incompleteness remains a visibility limitation rather than a config alarm."
+  },
+  "latest_radar_status": {
+    "A": {"slot":"2026-09-24T03:05:00+02:00","status":"COMPLETE","expected":66,"attempted":66,"classified":66,"qualifying_roles":0,"unavailable_ids":["MAD-A-002","MAD-A-026","MAD-A-027","MAD-A-029","MAD-A-037"]},
+    "B": {"slot":"2026-09-24T00:25:00+02:00","status":"COMPLETE","expected":66,"attempted":66,"classified":66,"qualifying_fresh_roles":0,"unavailable_ids":["MAD-B-016","MAD-B-038","MAD-B-058"]},
+    "C": {"slot":"2026-09-24T00:45:00+02:00","status":"COMPLETE","expected":66,"attempted":66,"classified":66,"qualifying_roles":0,"unavailable_ids":["MAD-C-047"]}
+  },
+  "latest_safety_status": {
+    "slot":"2026-09-24T01:50:00+02:00",
+    "status":"OK",
+    "current_execution_gaps":[],
+    "current_evidence_gaps":[],
+    "recovery_performed":false
+  },
+  "missed_roles_previous_24h": [],
+  "candidate_review": [
+    {"employer_id":"MAD-B-008","title":"Key Account Manager","result":"NOT_MISSED","reason":"Live Madrid candidate remains known but freshness is UNKNOWN; no reliable previous-24h evidence."},
+    {"employer_id":"MAD-B-048","title":"Gerente de Corredores (Madrid)","result":"NOT_MISSED","reason":"Current official candidate remains known but freshness is UNKNOWN; no reliable previous-24h evidence."},
+    {"employer_id":"MAD-C-001","title":"Trade Marketing Retail","result":"ALREADY_ALERTED","reason":"Protected by critical hotfix overlay; alert timestamp 2026-09-23T15:45:06+02:00."}
+  ],
+  "ledger_status": {
+    "main_ledger":"READ_OK",
+    "critical_alerts_overlay":"READ_OK",
+    "critical_alerts_hotfix_20260913":"READ_OK",
+    "dedup_union_reliable":true,
+    "critical_dedup_risk":"NONE",
+    "protected_hotfix_keys":["Stryker|R566366","Stryker|R566038","Expedia Group|R-109375-1","Grupo Osborne|https://empleo.osborne.es/trade-marketing-retail-VNJgX6LIkCd5/"]
+  },
+  "backfills": {
+    "status":"PENDING_NONCRITICAL",
+    "note":"Old/nonfresh ledger backfills remain noncritical. No current alert/dedup consistency risk or alert-critical ledger write was established."
+  },
+  "new_disappeared_removed": {"new":[],"disappeared":[],"removed":[]},
+  "missed_alerts": [],
+  "notifications": ["SOURCE_HEALTH_REVIEW"],
+  "notes": [
+    "Current employer universe validates exactly 198 unique employers with A/B/C ownership 66/66/66.",
+    "Latest completed A/B/C evidence accounts for 66/66 each and establishes no qualifying fresh missed role.",
+    "Safety reports no current execution or evidence gap and reliable union dedup.",
+    "No role was closed or marked disappeared from partial or unavailable source absence."
+  ]
+}
