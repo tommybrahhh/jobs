@@ -1,0 +1,127 @@
+{
+  "nominal_slot": "2026-09-25T03:30:00+02:00",
+  "today_madrid": "2026-09-25",
+  "receipt_path": "state/run_receipts/daily_audit/20260925T033000+0200.json",
+  "expected_employers": 198,
+  "accounted_employers": 198,
+  "scan_status": "COMPLETE",
+  "receipt_persistence_status": "OK",
+  "source_coverage_status": "DEGRADED",
+  "visibility": {
+    "CHECKED_ZERO": 0,
+    "CHECKED_WITH_INVENTORY": 0,
+    "STRUCTURAL_PARTIAL": 23,
+    "RUNTIME_PARTIAL_ON_HEALTHY": 161,
+    "UNAVAILABLE": 14
+  },
+  "visibility_method_note": "Conservative daily deep reconciliation using current effective route precedence, inventory-visibility semantics, latest persisted A/B/C evidence and prior deep baseline. Complete inventory was not claimed where current complete-scope enumeration could not be proven. No zero, closure or disappearance was inferred from partial/unavailable evidence.",
+  "source_health_summary": {
+    "needs_route_config_review": [
+      "MAD-B-016",
+      "MAD-B-058",
+      "MAD-C-047",
+      "MAD-C-050"
+    ],
+    "note": "Recurring route/config repair focus remains Calidad Pascual, Lenovo, AXA Spain and Amadeus. Dynamic-site incompleteness is otherwise classified as structural/runtime limitation rather than raised as an alarm."
+  },
+  "latest_radar_status": {
+    "A": {
+      "slot": "2026-09-25T00:05:00+02:00",
+      "status": "COMPLETE",
+      "expected": 66,
+      "attempted": 66,
+      "classified": 66,
+      "unavailable_ids": [
+        "MAD-A-011",
+        "MAD-A-026",
+        "MAD-A-029",
+        "MAD-A-037",
+        "MAD-A-049"
+      ]
+    },
+    "B": {
+      "slot": "2026-09-24T15:25:00+02:00",
+      "status": "STALE_LATEST_PERSISTED",
+      "expected": 66,
+      "attempted": 66,
+      "classified": 66,
+      "current_expected_slot": "2026-09-25T00:25:00+02:00",
+      "current_gap": "EXECUTION_GAP"
+    },
+    "C": {
+      "slot": "2026-09-24T15:45:00+02:00",
+      "status": "STALE_LATEST_PERSISTED",
+      "expected": 66,
+      "attempted": 66,
+      "classified": 66,
+      "current_expected_slot": "2026-09-25T00:45:00+02:00",
+      "current_gap": "EXECUTION_GAP"
+    }
+  },
+  "latest_safety_status": {
+    "slot": "2026-09-24T01:50:00+02:00",
+    "status": "STALE_LATEST_PERSISTED",
+    "current_expected_slot": "2026-09-25T01:50:00+02:00",
+    "current_execution_gaps": [
+      "radar_b:2026-09-25T00:25:00+02:00",
+      "radar_c:2026-09-25T00:45:00+02:00",
+      "safety:2026-09-25T01:50:00+02:00"
+    ],
+    "current_evidence_gaps": []
+  },
+  "missed_roles_previous_24h": [],
+  "candidate_review": [
+    {
+      "employer_id": "MAD-B-008",
+      "title": "Key Account Manager",
+      "result": "NOT_MISSED",
+      "reason": "Known official Madrid candidate but freshness remains unproven; no reliable previous-24h evidence."
+    },
+    {
+      "employer_id": "MAD-B-048",
+      "title": "Gerente de Corredores (Madrid)",
+      "result": "NOT_MISSED",
+      "reason": "Known official Madrid candidate but freshness remains unproven; no reliable previous-24h evidence."
+    },
+    {
+      "employer_id": "MAD-A-054",
+      "title": "Sr Product Manager",
+      "result": "ALREADY_ALERTED",
+      "reason": "Protected by critical hotfix overlay; alert timestamp 2026-09-24T18:04:23+02:00."
+    }
+  ],
+  "ledger_status": {
+    "main_ledger": "READ_OK",
+    "critical_alerts_overlay": "READ_OK",
+    "critical_alerts_hotfix_20260913": "READ_OK",
+    "dedup_union_reliable": true,
+    "critical_dedup_risk": "NONE",
+    "protected_hotfix_keys": [
+      "Stryker|R566366",
+      "Stryker|R566038",
+      "Expedia Group|R-109375-1",
+      "Grupo Osborne|https://empleo.osborne.es/trade-marketing-retail-VNJgX6LIkCd5/",
+      "Gilead Sciences|https://gilead.yello.co/jobs/OI3KTxDx6HQ1Ewh96NzQzw?job_board_id=v42vD4vKxb3AkKvV93YsrQ"
+    ]
+  },
+  "backfills": {
+    "status": "PENDING_NONCRITICAL",
+    "note": "Old/nonfresh ledger backfills remain noncritical. No current alert/dedup consistency risk established."
+  },
+  "new_disappeared_removed": {
+    "new": [],
+    "disappeared": [],
+    "removed": []
+  },
+  "missed_alerts": [],
+  "notifications": [
+    "WATCHDOG_COVERAGE_WARNING",
+    "SOURCE_HEALTH_REVIEW"
+  ],
+  "notes": [
+    "Current employer universe validates exactly 198 unique employers with A/B/C ownership 66/66/66.",
+    "Radar A has a current complete 66/66 persisted receipt. Expected current B and C receipts are absent from the deterministic receipt directories; no current scan-execution evidence was found, so these are execution gaps rather than receipt-evidence gaps.",
+    "Latest Safety receipt is from 2026-09-24 and the expected 2026-09-25 Safety receipt is absent.",
+    "No role was closed or marked disappeared from partial or unavailable source absence."
+  ]
+}
