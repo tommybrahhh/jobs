@@ -1,0 +1,24 @@
+{
+  "radar": "C",
+  "slot": "2026-09-27T00:45:00+02:00",
+  "scan_status": "COMPLETE",
+  "receipt_persistence_status": "OK",
+  "expected": 66,
+  "attempted": 66,
+  "classified": 66,
+  "not_run_ids": [],
+  "status_compact": {
+    "CHECKED": "001-005,007-008,010-025,027-029,031-035,038,041-044,046,048-049,052-055,057-061,064-065",
+    "PARTIAL": "006,009,026,036-037,039-040,045,050-051,056,062-063,066",
+    "UNAVAILABLE": "030,047"
+  },
+  "qualifying_roles": [],
+  "alerts_sent": 0,
+  "ledger_read_status": "OK",
+  "overlay_read_status": "OK_BOTH",
+  "route_tail_read_status": "OK",
+  "route_material_status": "OK_66_OF_66",
+  "material_failures": [
+    "unprotected_dedup_key: Expedia Group|R-109921"
+  ]
+}
