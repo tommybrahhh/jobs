@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "purpose": "Supplemental priority employers that must be checked in addition to the fixed 66-employer A/B/C core rosters. Supplemental employers do not change core expected counts.",
+  "updated_at": "2026-09-29",
+  "employers": [
+    {
+      "id": "MAD-B-S01",
+      "radar": "B",
+      "employer": "Nike",
+      "core_count_excluded": true,
+      "priority": "HIGH",
+      "primary": "https://careers.nike.com/es/jobs",
+      "secondary": [
+        "https://careers.nike.com/search-jobs"
+      ],
+      "official_domain": "careers.nike.com",
+      "check_mode": "OFFICIAL_LISTING_FIRST + MADRID_FILTER + TARGET_FUNCTION + OFFICIAL_ROLE_VERIFY",
+      "job_target_notes": "Experienced Madrid roles in Brand/Integrated Retail Marketing, Brand Management, Marketplace/Account Management, Commercial/Consumer Strategy, GTM and adjacent target functions. Exclude store associate/retail frontline, internships and clearly junior roles.",
+      "positive_controls": [
+        {
+          "requisition_id": "R-92470",
+          "title": "Specialist II, Integrated Retail Marketing",
+          "official_role_url": "https://careers.nike.com/specialist-ii-integrated-retail-marketing/job/R-92470",
+          "expected_location": "Madrid, Madrid, Spain",
+          "purpose": "Detection control only. Never hardcode as live or fresh; independently verify current official visibility each run."
+        }
+      ],
+      "reason": "Nike was absent from the 198-employer core universe and a relevant Madrid marketing role R-92470 was therefore outside A/B/C coverage. Added supplementally so no existing monitored employer is removed."
+    }
+  ]
+}
