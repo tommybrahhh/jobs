@@ -27,6 +27,26 @@
       "route_class": "DIRECT_MADRID_CORPORATE_CAREERS_WITH_ORACLE_JOB_SEARCH",
       "check_mode": "MADRID_OFFICE_OPENINGS_FIRST + OFFICIAL_CX1_MADRID_SEARCH + EXACT_ROLE_PAGE_POSTING_DATE_VERIFY",
       "reason": "American Express has a current official Madrid careers page with job openings and current official CX_1 role pages exposing Madrid, requisition IDs and posting dates. The old route should not be treated as unavailable when these current official routes are readable."
+    },
+    "MAD-A-004": {
+      "employer": "Philip Morris International (PMI)",
+      "primary": "https://join.pmicareers.com/es/es/search-results",
+      "secondary": [
+        "https://join.pmicareers.com/gb/en/c/commercial-jobs",
+        "Exact official join.pmicareers.com job pages for Madrid/Spain discovered from current PMI listings/search"
+      ],
+      "health": "PARTIAL",
+      "route_class": "PHENOM_DYNAMIC_SEARCH_WITH_EXACT_ROLE_RECOVERY",
+      "check_mode": "SPAIN_SEARCH_FIRST + MADRID_FILTER + TARGET_FUNCTION + EXACT_OFFICIAL_ROLE_RECOVERY + REQUISITION_ID_VERIFY",
+      "positive_control": {
+        "requisition_id": "33882",
+        "external_key": "PMIPMIGB33882EXTERNALENGB",
+        "title": "Category Manager Smoke Free Products - Global Travel Retail",
+        "location": "Madrid, Spain",
+        "official_role_url": "https://join.pmicareers.com/gb/en/job/PMIPMIGB33882EXTERNALENGB/Category-Manager-Smoke-Free-Products-Global-Travel-Retail",
+        "rule": "Detection control only. Independently verify current official visibility; never hardcode as live or fresh."
+      },
+      "reason": "PMI was already in Radar A, but the former generic careers root did not reliably enumerate current Madrid roles. A current Madrid Category Manager role 33882 demonstrates the need for Spain search plus exact official role recovery."
     }
   }
 }
