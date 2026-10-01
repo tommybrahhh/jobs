@@ -1,0 +1,14 @@
+{
+  "nominal_slot": "2026-10-01T03:30:00+02:00",
+  "today_madrid": "2026-10-01",
+  "expected_employers": 198,
+  "accounted_employers": 198,
+  "visibility": {"CHECKED_ZERO":0,"CHECKED_WITH_INVENTORY":0,"STRUCTURAL_PARTIAL":42,"RUNTIME_PARTIAL_ON_HEALTHY":156,"UNAVAILABLE":0},
+  "route_config_review": ["MAD-B-016","MAD-B-058","MAD-C-047","MAD-C-050"],
+  "radar": {"A":"66/66 COMPLETE_STALE 2026-09-27T06:05:00+02:00","B":"66/66 COMPLETE_STALE 2026-09-27T09:25:00+02:00","C":"66/66 COMPLETE_STALE 2026-09-27T00:45:00+02:00"},
+  "safety": "STALE_LATEST_PERSISTED 2026-09-24T01:50:00+02:00",
+  "missed_roles_previous_24h": [],
+  "ledger_overlay_status": "READ_OK; Expedia Group|R-109921 remains unprotected",
+  "backfills": "PENDING_NONCRITICAL",
+  "receipt_persistence_status": "OK"
+}
