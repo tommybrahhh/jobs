@@ -1,0 +1,67 @@
+{
+  "nominal_slot": "2026-10-04T03:30:00+02:00",
+  "today_madrid": "2026-10-04",
+  "mode": "REPOSITORY_BACKED",
+  "expected_core_employers": 198,
+  "core_roster_read": true,
+  "supplemental_employers": [
+    "Nike"
+  ],
+  "audit_scope_note": "Repository state/config read successfully. Deep review used effective route/config evidence plus fresh official-web verification for high-value/current candidates and known problem routes. Inventory completeness was not proven across all dynamic sites; no zero/closure inferred from partial evidence.",
+  "visibility_summary": {
+    "certified_current_counts": null,
+    "note": "Per-employer current full-inventory enumeration could not be honestly certified for all 198 from available web evidence; prior visibility counts were not reused as today's counts."
+  },
+  "relevant_candidates": [
+    {
+      "employer": "Expedia Group",
+      "id": "R-109921",
+      "title": "Director Strategy",
+      "location": "Madrid",
+      "official_posted_date": "2026-09-24",
+      "classification": "MISSED_ACTIVE_CANDIDATE",
+      "dedup": "UNPROTECTED_IN_LEDGER_AND_BOTH_OVERLAYS"
+    },
+    {
+      "employer": "Nike",
+      "id": "R-92470",
+      "title": "Specialist II, Integrated Retail Marketing",
+      "location": "Madrid",
+      "official_posted_date": null,
+      "classification": "SUPPLEMENTAL_ACTIVE_CANDIDATE",
+      "dedup": "NOT_PRESENT_IN_CORE_LEDGER_OR_OVERLAYS"
+    },
+    {
+      "employer": "Amadeus",
+      "id": "R35452",
+      "title": "Strategic Media Partnerships Senior Specialist",
+      "location": "Madrid",
+      "classification": "ACTIVE_CANDIDATE",
+      "freshness": "official Workday showed Posted 4 Days Ago when crawled last week; current freshness not established"
+    },
+    {
+      "employer": "AstraZeneca",
+      "id": "R-260057",
+      "title": "Brand Manager Breast Cancer",
+      "location": "Madrid",
+      "official_posted_date": "2026-09-17",
+      "classification": "OLDER_ACTIVE_EVIDENCE"
+    }
+  ],
+  "missed_fresh_alerts": [],
+  "source_config_review": [
+    "MAD-B-016 Calidad Pascual",
+    "MAD-B-058 Lenovo",
+    "MAD-C-047 AXA Spain",
+    "MAD-C-050 Amadeus"
+  ],
+  "radar_status": {
+    "A": "Latest persisted receipt 2026-09-27T06:05+02:00 COMPLETE 66/66; no positive evidence of current search failure. Receipt/evidence stale.",
+    "B": "Latest persisted receipt 2026-09-27T09:25+02:00 COMPLETE 66/66; no positive evidence of current search failure. Receipt/evidence stale.",
+    "C": "Latest persisted receipt 2026-09-27T00:45+02:00 COMPLETE 66/66; flagged Expedia Group|R-109921 unprotected. No positive evidence of current search failure. Receipt/evidence stale."
+  },
+  "safety_status": "Latest persisted safety receipt 2026-09-24T01:50+02:00. Current execution cannot be certified from repository receipts; treat as evidence/persistence gap, not proven search failure.",
+  "ledger_overlay_status": "Main ledger and both overlays readable. Expedia Group|R-109921 absent from union and remains a real dedup risk.",
+  "backfills": "No alert-critical backfill safely written during this run.",
+  "receipt_persistence_status": "OK"
+}
