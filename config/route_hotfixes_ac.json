@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "purpose": "Verified route hotfixes for Radar A/C applied after config/route_patches.json.",
-  "verified_at": "2026-09-07",
+  "verified_at": "2026-10-08",
   "precedence": "For matching A/C employer IDs, these fields override config/route_patches.json and base route files.",
   "hotfixes": {
     "MAD-A-029": {
@@ -47,6 +47,61 @@
         "rule": "Detection control only. Independently verify current official visibility; never hardcode as live or fresh."
       },
       "reason": "PMI was already in Radar A, but the former generic careers root did not reliably enumerate current Madrid roles. A current Madrid Category Manager role 33882 demonstrates the need for Spain search plus exact official role recovery."
+    },
+    "MAD-A-006": {
+      "employer": "Johnson & Johnson",
+      "primary": "https://www.careers.jnj.com/en/locations/emea/spain/",
+      "secondary": [
+        "https://www.careers.jnj.com/en/jobs/",
+        "Exact official careers.jnj.com Madrid role pages"
+      ],
+      "health": "HEALTHY",
+      "route_class": "CURRENT_SPAIN_OFFICIAL_INVENTORY_WITH_EXACT_ROLE_PAGES",
+      "check_mode": "SPAIN_INVENTORY_FIRST + MADRID_LOCATION + TARGET_FUNCTION + EXACT_ROLE_DATE_AND_REQ_VERIFY",
+      "reason": "The current English Spain careers page exposes a live Spain inventory and current Madrid role pages with requisition IDs and posting dates. Use it instead of relying on the older locale-specific route."
+    },
+    "MAD-A-010": {
+      "employer": "Unilever",
+      "primary": "https://careers.unilever.com/es/ubicaci%C3%B3n/madrid-jobs/34155/2510769-3117732-3117735/4",
+      "secondary": [
+        "https://careers.unilever.com/en/spain",
+        "https://careers.unilever.com/es/buscar-trabajo"
+      ],
+      "health": "HEALTHY",
+      "route_class": "DIRECT_MADRID_FILTERED_INVENTORY",
+      "check_mode": "MADRID_INVENTORY_FIRST + TARGET_FUNCTION + EXACT_ROLE_VERIFY; IF_PAGE_EXPLICITLY_ENUMERATES_NO_MADRID_JOBS_RECORD_CHECKED_ZERO_FOR_THIS_RUN_ONLY",
+      "reason": "Unilever has a dedicated official Madrid inventory page. At verification it explicitly exposed no Madrid jobs; this route allows a real current zero to be distinguished from an unreadable shell. Never persist that zero beyond the current run."
+    },
+    "MAD-A-062": {
+      "employer": "Becton Dickinson (BD)",
+      "primary": "https://jobs.bd.com/en/location/madrid-spain-jobs/159/2510769-3117732/3",
+      "secondary": [
+        "https://jobs.bd.com/en/locations-iberia-es",
+        "Exact official jobs.bd.com Madrid/San Agustin del Guadalix role pages"
+      ],
+      "health": "HEALTHY",
+      "route_class": "DIRECT_MADRID_FILTERED_OFFICIAL_INVENTORY",
+      "check_mode": "MADRID_INVENTORY_FIRST + ENUMERATE_VISIBLE_TITLES + TARGET_FUNCTION + EXACT_ROLE_VERIFY",
+      "reason": "The official BD Madrid inventory currently enumerates six Madrid-area openings, including Digital Product Manager and Senior Manager Change Management EMEA. The generic route was under-reading a demonstrably live inventory."
+    },
+    "MAD-C-034": {
+      "employer": "Expedia Group",
+      "primary": "https://careers.expediagroup.com/jobs/location/Madrid/",
+      "secondary": [
+        "https://careers.expediagroup.com/locations/madrid-spain/",
+        "https://careers.expediagroup.com/jobs/"
+      ],
+      "health": "HEALTHY",
+      "route_class": "DIRECT_MADRID_CITY_INVENTORY_WITH_EXACT_ROLE_RECOVERY",
+      "check_mode": "ENUMERATE_ALL_VISIBLE_MADRID_TITLES + TARGET_CATEGORY + EXACT_ROLE_ID_DATE_AND_LIVE_STATUS_VERIFY",
+      "positive_control": {
+        "requisition_id": "R-108873",
+        "title": "Senior Partner Marketing Manager",
+        "location": "Madrid, Spain",
+        "official_role_url": "https://careers.expediagroup.com/job/senior-partner-marketing-manager/madrid-madrid/R-108873/",
+        "rule": "Detection control only. Independently verify current official visibility; never hardcode as live or fresh."
+      },
+      "reason": "Expedia's current Madrid city inventory is directly enumerable and currently exposes a live target Marketing role. Radar C must enumerate visible Madrid titles rather than infer from a stale/partial index or a single historical requisition."
     }
   }
 }
