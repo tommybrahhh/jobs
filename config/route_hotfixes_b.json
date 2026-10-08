@@ -1,16 +1,13 @@
 {
   "schema_version": 1,
   "purpose": "Radar B verified route hotfixes applied after config/route_patches.json.",
-  "verified_at": "2026-09-07",
+  "verified_at": "2026-10-08",
   "precedence": "For matching B employer IDs, these fields override config/route_patches.json and config/routes_b.json.",
   "hotfixes": {
     "MAD-B-016": {
       "employer": "Calidad Pascual",
       "primary": "https://pascual.career.velorahr.com/calidad-pascual-248",
-      "secondary": [
-        "https://www.calidadpascual.com/contacto/",
-        "Exact-site live official pascual.career.velorahr.com vacancy/role pages"
-      ],
+      "secondary": ["https://www.calidadpascual.com/contacto/", "Exact-site live official pascual.career.velorahr.com vacancy/role pages"],
       "health": "HEALTHY",
       "route_class": "DIRECT_VELORAHR_CURRENT_INVENTORY",
       "check_mode": "VELORAHR_LISTING_FIRST + MADRID_FILTER + EXACT_SITE_ROLE_RECOVERY + CORPORATE_PORTAL_OWNERSHIP_CONFIRMATION",
@@ -19,9 +16,7 @@
     "MAD-B-025": {
       "employer": "Haier Europe",
       "primary": "https://www.haier-europe.com/es_ES/pages/trabaja-en-haier",
-      "secondary": [
-        "Exact-site official haier-europe.com Spain careers vacancy discovery"
-      ],
+      "secondary": ["Exact-site official haier-europe.com Spain careers vacancy discovery"],
       "health": "HEALTHY",
       "route_class": "DIRECT_SPAIN_CORPORATE_CAREERS_INVENTORY",
       "check_mode": "SPAIN_CAREERS_PAGE_FIRST + MADRID_ROLE_ENUMERATION + LIVE_OFFICIAL_ROLE_VERIFY",
@@ -30,10 +25,7 @@
     "MAD-B-034": {
       "employer": "Sephora España",
       "primary": "https://jobs.sephora.com/Spain/go/Apply-in-Spain-%28es_ES%29/8364100/",
-      "secondary": [
-        "https://jobs.sephora.com/",
-        "Exact official jobs.sephora.com Spain role pages"
-      ],
+      "secondary": ["https://jobs.sephora.com/", "Exact official jobs.sephora.com Spain role pages"],
       "health": "HEALTHY",
       "route_class": "SPAIN_SPECIFIC_SUCCESSFACTORS_INVENTORY",
       "check_mode": "SPAIN_LISTING_FIRST + MADRID_FILTER + LISTING_DATE + OFFICIAL_ROLE_PAGE_VERIFY",
@@ -42,10 +34,7 @@
     "MAD-B-036": {
       "employer": "Barilla",
       "primary": "https://jobs.barillagroup.com/",
-      "secondary": [
-        "https://www.barillagroup.com/en/careers/",
-        "Exact official jobs.barillagroup.com role/category pages"
-      ],
+      "secondary": ["https://www.barillagroup.com/en/careers/", "Exact official jobs.barillagroup.com role/category pages"],
       "health": "HEALTHY",
       "route_class": "DIRECT_SUCCESSFACTORS_GLOBAL_INVENTORY",
       "check_mode": "GLOBAL_JOB_SEARCH + SPAIN_MADRID_FILTER + POSTING_DATE + OFFICIAL_ROLE_PAGE_VERIFY",
@@ -54,11 +43,7 @@
     "MAD-B-054": {
       "employer": "Clarins España",
       "primary": "https://www.groupeclarins.com/es/ofertas-de-trabajo/",
-      "secondary": [
-        "https://careers.groupeclarins.com/",
-        "https://www.clarins.es/jobs-landing.html",
-        "Exact official Groupe Clarins job pages"
-      ],
+      "secondary": ["https://careers.groupeclarins.com/", "https://www.clarins.es/jobs-landing.html", "Exact official Groupe Clarins job pages"],
       "health": "HEALTHY",
       "route_class": "CURRENT_GROUPE_CLARINS_JOB_INVENTORY",
       "check_mode": "OFFICIAL_JOB_OFFERS_FIRST + SPAIN_MARKET_FILTER + MADRID_FILTER + ROLE_VERIFY",
@@ -67,14 +52,54 @@
     "MAD-B-008": {
       "employer": "Beiersdorf",
       "primary": "https://www.beiersdorf.com/career/your-application/job-search?count=50&country=Spain&sort=date",
-      "secondary": [
-        "https://www.beiersdorf.com/career/locations/spain",
-        "https://www.beiersdorf.com/career/your-application/job-search"
-      ],
+      "secondary": ["https://www.beiersdorf.com/career/locations/spain", "https://www.beiersdorf.com/career/your-application/job-search"],
       "health": "PARTIAL",
       "route_class": "SPAIN_FILTERED_OFFICIAL_INVENTORY_WITH_ROLE_VERIFICATION",
       "check_mode": "FIRST_READ_SPAIN_FILTERED_LISTING; ENUMERATE_VISIBLE_MADRID_TITLES_AND_OFFICIAL_ROLE_URLS; OPEN_EACH_POTENTIALLY_RELEVANT_MADRID_ROLE_AND_RECORD_STABLE_ID_OR_CANONICAL_URL_AND_OFFICIAL_POSTING_DATE_IF_AVAILABLE; WHEN_LISTING_NOT_ENUMERATED_MARK_PARTIAL_NOT_CHECKED; NEVER_EQUATE_PAGE_OPENED_WITH_JOB_INVENTORY_CHECKED; IF_KAM_MADRID_LISTED_VERIFY_LIVE_ROLE_BEFORE_FRESHNESS_OR_DEDUP_DECISION",
       "reason": "2026-09-21 detection test: Beiersdorf official Spain-filtered listing shows Key Account Manager Madrid whereas the former global first-page route and repeated CHECKED receipts failed to record a KAM candidate. Spain listing is validated as readable but complete live Madrid inventory was not proven; classify PARTIAL until completeness demonstrated."
+    },
+    "MAD-B-011": {
+      "employer": "Red Bull España",
+      "primary": "https://jobs.redbull.com/es-es/results?locations=5866",
+      "secondary": ["https://jobs.redbull.com/es-es/locations/red-bull-spain", "https://jobs.redbull.com/es-es/results"],
+      "health": "HEALTHY",
+      "route_class": "DIRECT_MADRID_FILTERED_OFFICIAL_INVENTORY",
+      "check_mode": "MADRID_LISTING_FIRST + ENUMERATE_VISIBLE_TITLES + TARGET_FUNCTION + EXACT_ROLE_VERIFY",
+      "reason": "Red Bull's official Spain site currently exposes a Madrid-filtered inventory and current target roles such as Trade Marketing Specialist. Use the Madrid-filtered route instead of a broad global results shell."
+    },
+    "MAD-B-027": {
+      "employer": "IKEA España",
+      "primary": "https://jobs.ikea.com/en/location/madrid-spain-jobs/22908/2510769-3117732/3",
+      "secondary": ["https://jobs.ikea.com/es/ubicaci%C3%B3n/madrid-jobs/22908/2510769-3117732/3/1", "https://jobs.ikea.com/es/ubicaci%C3%B3n/spain-jobs/22908/2510769/2"],
+      "health": "HEALTHY",
+      "route_class": "DIRECT_MADRID_FILTERED_OFFICIAL_INVENTORY",
+      "check_mode": "MADRID_INVENTORY_FIRST + ENUMERATE_ALL_VISIBLE_TITLES + TARGET_FUNCTION + EXACT_ROLE_VERIFY",
+      "reason": "IKEA's official Madrid location inventory is directly enumerable and currently exposes nine Madrid-area jobs. This enables genuine no-target classification instead of treating the source as a partial shell."
+    },
+    "MAD-B-030": {
+      "employer": "Cabify",
+      "primary": "https://cabify.careers/en/jobs?office=Madrid",
+      "secondary": ["https://cabify.careers/es/jobs?office=Madrid", "https://cabify.careers/en/jobs"],
+      "health": "HEALTHY",
+      "route_class": "DIRECT_MADRID_OFFICE_INVENTORY",
+      "check_mode": "MADRID_LISTING_FIRST + ENUMERATE_ALL_VISIBLE_TITLES + TARGET_FUNCTION + EXACT_ROLE_VERIFY",
+      "reason": "Cabify's official Madrid-filtered page currently exposes a broad live inventory with multiple target roles including Revenue Operations Manager B2B, Senior Product Manager, Pricing Growth Specialist, Marketplace Growth Specialist and Customer Experience Excellence Specialist. The prior generic route was materially under-reading current opportunities."
+    },
+    "MAD-B-056": {
+      "employer": "Primark",
+      "primary": "https://careers.primark.com/en/search_jobs/madrid/8171/1/1",
+      "secondary": ["https://careers.primark.com/en/search-jobs/spain/30423/1/1", "Exact official careers.primark.com Madrid role pages"],
+      "health": "HEALTHY",
+      "route_class": "DIRECT_MADRID_FILTERED_MULTI_PAGE_INVENTORY",
+      "check_mode": "MADRID_INVENTORY_FIRST + MARKETING_AND_BRAND_FILTER + CHECK_ALL_MADRID_RESULT_PAGES_UP_TO_CURRENT_PAGE_COUNT + TARGET_FUNCTION + EXACT_ROLE_VERIFY",
+      "positive_control": {
+        "job_id": "JR-5351",
+        "title": "Marketing Manager",
+        "location": "Madrid, Spain",
+        "official_role_url": "https://careers.primark.com/es/trabajo/madrid/marketing-manager/8171/92356415520",
+        "rule": "Detection control only. Independently verify current official visibility; never hardcode as live or fresh."
+      },
+      "reason": "Primark's official Madrid inventory is live and multi-page. A current experienced Marketing Manager role demonstrates that a first-page-only light pass can miss relevant roles; Madrid Marketing & Brand results require targeted pagination/filtering."
     }
   }
 }
